@@ -1,13 +1,16 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import About from './pages/About';
-import HowItWorks from './pages/HowItWorks';
-import Contact from './pages/Contact';
-import FindAuPair from './pages/FindAuPair';
-import FindFamily from './pages/FindFamily';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./i18n";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import HowItWorks from "./pages/HowItWorks";
+import Contact from "./pages/Contact";
+import FindAuPair from "./pages/FindAuPair";
+import FindFamily from "./pages/FindFamily";
+import EnglishEducation from "./pages/EnglishEducation";
+import Chatbot from "./components/Chatbot";
 
 function App() {
   return (
@@ -21,10 +24,12 @@ function App() {
             <Route path="/how-it-works" element={<HowItWorks />} />
             <Route path="/find-aupair" element={<FindAuPair />} />
             <Route path="/find-family" element={<FindFamily />} />
+            <Route path="/english-education" element={<EnglishEducation />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
         <Footer />
+        <Chatbot />
       </div>
     </Router>
   );

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="256" cy="256" r="248" fill="#FDB813"/>
+  
+  <!-- Letter H -->
+  <path d="M160 120h40v120h112V120h40v272h-40V280H200v112h-40V120z" fill="white"/>
+  
+  <!-- Decorative Elements -->
+  <circle cx="256" cy="256" r="200" stroke="white" stroke-width="4" stroke-opacity="0.2"/>
+  <circle cx="256" cy="256" r="220" stroke="white" stroke-width="2" stroke-opacity="0.1"/>
+</svg>
