@@ -3,8 +3,24 @@ import { useTranslation } from "react-i18next";
 import { Star, CheckCircle } from "lucide-react";
 import { useState, useEffect } from "react";
 
+interface Step {
+  title: string;
+  description: string;
+}
+
+interface Point {
+  title: string;
+  description: string;
+}
+
+interface Story {
+  quote: string;
+  name: string;
+  location: string;
+}
+
 const Home = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("home");
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const heroImages = [
@@ -22,7 +38,7 @@ const Home = () => {
     }, 5000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [heroImages.length]);
 
   return (
     <div className="bg-white">
@@ -102,7 +118,7 @@ const Home = () => {
               {t('howItWorks.forFamilies.title')}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {Object.entries(t('howItWorks.forFamilies.steps', { returnObjects: true })).map(([key, step]: [string, any], index) => (
+              {Object.entries(t('howItWorks.forFamilies.steps', { returnObjects: true }) as Record<string, Step>).map(([key, step], index) => (
                 <div key={key} className="bg-white p-6 rounded-lg shadow-lg text-center">
                   <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
                     <span className="text-2xl font-bold text-primary">{index + 1}</span>
@@ -120,7 +136,7 @@ const Home = () => {
               {t('howItWorks.forAuPairs.title')}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {Object.entries(t('howItWorks.forAuPairs.steps', { returnObjects: true })).map(([key, step]: [string, any], index) => (
+              {Object.entries(t('howItWorks.forAuPairs.steps', { returnObjects: true }) as Record<string, Step>).map(([key, step], index) => (
                 <div key={key} className="bg-white p-6 rounded-lg shadow-lg text-center">
                   <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-secondary/10 flex items-center justify-center">
                     <span className="text-2xl font-bold text-secondary">{index + 1}</span>
@@ -146,7 +162,7 @@ const Home = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {Object.entries(t('whyChooseUs.points', { returnObjects: true })).map(([key, point]: [string, any]) => (
+            {Object.entries(t('whyChooseUs.points', { returnObjects: true }) as Record<string, Point>).map(([key, point]) => (
               <div key={key} className="text-center">
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
                   <CheckCircle className="w-8 h-8 text-primary" />
@@ -171,7 +187,7 @@ const Home = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {Object.entries(t('successStories.stories', { returnObjects: true })).map(([key, story]: [string, any]) => (
+            {Object.entries(t('successStories.stories', { returnObjects: true }) as Record<string, Story>).map(([key, story]) => (
               <div key={key} className="bg-white p-6 rounded-lg shadow-lg">
                 <div className="mb-4">
                   <Star className="w-8 h-8 text-primary inline-block" />
@@ -200,16 +216,16 @@ const Home = () => {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link
-              to="/find-aupair"
-              className="px-8 py-4 bg-white text-primary font-bold rounded-lg hover:bg-gray-100 transition-colors shadow-lg hover:shadow-xl"
+              to="/find-family"
+              className="px-8 py-4 bg-white text-primary font-bold rounded-lg hover:bg-gray-100 transition-colors"
             >
-              {t('readyToStart.cta.families')}
+              {t('readyToStart.buttonFamily')}
             </Link>
             <Link
-              to="/become-aupair"
-              className="px-8 py-4 bg-primary-dark text-white font-bold rounded-lg hover:bg-primary-darker transition-colors shadow-lg hover:shadow-xl border-2 border-white"
+              to="/find-aupair"
+              className="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 transition-colors"
             >
-              {t('readyToStart.cta.aupairs')}
+              {t('readyToStart.buttonAuPair')}
             </Link>
           </div>
         </div>
