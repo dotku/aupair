@@ -1,37 +1,37 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./i18n";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import HowItWorks from "./pages/HowItWorks";
-import Contact from "./pages/Contact";
-import FindAuPair from "./pages/FindAuPair";
 import FindFamily from "./pages/FindFamily";
 import EnglishEducation from "./pages/EnglishEducation";
 import Chatbot from "./components/Chatbot";
+import Contact from "./pages/Contact";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import Profile from "./pages/Profile";
+import Services from "./pages/Services";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <Router>
-      <div className="flex flex-col min-h-screen">
-        <Navbar />
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/how-it-works" element={<HowItWorks />} />
-            <Route path="/find-aupair" element={<FindAuPair />} />
-            <Route path="/find-family" element={<FindFamily />} />
-            <Route path="/english-education" element={<EnglishEducation />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </main>
-        <Footer />
-        <Chatbot />
-      </div>
-    </Router>
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
+      <main className="flex-grow">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/find-family" element={<FindFamily />} />
+          <Route path="/english-education" element={<EnglishEducation />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
+      </main>
+      <Footer />
+      <Chatbot />
+    </div>
   );
 }
 
