@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Mail, Phone, MessageCircle, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MessageCircle, MapPin } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const Contact = () => {
+  const { t } = useTranslation(["contact", "footer"]);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -24,15 +26,16 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submission logic would go here
-    alert("Thank you for your message. We will get back to you soon!");
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-      userType: "family",
-    });
+    const emailSubject = `[${t(`form.userTypeOptions.${formData.userType}`)}] ${formData.subject}`;
+    const emailBody = `
+Name: ${formData.name}
+Email: ${formData.email}
+User Type: ${t(`form.userTypeOptions.${formData.userType}`)}
+
+${formData.message}`;
+
+    const mailtoLink = `mailto:${t("contact.email.value", { ns: "footer" })}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    window.location.href = mailtoLink;
   };
 
   return (
@@ -50,9 +53,9 @@ const Contact = () => {
         ></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative z-10">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">{t("title")}</h1>
             <p className="text-xl md:text-2xl mb-6 max-w-3xl mx-auto">
-              We're here to help with any questions about our au pair program
+              {t("hero.description")}
             </p>
           </div>
         </div>
@@ -65,190 +68,189 @@ const Contact = () => {
             {/* Contact Form */}
             <div>
               <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                Send Us a Message
+                {t("form.title")}
               </h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label
-                    htmlFor="userType"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    I am a:
-                  </label>
-                  <select
-                    id="userType"
-                    name="userType"
-                    value={formData.userType}
-                    onChange={handleChange}
-                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                  >
-                    <option value="family">Host Family</option>
-                    <option value="aupair">Au Pair</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
+              <form onSubmit={handleSubmit} className="space-y-8">
+                <div className="space-y-6">
+                  <div className="form-group">
+                    <label
+                      htmlFor="userType"
+                      className="block text-sm font-semibold text-gray-700 mb-2"
+                    >
+                      {t("form.userType")}
+                    </label>
+                    <select
+                      id="userType"
+                      name="userType"
+                      value={formData.userType}
+                      onChange={handleChange}
+                      className="block w-full px-4 py-3 rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-150 ease-in-out bg-white"
+                      required
+                    >
+                      <option value="family">{t("form.userTypeOptions.family")}</option>
+                      <option value="aupair">{t("form.userTypeOptions.aupair")}</option>
+                      <option value="other">{t("form.userTypeOptions.other")}</option>
+                    </select>
+                  </div>
 
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Your Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                  />
-                </div>
+                  <div className="form-group">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-semibold text-gray-700 mb-2"
+                    >
+                      {t("form.name")}
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="block w-full px-4 py-3 rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-150 ease-in-out"
+                      placeholder={t("form.name")}
+                    />
+                  </div>
 
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                  />
-                </div>
+                  <div className="form-group">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-semibold text-gray-700 mb-2"
+                    >
+                      {t("form.email")}
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="block w-full px-4 py-3 rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-150 ease-in-out"
+                      placeholder={t("form.email")}
+                    />
+                  </div>
 
-                <div>
-                  <label
-                    htmlFor="subject"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                  />
-                </div>
+                  <div className="form-group">
+                    <label
+                      htmlFor="subject"
+                      className="block text-sm font-semibold text-gray-700 mb-2"
+                    >
+                      {t("form.subject")}
+                    </label>
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      required
+                      className="block w-full px-4 py-3 rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-150 ease-in-out"
+                      placeholder={t("form.subject")}
+                    />
+                  </div>
 
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                  ></textarea>
+                  <div className="form-group">
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-semibold text-gray-700 mb-2"
+                    >
+                      {t("form.message")}
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={4}
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      className="block w-full px-4 py-3 rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-150 ease-in-out resize-none"
+                      placeholder={t("form.message")}
+                    ></textarea>
+                  </div>
                 </div>
 
                 <div>
                   <button
                     type="submit"
-                    className="inline-flex items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                    className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center space-x-2 font-semibold text-base shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                   >
-                    <Send className="h-5 w-5 mr-2" />
-                    Send Message
+                    <Mail className="h-5 w-5" />
+                    <span>{t("form.submit")}</span>
                   </button>
                 </div>
               </form>
             </div>
 
-            {/* Contact Information */}
+            {/* Contact Info */}
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                Contact Information
-              </h2>
-
-              <div className="bg-white p-6 rounded-lg shadow-md mb-8">
-                <div className="space-y-4">
+              <div className="bg-gray-50 p-8 rounded-lg">
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                  {t("contact.title", { ns: "footer" })}
+                </h2>
+                <div className="space-y-6">
                   <div className="flex items-start">
-                    <Mail className="h-6 w-6 text-blue-600 mt-1 mr-4" />
+                    <MapPin className="h-6 w-6 text-blue-600 mt-1 mr-3" />
                     <div>
-                      <h3 className="text-lg font-medium text-gray-900">
-                        Email
+                      <h3 className="font-medium text-gray-900">
+                        {t("contact.address.label", { ns: "footer" })}
                       </h3>
-                      <p className="text-gray-600">xutianyun94@gmail.com</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start">
-                    <Phone className="h-6 w-6 text-blue-600 mt-1 mr-4" />
-                    <div>
-                      <h3 className="text-lg font-medium text-gray-900">
-                        Phone
-                      </h3>
-                      <p className="text-gray-600">+86 18621522961</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start">
-                    <MessageCircle className="h-6 w-6 text-blue-600 mt-1 mr-4" />
-                    <div>
-                      <h3 className="text-lg font-medium text-gray-900">
-                        WeChat
-                      </h3>
-                      <p className="text-gray-600">WeChat ID: Mary_Hsu1007</p>
-                      <p className="text-gray-600 text-sm mt-1">
-                        Scan the QR code or search for our WeChat ID
+                      <p className="mt-1 text-gray-600">
+                        {t("contact.address.value", { ns: "footer" })}
                       </p>
                     </div>
                   </div>
-
                   <div className="flex items-start">
-                    <MapPin className="h-6 w-6 text-blue-600 mt-1 mr-4" />
+                    <Phone className="h-6 w-6 text-blue-600 mt-1 mr-3" />
                     <div>
-                      <h3 className="text-lg font-medium text-gray-900">
-                        Office
+                      <h3 className="font-medium text-gray-900">
+                        {t("contact.phone.label", { ns: "footer" })}
                       </h3>
-                      <p className="text-gray-600">
-                        123 Global Exchange Street
+                      <p className="mt-1 text-gray-600">
+                        {t("contact.phone.value", { ns: "footer" })}
                       </p>
-                      <p className="text-gray-600">San Francisco, CA 94105</p>
-                      <p className="text-gray-600">United States</p>
                     </div>
                   </div>
-                </div>
-              </div>
-
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <h3 className="text-lg font-medium text-gray-900 mb-4">
-                  Office Hours
-                </h3>
-                <div className="space-y-2">
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Monday - Friday:</span>
-                    <span className="text-gray-900 font-medium">
-                      9:00 AM - 6:00 PM (PST)
-                    </span>
+                  <div className="flex items-start">
+                    <Mail className="h-6 w-6 text-blue-600 mt-1 mr-3" />
+                    <div>
+                      <h3 className="font-medium text-gray-900">
+                        {t("contact.email.label", { ns: "footer" })}
+                      </h3>
+                      <p className="mt-1 text-gray-600">
+                        {t("contact.email.value", { ns: "footer" })}
+                      </p>
+                    </div>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Saturday:</span>
-                    <span className="text-gray-900 font-medium">
-                      10:00 AM - 4:00 PM (PST)
-                    </span>
+                  <div className="flex items-start">
+                    <MessageCircle className="h-6 w-6 text-blue-600 mt-1 mr-3" />
+                    <div>
+                      <h3 className="font-medium text-gray-900">
+                        {t("contact.wechat.label", { ns: "footer" })}
+                      </h3>
+                      <p className="mt-1 text-gray-600">
+                        {t("contact.wechat.value", { ns: "footer" })}
+                      </p>
+                    </div>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Sunday:</span>
-                    <span className="text-gray-900 font-medium">Closed</span>
+                  <div className="flex items-start">
+                    <div className="flex-shrink-0">
+                      <div className="h-6 w-6 text-blue-600 mt-1 mr-3" />
+                    </div>
+                    <div>
+                      <h3 className="font-medium text-gray-900">
+                        {t("contact.hours.label", { ns: "footer" })}
+                      </h3>
+                      <p className="mt-1 text-gray-600">
+                        {t("contact.hours.weekdays", { ns: "footer" })}
+                      </p>
+                      <p className="mt-1 text-gray-600">
+                        {t("contact.hours.weekend", { ns: "footer" })}
+                      </p>
+                      <p className="mt-1 text-gray-500">
+                        {t("contact.hours.timezone", { ns: "footer" })}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -262,75 +264,47 @@ const Contact = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900">
-              Frequently Asked Questions
+              {t("faq.title")}
             </h2>
             <p className="mt-4 text-xl text-gray-600">
-              Find quick answers to common questions
+              {t("faq.description")}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-bold text-gray-900 mb-3">
-                How quickly will I receive a response?
+                {t("faq.questions.q1.title")}
               </h3>
               <p className="text-gray-600">
-                We aim to respond to all inquiries within 24-48 hours during
-                business days. For urgent matters, please contact us by phone.
+                {t("faq.questions.q1.answer")}
               </p>
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-bold text-gray-900 mb-3">
-                Do you have offices in other countries?
+                {t("faq.questions.q2.title")}
               </h3>
               <p className="text-gray-600">
-                Yes, we have partner offices in several countries including
-                Germany, China, Australia, and Brazil. Contact us for specific
-                location details.
+                {t("faq.questions.q2.answer")}
               </p>
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-bold text-gray-900 mb-3">
-                Can I schedule a video consultation?
+                {t("faq.questions.q3.title")}
               </h3>
               <p className="text-gray-600">
-                Absolutely! We offer video consultations for both families and
-                au pairs. Please email us to schedule a convenient time.
+                {t("faq.questions.q3.answer")}
               </p>
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-bold text-gray-900 mb-3">
-                Is there a fee to contact potential matches?
+                {t("faq.questions.q4.title")}
               </h3>
               <p className="text-gray-600">
-                No, basic messaging between registered users is free. Premium
-                features and placement services may have associated fees.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Map Section */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">
-              Visit Our Office
-            </h2>
-            <p className="mt-4 text-xl text-gray-600">
-              We'd love to meet you in person
-            </p>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-md overflow-hidden h-96">
-            {/* This would be replaced with an actual map component in a real implementation */}
-            <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-              <p className="text-gray-600 text-lg">
-                Interactive Map Would Be Displayed Here
+                {t("faq.questions.q4.answer")}
               </p>
             </div>
           </div>
@@ -341,18 +315,17 @@ const Contact = () => {
       <section className="py-16 bg-blue-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-6">
-            Ready to Start Your Au Pair Journey?
+            {t("cta.title")}
           </h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
-            Whether you're a family looking for an au pair or someone seeking a
-            cultural exchange experience, we're here to help.
+            {t("cta.description")}
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <button className="px-8 py-3 bg-white text-blue-600 font-bold rounded-md hover:bg-gray-100 transition">
-              Find an Au Pair
+              {t("cta.buttons.find")}
             </button>
             <button className="px-8 py-3 bg-transparent border-2 border-white text-white font-bold rounded-md hover:bg-white hover:text-blue-600 transition">
-              Become an Au Pair
+              {t("cta.buttons.become")}
             </button>
           </div>
         </div>
