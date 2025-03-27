@@ -8,7 +8,8 @@ export default {
     startDate: "开始日期",
     languages: "语言要求",
     apply: "应用筛选",
-    reset: "重置"
+    reset: "重置",
+    allLocations: "所有地区"
   },
   search: {
     placeholder: "按地区或要求搜索",
@@ -22,6 +23,18 @@ export default {
       startDate: "开始日期"
     }
   },
+  listings: {
+    title: "寄宿家庭列表",
+    languages: "语言要求",
+    contact: "联系家庭",
+    loadMore: "加载更多家庭",
+    locations: {
+      beijing: "北京",
+      shanghai: "上海",
+      guangzhou: "广州",
+      shenzhen: "深圳"
+    }
+  },
   family: {
     location: "所在地区",
     children: "孩子情况",
@@ -32,8 +45,9 @@ export default {
     viewDetails: "查看详情",
     apply: "立即申请"
   },
-  successStories: {
-    title: "成功案例",
+  testimonials: {
+    title: "客户评价",
+    subtitle: "听听他们的心得体会",
     stories: [
       {
         name: "Sarah的经历",
@@ -42,16 +56,16 @@ export default {
         details: "在教授英语的同时学习中文和中国文化。"
       },
       {
-        name: "Emma的旅程",
+        name: "Thomas的故事",
         location: "中国上海",
-        quote: "文化交流的体验超出了我的预期。",
-        details: "帮助辅导功课和组织教育活动，同时探索中国传统文化。"
+        quote: "我在中国的寄宿家庭非常支持我的目标。他们不仅帮助我提高中文水平，还鼓励我参加大学课程。",
+        details: "教授英语和韩语，同时学习中文。"
       },
       {
-        name: "Michael的冒险",
-        location: "中国深圳",
-        quote: "与中国家庭一起生活让我深入了解了中国文化。",
-        details: "通过游戏和活动教授英语，体验中国的日常生活。"
+        name: "Emma的故事",
+        location: "中国广州",
+        quote: "刚开始我很担心在国外生活，但是Mary AuPair为我匹配了一个完美的家庭。孩子们都很可爱，我有很多机会去旅行和探索。最重要的是，我找到了第二个家。",
+        details: "教授英语和音乐，热爱中国文化。"
       }
     ]
   },
@@ -76,8 +90,13 @@ export default {
       }
     ]
   },
+  ready: {
+    title: "准备开始您的互惠生之旅了吗？",
+    subtitle: "让我们一起开启这段难忘的文化交流之旅",
+    button: "立即申请"
+  },
   cta: {
-    title: "准备开始您的旅程？",
+    title: "准备开始您的互惠生之旅了吗？",
     message: "我们将帮您找到理想的中国寄宿家庭",
     button: "立即申请"
   }

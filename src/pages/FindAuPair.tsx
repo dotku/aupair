@@ -2,6 +2,13 @@ import { useState } from "react";
 import { Filter, Globe, Heart, MessageCircle, Star } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
+interface Story {
+  name: string;
+  location: string;
+  quote: string;
+  details: string;
+}
+
 const FindAuPair = () => {
   const { t } = useTranslation("findAuPair");
   const [filtersOpen, setFiltersOpen] = useState(false);
@@ -360,83 +367,46 @@ const FindAuPair = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <div className="flex items-center mb-4">
-                <div className="flex text-yellow-400">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-current" />
-                  ))}
+            {(t("testimonials.stories", {
+              returnObjects: true,
+            }) as Story[]).map((story: Story, index: number) => (
+              <div key={index} className="bg-white rounded-lg shadow-md p-6">
+                <div className="flex items-center mb-4">
+                  <div className="flex">
+                    {[...Array(5)].map((_, i) => (
+                      <Star 
+                        key={i} 
+                        className="h-5 w-5" 
+                        fill="#facc15"  
+                        stroke="#facc15"
+                      />
+                    ))}
+                  </div>
+                </div>
+                <blockquote className="text-gray-600 italic mb-4">
+                  "{story.quote}"
+                </blockquote>
+                <div className="flex items-end">
+                  <img
+                    src={
+                      [
+                        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&q=80",
+                        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&q=80",
+                        "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&q=80",
+                      ][index]
+                    }
+                    alt={story.name}
+                    className="w-12 h-12 rounded-full object-cover"
+                  />
+                  <div className="ml-4">
+                    <h3 className="font-semibold text-gray-900">
+                      {story.name}
+                    </h3>
+                    <p className="text-gray-600">{story.location}</p>
+                  </div>
                 </div>
               </div>
-              <p className="text-gray-600 italic mb-4">
-                {t("testimonials.quote1")}
-              </p>
-              <div className="flex items-center">
-                <img
-                  className="h-10 w-10 rounded-full object-cover mr-4"
-                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=144&h=144&q=80"
-                  alt="Jennifer Wilson"
-                />
-                <div>
-                  <h4 className="text-sm font-semibold">Jennifer Wilson</h4>
-                  <p className="text-xs text-gray-500">
-                    {t("testimonials.hostFamily1")}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <div className="flex items-center mb-4">
-                <div className="flex text-yellow-400">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-current" />
-                  ))}
-                </div>
-              </div>
-              <p className="text-gray-600 italic mb-4">
-                {t("testimonials.quote2")}
-              </p>
-              <div className="flex items-center">
-                <img
-                  className="h-10 w-10 rounded-full object-cover mr-4"
-                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=144&h=144&q=80"
-                  alt="Michael Brown"
-                />
-                <div>
-                  <h4 className="text-sm font-semibold">Michael Brown</h4>
-                  <p className="text-xs text-gray-500">
-                    {t("testimonials.hostFamily2")}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <div className="flex items-center mb-4">
-                <div className="flex text-yellow-400">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-current" />
-                  ))}
-                </div>
-              </div>
-              <p className="text-gray-600 italic mb-4">
-                {t("testimonials.quote3")}
-              </p>
-              <div className="flex items-center">
-                <img
-                  className="h-10 w-10 rounded-full object-cover mr-4"
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=144&h=144&q=80"
-                  alt="Sarah Johnson"
-                />
-                <div>
-                  <h4 className="text-sm font-semibold">Sarah Johnson</h4>
-                  <p className="text-xs text-gray-500">
-                    {t("testimonials.hostFamily3")}
-                  </p>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

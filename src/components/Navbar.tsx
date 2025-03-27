@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
@@ -7,6 +7,19 @@ import LanguageSwitcher from "./LanguageSwitcher";
 const Navbar = () => {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+
+  const isActive = (path: string) => {
+    return location.pathname === path;
+  };
+
+  const getLinkClassName = (path: string, isMobile = false) => {
+    const baseClasses = isMobile ? "block px-3 py-2" : "";
+    const activeClasses = "text-primary font-semibold";
+    const inactiveClasses = "text-gray-700 hover:text-primary";
+    
+    return `${baseClasses} ${isActive(path) ? activeClasses : inactiveClasses}`;
+  };
 
   return (
     <nav className="bg-white shadow-lg">
@@ -25,25 +38,25 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-gray-700 hover:text-primary">
+            <Link to="/" className={getLinkClassName("/")}>
               {t('nav.home')}
             </Link>
-            <Link to="/about" className="text-gray-700 hover:text-primary">
+            <Link to="/about" className={getLinkClassName("/about")}>
               {t('nav.about')}
             </Link>
-            <Link to="/how-it-works" className="text-gray-700 hover:text-primary">
+            <Link to="/how-it-works" className={getLinkClassName("/how-it-works")}>
               {t('nav.howItWorks')}
             </Link>
-            <Link to="/find-aupair" className="text-gray-700 hover:text-primary">
+            <Link to="/find-aupair" className={getLinkClassName("/find-aupair")}>
               {t('nav.findAuPair')}
             </Link>
-            <Link to="/find-family" className="text-gray-700 hover:text-primary">
+            <Link to="/find-family" className={getLinkClassName("/find-family")}>
               {t('nav.findFamily')}
             </Link>
-            <Link to="/english-education" className="text-gray-700 hover:text-primary">
+            <Link to="/english-education" className={getLinkClassName("/english-education")}>
               {t('nav.englishEducation')}
             </Link>
-            <Link to="/contact" className="text-gray-700 hover:text-primary">
+            <Link to="/contact" className={getLinkClassName("/contact")}>
               {t('nav.contact')}
             </Link>
             <LanguageSwitcher />
@@ -67,49 +80,49 @@ const Navbar = () => {
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <Link
               to="/"
-              className="block px-3 py-2 text-gray-700 hover:text-primary"
+              className={getLinkClassName("/", true)}
               onClick={() => setIsOpen(false)}
             >
               {t('nav.home')}
             </Link>
             <Link
               to="/about"
-              className="block px-3 py-2 text-gray-700 hover:text-primary"
+              className={getLinkClassName("/about", true)}
               onClick={() => setIsOpen(false)}
             >
               {t('nav.about')}
             </Link>
             <Link
               to="/how-it-works"
-              className="block px-3 py-2 text-gray-700 hover:text-primary"
+              className={getLinkClassName("/how-it-works", true)}
               onClick={() => setIsOpen(false)}
             >
               {t('nav.howItWorks')}
             </Link>
             <Link
               to="/find-aupair"
-              className="block px-3 py-2 text-gray-700 hover:text-primary"
+              className={getLinkClassName("/find-aupair", true)}
               onClick={() => setIsOpen(false)}
             >
               {t('nav.findAuPair')}
             </Link>
             <Link
               to="/find-family"
-              className="block px-3 py-2 text-gray-700 hover:text-primary"
+              className={getLinkClassName("/find-family", true)}
               onClick={() => setIsOpen(false)}
             >
               {t('nav.findFamily')}
             </Link>
             <Link
               to="/english-education"
-              className="block px-3 py-2 text-gray-700 hover:text-primary"
+              className={getLinkClassName("/english-education", true)}
               onClick={() => setIsOpen(false)}
             >
               {t('nav.englishEducation')}
             </Link>
             <Link
               to="/contact"
-              className="block px-3 py-2 text-gray-700 hover:text-primary"
+              className={getLinkClassName("/contact", true)}
               onClick={() => setIsOpen(false)}
             >
               {t('nav.contact')}

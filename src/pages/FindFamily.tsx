@@ -6,17 +6,10 @@ import {
   Users,
   MessageCircle,
   Home,
-  GraduationCap
+  GraduationCap,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import Testimonials from "../components/Testimonials";
-
-interface Story {
-  name: string;
-  location: string;
-  quote: string;
-  details: string;
-}
 
 interface Benefit {
   title: string;
@@ -136,17 +129,19 @@ const FindFamily = () => {
       </section>
 
       {/* Family Listings */}
-      <section className="py-16">
+      <section className="py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8 flex justify-between items-center">
-            <h2 className="text-2xl font-bold text-gray-900">Host Families</h2>
+            <h2 className="text-2xl font-bold text-gray-900">
+              {t("listings.title")}
+            </h2>
             <div className="flex items-center">
-              <span className="mr-2 text-gray-600">Sort by:</span>
+              <span className="mr-2 text-gray-600">{t("sort.label")}</span>
               <select className="border-gray-300 rounded-md text-gray-700 focus:ring-blue-500 focus:border-blue-500">
-                <option>Recently Active</option>
-                <option>Start Date: Soonest</option>
-                <option>Duration: Longest</option>
-                <option>Location</option>
+                <option>{t("sort.options.newest")}</option>
+                <option>{t("sort.options.duration")}</option>
+                <option>{t("sort.options.startDate")}</option>
+                <option>{t("filters.location")}</option>
               </select>
             </div>
           </div>
@@ -188,8 +183,7 @@ const FindFamily = () => {
                   <div className="flex items-start mb-4">
                     <MessageCircle className="h-5 w-5 text-gray-500 mr-2 mt-0.5" />
                     <span className="text-gray-600">
-                      {t("listings.languages")}:{" "}
-                      {family.languages.join(", ")}
+                      {t("listings.languages")}: {family.languages.join(", ")}
                     </span>
                   </div>
                   <p className="text-gray-600 mb-4">{family.description}</p>
@@ -198,7 +192,7 @@ const FindFamily = () => {
                       href="#contact"
                       className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700"
                     >
-                      Contact
+                      {t("contact")}
                     </a>
                     <button className="text-gray-400 hover:text-red-500">
                       <Heart className="h-6 w-6" />
@@ -211,50 +205,8 @@ const FindFamily = () => {
 
           <div className="mt-12 flex justify-center">
             <button className="px-6 py-3 border border-gray-300 rounded-md text-gray-700 bg-white hover:bg-gray-50">
-              Load More Families
+              {t("listings.loadMore")}
             </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Success Stories Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-            {t("successStories.title")}
-          </h2>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            {(
-              t("successStories.stories", {
-                returnObjects: true,
-              }) as Story[]
-            ).map((story: Story, index: number) => (
-              <div key={index} className="bg-white rounded-lg shadow-md p-6">
-                <div className="flex items-center mb-4">
-                  <img
-                    src={
-                      [
-                        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&q=80",
-                        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&q=80",
-                        "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&q=80",
-                      ][index]
-                    }
-                    alt={story.name}
-                    className="w-12 h-12 rounded-full object-cover"
-                  />
-                  <div className="ml-4">
-                    <h3 className="font-semibold text-gray-900">
-                      {story.name}
-                    </h3>
-                    <p className="text-gray-600">{story.location}</p>
-                  </div>
-                </div>
-                <blockquote className="text-gray-600 italic mb-4">
-                  "{story.quote}"
-                </blockquote>
-                <p className="text-gray-600">{story.details}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -289,21 +241,14 @@ const FindFamily = () => {
           </div>
         </div>
       </section>
-
-      {/* Testimonials */}
       <Testimonials />
       {/* CTA Section */}
       <section className="py-16 bg-blue-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-6">
-            Ready to Start Your Au Pair Adventure?
-          </h2>
-          <p className="text-xl mb-8 max-w-3xl mx-auto">
-            Create your au pair profile today and connect with families looking
-            for someone just like you.
-          </p>
-          <button className="px-8 py-3 bg-white text-blue-600 font-bold rounded-md hover:bg-gray-100 transition">
-            Create Au Pair Profile
+          <h2 className="text-3xl font-bold mb-4">{t("ready.title")}</h2>
+          <p className="text-xl mb-8">{t("ready.subtitle")}</p>
+          <button className="px-8 py-3 bg-white text-blue-600 rounded-md font-semibold hover:bg-blue-50 transition-colors">
+            {t("ready.button")}
           </button>
         </div>
       </section>
