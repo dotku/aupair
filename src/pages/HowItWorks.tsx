@@ -12,7 +12,7 @@ import {
 import { Link } from "react-router-dom";
 
 const HowItWorks = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("howItWorks");
 
   // 类型定义
   type ListItem = string;
@@ -29,7 +29,7 @@ const HowItWorks = () => {
 
   // 获取支持项列表
   const getSupportItems = (): SupportItem[] => {
-    const items = t('howItWorks.support.items', { returnObjects: true });
+    const items = t('support.items', { returnObjects: true });
     return Array.isArray(items) ? items : [];
   };
 
@@ -49,10 +49,10 @@ const HowItWorks = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative z-10">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              {t('howItWorks.title')}
+              {t('title')}
             </h1>
             <p className="text-xl md:text-2xl mb-6 max-w-3xl mx-auto">
-              {t('howItWorks.subtitle')}
+              {t('subtitle')}
             </p>
           </div>
         </div>
@@ -62,9 +62,9 @@ const HowItWorks = () => {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900">{t('howItWorks.process.title')}</h2>
+            <h2 className="text-3xl font-bold text-gray-900">{t('process.title')}</h2>
             <p className="mt-4 text-xl text-gray-600">
-              {t('howItWorks.process.subtitle')}
+              {t('process.subtitle')}
             </p>
           </div>
 
@@ -77,10 +77,10 @@ const HowItWorks = () => {
               <div className="md:flex items-center">
                 <div className="md:w-1/2 pr-8 md:text-right">
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                    {t('howItWorks.steps.profile.title')}
+                    {t('steps.profile.title')}
                   </h3>
                   <p className="text-gray-600">
-                    {t('howItWorks.steps.profile.description')}
+                    {t('steps.profile.description')}
                   </p>
                 </div>
                 <div className="mx-auto md:mx-0 my-4 md:my-0 flex items-center justify-center w-12 h-12 rounded-full bg-yellow-500 text-white relative z-10">
@@ -88,7 +88,7 @@ const HowItWorks = () => {
                 </div>
                 <div className="md:w-1/2 pl-8 md:text-left">
                   <ul className="text-gray-600 space-y-2">
-                    {getTranslatedList('howItWorks.steps.profile.items').map((item: string, index: number) => (
+                    {getTranslatedList('steps.profile.items').map((item: string, index: number) => (
                       <li key={index} className="py-1">{item}</li>
                     ))}
                   </ul>
@@ -101,7 +101,7 @@ const HowItWorks = () => {
               <div className="md:flex items-center">
                 <div className="md:w-1/2 pr-8 md:text-right order-1 md:order-1">
                   <ul className="text-gray-600 space-y-2">
-                    {getTranslatedList('howItWorks.steps.search.items').map((item: string, index: number) => (
+                    {getTranslatedList('steps.search.items').map((item: string, index: number) => (
                       <li key={index} className="py-1">{item}</li>
                     ))}
                   </ul>
@@ -111,10 +111,10 @@ const HowItWorks = () => {
                 </div>
                 <div className="md:w-1/2 pl-8 md:text-left order-3 md:order-3">
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                    {t('howItWorks.steps.search.title')}
+                    {t('steps.search.title')}
                   </h3>
                   <p className="text-gray-600">
-                    {t('howItWorks.steps.search.description')}
+                    {t('steps.search.description')}
                   </p>
                 </div>
               </div>
@@ -125,10 +125,10 @@ const HowItWorks = () => {
               <div className="md:flex items-center">
                 <div className="md:w-1/2 pr-8 md:text-right">
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                    {t('howItWorks.steps.connect.title')}
+                    {t('steps.connect.title')}
                   </h3>
                   <p className="text-gray-600">
-                    {t('howItWorks.steps.connect.description')}
+                    {t('steps.connect.description')}
                   </p>
                 </div>
                 <div className="mx-auto md:mx-0 my-4 md:my-0 flex items-center justify-center w-12 h-12 rounded-full bg-yellow-500 text-white relative z-10">
@@ -136,7 +136,7 @@ const HowItWorks = () => {
                 </div>
                 <div className="md:w-1/2 pl-8 md:text-left">
                   <ul className="text-gray-600 space-y-2">
-                    {getTranslatedList('howItWorks.steps.connect.items').map((item: string, index: number) => (
+                    {getTranslatedList('steps.connect.items').map((item: string, index: number) => (
                       <li key={index} className="py-1">{item}</li>
                     ))}
                   </ul>
@@ -149,7 +149,7 @@ const HowItWorks = () => {
               <div className="md:flex items-center">
                 <div className="md:w-1/2 pr-8 md:text-right order-1 md:order-1">
                   <ul className="text-gray-600 space-y-2">
-                    {getTranslatedList('howItWorks.steps.match.items').map((item: string, index: number) => (
+                    {getTranslatedList('steps.match.items').map((item: string, index: number) => (
                       <li key={index} className="py-1">{item}</li>
                     ))}
                   </ul>
@@ -159,10 +159,10 @@ const HowItWorks = () => {
                 </div>
                 <div className="md:w-1/2 pl-8 md:text-left order-3 md:order-3">
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                    {t('howItWorks.steps.match.title')}
+                    {t('steps.match.title')}
                   </h3>
                   <p className="text-gray-600">
-                    {t('howItWorks.steps.match.description')}
+                    {t('steps.match.description')}
                   </p>
                 </div>
               </div>
@@ -173,10 +173,10 @@ const HowItWorks = () => {
               <div className="md:flex items-center">
                 <div className="md:w-1/2 pr-8 md:text-right">
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                    {t('howItWorks.steps.begin.title')}
+                    {t('steps.begin.title')}
                   </h3>
                   <p className="text-gray-600">
-                    {t('howItWorks.steps.begin.description')}
+                    {t('steps.begin.description')}
                   </p>
                 </div>
                 <div className="mx-auto md:mx-0 my-4 md:my-0 flex items-center justify-center w-12 h-12 rounded-full bg-yellow-500 text-white relative z-10">
@@ -184,7 +184,7 @@ const HowItWorks = () => {
                 </div>
                 <div className="md:w-1/2 pl-8 md:text-left">
                   <ul className="text-gray-600 space-y-2">
-                    {getTranslatedList('howItWorks.steps.begin.items').map((item: string, index: number) => (
+                    {getTranslatedList('steps.begin.items').map((item: string, index: number) => (
                       <li key={index} className="py-1">{item}</li>
                     ))}
                   </ul>
@@ -199,16 +199,16 @@ const HowItWorks = () => {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">{t('howItWorks.forFamilies.title')}</h2>
+            <h2 className="text-3xl font-bold text-gray-900">{t('forFamilies.title')}</h2>
             <p className="mt-4 text-xl text-gray-600">
-              {t('howItWorks.forFamilies.description')}
+              {t('forFamilies.description')}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                {t('howItWorks.forFamilies.benefits.title')}
+                {t('forFamilies.benefits.title')}
               </h3>
               <ul className="space-y-3">
                 <li className="flex items-start">
@@ -218,7 +218,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('howItWorks.forFamilies.benefits.item1')}
+                    {t('forFamilies.benefits.item1')}
                   </p>
                 </li>
                 <li className="flex items-start">
@@ -228,7 +228,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('howItWorks.forFamilies.benefits.item2')}
+                    {t('forFamilies.benefits.item2')}
                   </p>
                 </li>
                 <li className="flex items-start">
@@ -238,7 +238,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('howItWorks.forFamilies.benefits.item3')}
+                    {t('forFamilies.benefits.item3')}
                   </p>
                 </li>
                 <li className="flex items-start">
@@ -248,7 +248,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('howItWorks.forFamilies.benefits.item4')}
+                    {t('forFamilies.benefits.item4')}
                   </p>
                 </li>
                 <li className="flex items-start">
@@ -258,13 +258,13 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('howItWorks.forFamilies.benefits.item5')}
+                    {t('forFamilies.benefits.item5')}
                   </p>
                 </li>
               </ul>
 
               <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-4">
-                {t('howItWorks.forFamilies.responsibilities.title')}
+                {t('forFamilies.responsibilities.title')}
               </h3>
               <ul className="space-y-3">
                 <li className="flex items-start">
@@ -274,7 +274,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('howItWorks.forFamilies.responsibilities.item1')}
+                    {t('forFamilies.responsibilities.item1')}
                   </p>
                 </li>
                 <li className="flex items-start">
@@ -284,7 +284,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('howItWorks.forFamilies.responsibilities.item2')}
+                    {t('forFamilies.responsibilities.item2')}
                   </p>
                 </li>
                 <li className="flex items-start">
@@ -294,7 +294,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('howItWorks.forFamilies.responsibilities.item3')}
+                    {t('forFamilies.responsibilities.item3')}
                   </p>
                 </li>
                 <li className="flex items-start">
@@ -304,7 +304,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('howItWorks.forFamilies.responsibilities.item4')}
+                    {t('forFamilies.responsibilities.item4')}
                   </p>
                 </li>
               </ul>
@@ -325,9 +325,9 @@ const HowItWorks = () => {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">{t('howItWorks.forAuPairs.title')}</h2>
+            <h2 className="text-3xl font-bold text-gray-900">{t('forAuPairs.title')}</h2>
             <p className="mt-4 text-xl text-gray-600">
-              {t('howItWorks.forAuPairs.description')}
+              {t('forAuPairs.description')}
             </p>
           </div>
 
@@ -342,7 +342,7 @@ const HowItWorks = () => {
 
             <div className="order-1 md:order-2">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                {t('howItWorks.forAuPairs.benefits.title')}
+                {t('forAuPairs.benefits.title')}
               </h3>
               <ul className="space-y-3">
                 <li className="flex items-start">
@@ -352,7 +352,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('howItWorks.forAuPairs.benefits.item1')}
+                    {t('forAuPairs.benefits.item1')}
                   </p>
                 </li>
                 <li className="flex items-start">
@@ -362,7 +362,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('howItWorks.forAuPairs.benefits.item2')}
+                    {t('forAuPairs.benefits.item2')}
                   </p>
                 </li>
                 <li className="flex items-start">
@@ -372,7 +372,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('howItWorks.forAuPairs.benefits.item3')}
+                    {t('forAuPairs.benefits.item3')}
                   </p>
                 </li>
                 <li className="flex items-start">
@@ -382,7 +382,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('howItWorks.forAuPairs.benefits.item4')}
+                    {t('forAuPairs.benefits.item4')}
                   </p>
                 </li>
                 <li className="flex items-start">
@@ -392,13 +392,13 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('howItWorks.forAuPairs.benefits.item5')}
+                    {t('forAuPairs.benefits.item5')}
                   </p>
                 </li>
               </ul>
 
               <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-4">
-                {t('howItWorks.forAuPairs.responsibilities.title')}
+                {t('forAuPairs.responsibilities.title')}
               </h3>
               <ul className="space-y-3">
                 <li className="flex items-start">
@@ -408,7 +408,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('howItWorks.forAuPairs.responsibilities.item1')}
+                    {t('forAuPairs.responsibilities.item1')}
                   </p>
                 </li>
                 <li className="flex items-start">
@@ -418,7 +418,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('howItWorks.forAuPairs.responsibilities.item2')}
+                    {t('forAuPairs.responsibilities.item2')}
                   </p>
                 </li>
                 <li className="flex items-start">
@@ -428,7 +428,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('howItWorks.forAuPairs.responsibilities.item3')}
+                    {t('forAuPairs.responsibilities.item3')}
                   </p>
                 </li>
                 <li className="flex items-start">
@@ -438,7 +438,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('howItWorks.forAuPairs.responsibilities.item4')}
+                    {t('forAuPairs.responsibilities.item4')}
                   </p>
                 </li>
               </ul>
@@ -451,9 +451,9 @@ const HowItWorks = () => {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">{t('howItWorks.support.title')}</h2>
+            <h2 className="text-3xl font-bold text-gray-900">{t('support.title')}</h2>
             <p className="mt-4 text-xl text-gray-600">
-              {t('howItWorks.support.description')}
+              {t('support.description')}
             </p>
           </div>
 
@@ -479,65 +479,65 @@ const HowItWorks = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900">
-              {t('howItWorks.faq.title')}
+              {t('faq.title')}
             </h2>
             <p className="mt-4 text-xl text-gray-600">
-              {t('howItWorks.faq.description')}
+              {t('faq.description')}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-bold text-gray-900 mb-3">
-                {t('howItWorks.faq.questions.q1.title')}
+                {t('faq.questions.q1.title')}
               </h3>
               <p className="text-gray-600">
-                {t('howItWorks.faq.questions.q1.answer')}
+                {t('faq.questions.q1.answer')}
               </p>
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-bold text-gray-900 mb-3">
-                {t('howItWorks.faq.questions.q2.title')}
+                {t('faq.questions.q2.title')}
               </h3>
               <p className="text-gray-600">
-                {t('howItWorks.faq.questions.q2.answer')}
+                {t('faq.questions.q2.answer')}
               </p>
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-bold text-gray-900 mb-3">
-                {t('howItWorks.faq.questions.q3.title')}
+                {t('faq.questions.q3.title')}
               </h3>
               <p className="text-gray-600">
-                {t('howItWorks.faq.questions.q3.answer')}
+                {t('faq.questions.q3.answer')}
               </p>
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-bold text-gray-900 mb-3">
-                {t('howItWorks.faq.questions.q4.title')}
+                {t('faq.questions.q4.title')}
               </h3>
               <p className="text-gray-600">
-                {t('howItWorks.faq.questions.q4.answer')}
+                {t('faq.questions.q4.answer')}
               </p>
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-bold text-gray-900 mb-3">
-                {t('howItWorks.faq.questions.q5.title')}
+                {t('faq.questions.q5.title')}
               </h3>
               <p className="text-gray-600">
-                {t('howItWorks.faq.questions.q5.answer')}
+                {t('faq.questions.q5.answer')}
               </p>
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-bold text-gray-900 mb-3">
-                {t('howItWorks.faq.questions.q6.title')}
+                {t('faq.questions.q6.title')}
               </h3>
               <p className="text-gray-600">
-                {t('howItWorks.faq.questions.q6.answer')}
+                {t('faq.questions.q6.answer')}
               </p>
             </div>
           </div>
@@ -548,23 +548,23 @@ const HowItWorks = () => {
       <section className="py-16 bg-yellow-500 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-6">
-            {t('howItWorks.cta.title')}
+            {t('cta.title')}
           </h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
-            {t('howItWorks.cta.description')}
+            {t('cta.description')}
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link
               to="/find-aupair"
               className="inline-block bg-white text-yellow-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
             >
-              {t('howItWorks.cta.buttonFamily')}
+              {t('cta.buttonFamily')}
             </Link>
             <Link
               to="/find-family"
               className="inline-block bg-transparent border-2 border-white text-white font-semibold px-8 py-3 rounded-lg hover:bg-white hover:text-yellow-600 transition-colors"
             >
-              {t('howItWorks.cta.buttonAuPair')}
+              {t('cta.buttonAuPair')}
             </Link>
           </div>
         </div>

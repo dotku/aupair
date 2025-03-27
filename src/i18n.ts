@@ -10,6 +10,9 @@ import enChatbot from "./locales/en/chatbot";
 import enFooter from "./locales/en/footer";
 import enFindAupair from "./locales/en/find-aupair";
 import enFindFamily from "./locales/en/find-family";
+import enHowItWorks from "./locales/en/how-it-works";
+import enAbout from "./locales/en/about";
+import enHome from "./locales/en/home";
 
 import zhCommon from "./locales/zh/common";
 import zhEducation from "./locales/zh/education";
@@ -18,6 +21,9 @@ import zhChatbot from "./locales/zh/chatbot";
 import zhFooter from "./locales/zh/footer";
 import zhFindAupair from "./locales/zh/find-aupair";
 import zhFindFamily from "./locales/zh/find-family";
+import zhHowItWorks from "./locales/zh/how-it-works";
+import zhAbout from "./locales/zh/about";
+import zhHome from "./locales/zh/home";
 
 const resources = {
   en: {
@@ -28,6 +34,9 @@ const resources = {
     footer: enFooter,
     findAuPair: enFindAupair,
     findFamily: enFindFamily,
+    howItWorks: enHowItWorks,
+    about: enAbout,
+    home: enHome,
   },
   zh: {
     common: zhCommon,
@@ -37,6 +46,9 @@ const resources = {
     footer: zhFooter,
     findAuPair: zhFindAupair,
     findFamily: zhFindFamily,
+    howItWorks: zhHowItWorks,
+    about: zhAbout,
+    home: zhHome,
   },
 };
 
@@ -55,6 +67,9 @@ i18n
       "footer",
       "findAuPair",
       "findFamily",
+      "howItWorks",
+      "about",
+      "home",
     ],
     interpolation: {
       escapeValue: false,

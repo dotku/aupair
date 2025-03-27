@@ -3,7 +3,7 @@ import { Filter, Globe, Heart, MessageCircle, Star } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 const FindAuPair = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("findAuPair");
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
   const [languages, setLanguages] = useState<string[]>([]);
@@ -153,10 +153,10 @@ const FindAuPair = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
-              {t("findAuPair.title")}
+              {t("title")}
             </h1>
             <p className="mt-6 max-w-2xl mx-auto text-xl text-gray-300">
-              {t("findAuPair.subtitle")}
+              {t("subtitle")}
             </p>
           </div>
 
@@ -167,7 +167,7 @@ const FindAuPair = () => {
                 <div className="flex-1">
                   <input
                     type="text"
-                    placeholder={t("findAuPair.search.placeholder")}
+                    placeholder={t("search.placeholder")}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="w-full px-4 py-3 rounded-l-lg focus:outline-none"
@@ -190,7 +190,7 @@ const FindAuPair = () => {
                     {/* Country Filter */}
                     <div>
                       <h4 className="font-medium mb-2">
-                        {t("findAuPair.search.filters.nationality")}
+                        {t("search.filters.nationality")}
                       </h4>
                       <div className="space-y-2">
                         {Array.from(
@@ -212,7 +212,7 @@ const FindAuPair = () => {
                     {/* Language Filter */}
                     <div>
                       <h4 className="font-medium mb-2">
-                        {t("findAuPair.search.filters.language")}
+                        {t("search.filters.language")}
                       </h4>
                       <div className="space-y-2">
                         {Array.from(
@@ -234,7 +234,7 @@ const FindAuPair = () => {
                     {/* Experience Filter */}
                     <div>
                       <h4 className="font-medium mb-2">
-                        {t("findAuPair.search.filters.experience")}
+                        {t("search.filters.experience")}
                       </h4>
                       <div className="space-y-2">
                         {Array.from(
@@ -297,7 +297,7 @@ const FindAuPair = () => {
 
                   <div className="mb-4">
                     <h4 className="text-sm font-semibold text-gray-700 mb-1">
-                      {t("findAuPair.listings.languages")}
+                      {t("listings.languages")}
                     </h4>
                     <div className="flex flex-wrap gap-1">
                       {auPair.languages.map((language) => (
@@ -313,7 +313,7 @@ const FindAuPair = () => {
 
                   <div className="mb-4">
                     <h4 className="text-sm font-semibold text-gray-700 mb-1">
-                      {t("findAuPair.listings.education")}
+                      {t("listings.education")}
                     </h4>
                     <p className="text-gray-600 text-sm">{auPair.education}</p>
                   </div>
@@ -328,10 +328,10 @@ const FindAuPair = () => {
                       className="flex-1 flex items-center justify-center px-4 py-2 border border-transparent rounded-md bg-blue-600 text-white hover:bg-blue-700"
                     >
                       <MessageCircle className="h-4 w-4 mr-2" />
-                      {t("findAuPair.listings.contact")}
+                      {t("listings.contact")}
                     </a>
                     <button className="flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md text-gray-700 bg-white hover:bg-gray-50">
-                      {t("findAuPair.listings.viewProfile")}
+                      {t("listings.viewProfile")}
                     </button>
                   </div>
                 </div>
@@ -341,7 +341,7 @@ const FindAuPair = () => {
 
           <div className="mt-12 flex justify-center">
             <button className="px-6 py-3 border border-gray-300 rounded-md text-gray-700 bg-white hover:bg-gray-50">
-              {t("findAuPair.listings.loadMore")}
+              {t("listings.loadMore")}
             </button>
           </div>
         </div>
@@ -352,10 +352,10 @@ const FindAuPair = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900">
-              {t("findAuPair.testimonials.title")}
+              {t("testimonials.title")}
             </h2>
             <p className="mt-4 text-xl text-gray-600">
-              {t("findAuPair.testimonials.subtitle")}
+              {t("testimonials.subtitle")}
             </p>
           </div>
 
@@ -369,7 +369,7 @@ const FindAuPair = () => {
                 </div>
               </div>
               <p className="text-gray-600 italic mb-4">
-                {t("findAuPair.testimonials.quote1")}
+                {t("testimonials.quote1")}
               </p>
               <div className="flex items-center">
                 <img
@@ -380,7 +380,7 @@ const FindAuPair = () => {
                 <div>
                   <h4 className="text-sm font-semibold">Jennifer Wilson</h4>
                   <p className="text-xs text-gray-500">
-                    {t("findAuPair.testimonials.hostFamily1")}
+                    {t("testimonials.hostFamily1")}
                   </p>
                 </div>
               </div>
@@ -395,7 +395,7 @@ const FindAuPair = () => {
                 </div>
               </div>
               <p className="text-gray-600 italic mb-4">
-                {t("findAuPair.testimonials.quote2")}
+                {t("testimonials.quote2")}
               </p>
               <div className="flex items-center">
                 <img
@@ -406,7 +406,7 @@ const FindAuPair = () => {
                 <div>
                   <h4 className="text-sm font-semibold">Michael Brown</h4>
                   <p className="text-xs text-gray-500">
-                    {t("findAuPair.testimonials.hostFamily2")}
+                    {t("testimonials.hostFamily2")}
                   </p>
                 </div>
               </div>
@@ -421,7 +421,7 @@ const FindAuPair = () => {
                 </div>
               </div>
               <p className="text-gray-600 italic mb-4">
-                {t("findAuPair.testimonials.quote3")}
+                {t("testimonials.quote3")}
               </p>
               <div className="flex items-center">
                 <img
@@ -432,7 +432,7 @@ const FindAuPair = () => {
                 <div>
                   <h4 className="text-sm font-semibold">Sarah Johnson</h4>
                   <p className="text-xs text-gray-500">
-                    {t("findAuPair.testimonials.hostFamily3")}
+                    {t("testimonials.hostFamily3")}
                   </p>
                 </div>
               </div>
@@ -445,13 +445,13 @@ const FindAuPair = () => {
       <section className="py-16 bg-blue-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-6">
-            {t("findAuPair.cta.title")}
+            {t("cta.title")}
           </h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
-            {t("findAuPair.cta.subtitle")}
+            {t("cta.subtitle")}
           </p>
           <button className="px-8 py-3 bg-white text-blue-600 font-bold rounded-md hover:bg-gray-100 transition">
-            {t("findAuPair.cta.createProfile")}
+            {t("cta.createProfile")}
           </button>
         </div>
       </section>
