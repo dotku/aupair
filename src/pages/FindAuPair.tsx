@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Search,
   Filter,
@@ -9,13 +9,15 @@ import {
   ChevronDown,
   ChevronUp,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const FindAuPair = () => {
+  const { t } = useTranslation();
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
-  const [ageRange, setAgeRange] = useState([18, 30]);
   const [languages, setLanguages] = useState<string[]>([]);
   const [experience, setExperience] = useState<string[]>([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   // Sample au pair data
   const auPairs = [
@@ -101,11 +103,11 @@ const FindAuPair = () => {
     }
   };
 
-  const toggleLanguage = (language: string) => {
-    if (languages.includes(language)) {
-      setLanguages(languages.filter((l) => l !== language));
+  const toggleLanguage = (lang: string) => {
+    if (languages.includes(lang)) {
+      setLanguages(languages.filter((l) => l !== lang));
     } else {
-      setLanguages([...languages, language]);
+      setLanguages([...languages, lang]);
     }
   };
 
@@ -117,11 +119,27 @@ const FindAuPair = () => {
     }
   };
 
-  const handleAgeRangeChange = (index: number, value: number) => {
-    const newRange = [...ageRange];
-    newRange[index] = value;
-    setAgeRange(newRange);
-  };
+  const filteredAuPairs = auPairs.filter((auPair) => {
+    // 搜索查询匹配
+    const searchMatches = searchQuery === "" || 
+      auPair.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      auPair.bio.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      auPair.education.toLowerCase().includes(searchQuery.toLowerCase());
+
+    // 国家筛选
+    const countryMatches = selectedCountries.length === 0 || 
+      selectedCountries.includes(auPair.country);
+
+    // 语言筛选
+    const languageMatches = languages.length === 0 || 
+      languages.some(lang => auPair.languages.includes(lang));
+
+    // 经验筛选
+    const experienceMatches = experience.length === 0 || 
+      experience.includes(auPair.experience);
+
+    return searchMatches && countryMatches && languageMatches && experienceMatches;
+  });
 
   return (
     <div>
@@ -139,11 +157,10 @@ const FindAuPair = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Find Your Perfect Au Pair
+              {t("findAuPair.title")}
             </h1>
             <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-              Browse through our database of qualified au pairs from around the
-              world
+              {t("findAuPair.subtitle")}
             </p>
 
             <div className="max-w-3xl mx-auto">
@@ -155,7 +172,7 @@ const FindAuPair = () => {
                   <input
                     type="text"
                     className="block w-full pl-10 pr-3 py-3 border border-transparent rounded-md leading-5 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="Search by name, country, language..."
+                    placeholder={t("findAuPair.search.placeholder")}
                   />
                 </div>
                 <button
@@ -163,7 +180,7 @@ const FindAuPair = () => {
                   className="flex items-center justify-center px-4 py-3 border border-transparent rounded-md bg-blue-700 hover:bg-blue-800 text-white"
                 >
                   <Filter className="h-5 w-5 mr-2" />
-                  Filters
+                  {t("findAuPair.search.title")}
                   {filtersOpen ? (
                     <ChevronUp className="h-4 w-4 ml-1" />
                   ) : (
@@ -178,23 +195,16 @@ const FindAuPair = () => {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-2">
-                        Country
+                        {t("findAuPair.search.filters.nationality")}
                       </h3>
                       <div className="space-y-2">
-                        {[
-                          "China",
-                          "Spain",
-                          "Germany",
-                          "Brazil",
-                          "Japan",
-                          "Australia",
-                        ].map((country) => (
+                        {Array.from(new Set(auPairs.map(ap => ap.country))).map((country) => (
                           <label key={country} className="flex items-center">
                             <input
                               type="checkbox"
-                              className="rounded text-blue-600 focus:ring-blue-500 h-4 w-4"
                               checked={selectedCountries.includes(country)}
                               onChange={() => toggleCountry(country)}
+                              className="rounded border-gray-300 text-blue-600"
                             />
                             <span className="ml-2">{country}</span>
                           </label>
@@ -204,26 +214,18 @@ const FindAuPair = () => {
 
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-2">
-                        Languages
+                        {t("findAuPair.search.filters.language")}
                       </h3>
                       <div className="space-y-2">
-                        {[
-                          "English",
-                          "Spanish",
-                          "Mandarin",
-                          "German",
-                          "French",
-                          "Japanese",
-                          "Portuguese",
-                        ].map((language) => (
-                          <label key={language} className="flex items-center">
+                        {Array.from(new Set(auPairs.flatMap(ap => ap.languages))).map((lang) => (
+                          <label key={lang} className="flex items-center">
                             <input
                               type="checkbox"
-                              className="rounded text-blue-600 focus:ring-blue-500 h-4 w-4"
-                              checked={languages.includes(language)}
-                              onChange={() => toggleLanguage(language)}
+                              checked={languages.includes(lang)}
+                              onChange={() => toggleLanguage(lang)}
+                              className="rounded border-gray-300 text-blue-600"
                             />
-                            <span className="ml-2">{language}</span>
+                            <span className="ml-2">{lang}</span>
                           </label>
                         ))}
                       </div>
@@ -231,79 +233,30 @@ const FindAuPair = () => {
 
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-2">
-                        Age Range
-                      </h3>
-                      <div className="space-y-4">
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700">
-                            Min Age: {ageRange[0]}
-                          </label>
-                          <input
-                            type="range"
-                            min="18"
-                            max="30"
-                            value={ageRange[0]}
-                            onChange={(e) =>
-                              handleAgeRangeChange(0, parseInt(e.target.value))
-                            }
-                            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700">
-                            Max Age: {ageRange[1]}
-                          </label>
-                          <input
-                            type="range"
-                            min="18"
-                            max="30"
-                            value={ageRange[1]}
-                            onChange={(e) =>
-                              handleAgeRangeChange(1, parseInt(e.target.value))
-                            }
-                            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-                          />
-                        </div>
-                      </div>
-
-                      <h3 className="font-semibold text-gray-900 mt-4 mb-2">
-                        Experience
+                        {t("findAuPair.search.filters.experience")}
                       </h3>
                       <div className="space-y-2">
-                        {["Less than 1 year", "1-2 years", "3+ years"].map(
-                          (exp) => (
-                            <label key={exp} className="flex items-center">
-                              <input
-                                type="checkbox"
-                                className="rounded text-blue-600 focus:ring-blue-500 h-4 w-4"
-                                checked={experience.includes(exp)}
-                                onChange={() => toggleExperience(exp)}
-                              />
-                              <span className="ml-2">{exp}</span>
-                            </label>
-                          )
-                        )}
+                        {Array.from(new Set(auPairs.map(ap => ap.experience))).map((exp) => (
+                          <label key={exp} className="flex items-center">
+                            <input
+                              type="checkbox"
+                              checked={experience.includes(exp)}
+                              onChange={() => toggleExperience(exp)}
+                              className="rounded border-gray-300 text-blue-600"
+                            />
+                            <span className="ml-2">{exp}</span>
+                          </label>
+                        ))}
                       </div>
                     </div>
                   </div>
 
-                  <div className="mt-6 flex justify-end space-x-3">
-                    <button
-                      className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 bg-white hover:bg-gray-50"
-                      onClick={() => {
-                        setSelectedCountries([]);
-                        setLanguages([]);
-                        setExperience([]);
-                        setAgeRange([18, 30]);
-                      }}
-                    >
-                      Clear All
+                  <div className="mt-4 flex justify-end space-x-2">
+                    <button className="px-4 py-2 text-gray-600 hover:text-gray-800">
+                      {t("findAuPair.search.clear")}
                     </button>
-                    <button
-                      className="px-4 py-2 border border-transparent rounded-md bg-blue-600 text-white hover:bg-blue-700"
-                      onClick={() => setFiltersOpen(false)}
-                    >
-                      Apply Filters
+                    <button className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+                      {t("findAuPair.search.apply")}
                     </button>
                   </div>
                 </div>
@@ -313,26 +266,104 @@ const FindAuPair = () => {
         </div>
       </section>
 
-      {/* Au Pair Listings */}
-      <section className="py-16">
+      {/* Search Section */}
+      <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-8 flex justify-between items-center">
-            <h2 className="text-2xl font-bold text-gray-900">
-              Available Au Pairs
-            </h2>
-            <div className="flex items-center">
-              <span className="mr-2 text-gray-600">Sort by:</span>
-              <select className="border-gray-300 rounded-md text-gray-700 focus:ring-blue-500 focus:border-blue-500">
-                <option>Recently Active</option>
-                <option>Experience: High to Low</option>
-                <option>Age: Young to Old</option>
-                <option>Age: Old to Young</option>
-              </select>
+          <div className="relative">
+            <div className="flex items-center border-b border-gray-300 pb-4">
+              <Search className="h-5 w-5 text-gray-400" />
+              <input
+                type="text"
+                placeholder={t("findAuPair.search.placeholder")}
+                className="ml-3 flex-1 outline-none"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              <button
+                onClick={() => setFiltersOpen(!filtersOpen)}
+                className="flex items-center text-gray-500 hover:text-gray-700"
+              >
+                <Filter className="h-5 w-5 mr-1" />
+                {t("findAuPair.search.filters.title")}
+                {filtersOpen ? (
+                  <ChevronUp className="h-4 w-4 ml-1" />
+                ) : (
+                  <ChevronDown className="h-4 w-4 ml-1" />
+                )}
+              </button>
             </div>
+
+            {/* Filters */}
+            {filtersOpen && (
+              <div className="absolute z-10 left-0 right-0 mt-2 p-4 bg-white border rounded-lg shadow-lg">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {/* Country Filter */}
+                  <div>
+                    <h4 className="font-medium mb-2">
+                      {t("findAuPair.search.filters.nationality")}
+                    </h4>
+                    <div className="space-y-2">
+                      {Array.from(new Set(auPairs.map(ap => ap.country))).map((country) => (
+                        <label key={country} className="flex items-center">
+                          <input
+                            type="checkbox"
+                            checked={selectedCountries.includes(country)}
+                            onChange={() => toggleCountry(country)}
+                            className="rounded border-gray-300 text-blue-600"
+                          />
+                          <span className="ml-2">{country}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Language Filter */}
+                  <div>
+                    <h4 className="font-medium mb-2">
+                      {t("findAuPair.search.filters.language")}
+                    </h4>
+                    <div className="space-y-2">
+                      {Array.from(new Set(auPairs.flatMap(ap => ap.languages))).map((lang) => (
+                        <label key={lang} className="flex items-center">
+                          <input
+                            type="checkbox"
+                            checked={languages.includes(lang)}
+                            onChange={() => toggleLanguage(lang)}
+                            className="rounded border-gray-300 text-blue-600"
+                          />
+                          <span className="ml-2">{lang}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Experience Filter */}
+                  <div>
+                    <h4 className="font-medium mb-2">
+                      {t("findAuPair.search.filters.experience")}
+                    </h4>
+                    <div className="space-y-2">
+                      {Array.from(new Set(auPairs.map(ap => ap.experience))).map((exp) => (
+                        <label key={exp} className="flex items-center">
+                          <input
+                            type="checkbox"
+                            checked={experience.includes(exp)}
+                            onChange={() => toggleExperience(exp)}
+                            className="rounded border-gray-300 text-blue-600"
+                          />
+                          <span className="ml-2">{exp}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {auPairs.map((auPair) => (
+          {/* Results */}
+          <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {filteredAuPairs.map((auPair) => (
               <div
                 key={auPair.id}
                 className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition"
@@ -365,7 +396,7 @@ const FindAuPair = () => {
 
                   <div className="mb-4">
                     <h4 className="text-sm font-semibold text-gray-700 mb-1">
-                      Languages
+                      {t("findAuPair.listings.languages")}
                     </h4>
                     <div className="flex flex-wrap gap-1">
                       {auPair.languages.map((language) => (
@@ -381,7 +412,7 @@ const FindAuPair = () => {
 
                   <div className="mb-4">
                     <h4 className="text-sm font-semibold text-gray-700 mb-1">
-                      Education
+                      {t("findAuPair.listings.education")}
                     </h4>
                     <p className="text-gray-600 text-sm">{auPair.education}</p>
                   </div>
@@ -391,12 +422,15 @@ const FindAuPair = () => {
                   </p>
 
                   <div className="flex space-x-2">
-                    <button className="flex-1 flex items-center justify-center px-4 py-2 border border-transparent rounded-md bg-blue-600 text-white hover:bg-blue-700">
+                    <a 
+                      href="#contact"
+                      className="flex-1 flex items-center justify-center px-4 py-2 border border-transparent rounded-md bg-blue-600 text-white hover:bg-blue-700"
+                    >
                       <MessageCircle className="h-4 w-4 mr-2" />
-                      Contact
-                    </button>
+                      {t("findAuPair.listings.contact")}
+                    </a>
                     <button className="flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md text-gray-700 bg-white hover:bg-gray-50">
-                      View Profile
+                      {t("findAuPair.listings.viewProfile")}
                     </button>
                   </div>
                 </div>
@@ -406,7 +440,7 @@ const FindAuPair = () => {
 
           <div className="mt-12 flex justify-center">
             <button className="px-6 py-3 border border-gray-300 rounded-md text-gray-700 bg-white hover:bg-gray-50">
-              Load More Au Pairs
+              {t("findAuPair.listings.loadMore")}
             </button>
           </div>
         </div>
@@ -417,10 +451,10 @@ const FindAuPair = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900">
-              What Families Say
+              {t("findAuPair.testimonials.title")}
             </h2>
             <p className="mt-4 text-xl text-gray-600">
-              Hear from families who found their perfect au pair
+              {t("findAuPair.testimonials.subtitle")}
             </p>
           </div>
 
@@ -434,9 +468,7 @@ const FindAuPair = () => {
                 </div>
               </div>
               <p className="text-gray-600 italic mb-4">
-                "We found our amazing au pair from Spain through Mary AuPair.
-                She has been with us for over a year now and has become part of
-                our family. Our children adore her!"
+                {t("findAuPair.testimonials.quote1")}
               </p>
               <div className="flex items-center">
                 <img
@@ -446,7 +478,7 @@ const FindAuPair = () => {
                 />
                 <div>
                   <h4 className="text-sm font-semibold">Jennifer Wilson</h4>
-                  <p className="text-xs text-gray-500">Host Family from USA</p>
+                  <p className="text-xs text-gray-500">{t("findAuPair.testimonials.hostFamily1")}</p>
                 </div>
               </div>
             </div>
@@ -460,10 +492,7 @@ const FindAuPair = () => {
                 </div>
               </div>
               <p className="text-gray-600 italic mb-4">
-                "As a busy professional couple with twins, finding the right
-                childcare was crucial. Our au pair from China has been a
-                blessing - reliable, loving, and she's teaching our kids
-                Mandarin!"
+                {t("findAuPair.testimonials.quote2")}
               </p>
               <div className="flex items-center">
                 <img
@@ -473,9 +502,7 @@ const FindAuPair = () => {
                 />
                 <div>
                   <h4 className="text-sm font-semibold">Michael Brown</h4>
-                  <p className="text-xs text-gray-500">
-                    Host Family from Canada
-                  </p>
+                  <p className="text-xs text-gray-500">{t("findAuPair.testimonials.hostFamily2")}</p>
                 </div>
               </div>
             </div>
@@ -489,9 +516,7 @@ const FindAuPair = () => {
                 </div>
               </div>
               <p className="text-gray-600 italic mb-4">
-                "The matching process was so thorough that we found the perfect
-                au pair on our first try. She understands our family values and
-                has brought so much joy and cultural exchange to our home."
+                {t("findAuPair.testimonials.quote3")}
               </p>
               <div className="flex items-center">
                 <img
@@ -501,7 +526,7 @@ const FindAuPair = () => {
                 />
                 <div>
                   <h4 className="text-sm font-semibold">Sarah Johnson</h4>
-                  <p className="text-xs text-gray-500">Host Family from UK</p>
+                  <p className="text-xs text-gray-500">{t("findAuPair.testimonials.hostFamily3")}</p>
                 </div>
               </div>
             </div>
@@ -513,14 +538,13 @@ const FindAuPair = () => {
       <section className="py-16 bg-blue-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-6">
-            Ready to Find Your Perfect Au Pair?
+            {t("findAuPair.cta.title")}
           </h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
-            Create your family profile today and start connecting with qualified
-            au pairs from around the world.
+            {t("findAuPair.cta.subtitle")}
           </p>
           <button className="px-8 py-3 bg-white text-blue-600 font-bold rounded-md hover:bg-gray-100 transition">
-            Create Family Profile
+            {t("findAuPair.cta.createProfile")}
           </button>
         </div>
       </section>

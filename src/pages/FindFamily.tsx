@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Search,
   Filter,
@@ -11,6 +11,8 @@ import {
   Users,
   Home,
   DollarSign,
+  Clock,
+  Globe
 } from "lucide-react";
 
 const FindFamily = () => {
@@ -23,90 +25,87 @@ const FindFamily = () => {
   const families = [
     {
       id: 1,
-      name: "The Johnson Family",
-      location: "Seattle, USA",
-      children: "2 children (ages 3 and 5)",
-      duration: "12 months",
-      startDate: "September 2025",
-      languages: ["English", "Basic Spanish preferred"],
-      requirements: "Driver's license required, swimming skills preferred",
+      name: "张家",
+      location: "上海, 中国",
+      children: "1个孩子 (5岁)",
+      duration: "12个月",
+      startDate: "2025年9月",
+      languages: ["英语", "中文"],
+      requirements: "需要驾照，有教育相关经验优先",
       description:
-        "We are a warm and active family looking for an au pair who enjoys outdoor activities and can help with our energetic children.",
+        "我们是一个重视教育的家庭，希望找到一位能帮助孩子提高英语水平，同时富有耐心和创造力的互惠生。我们提供独立的房间和舒适的生活环境。",
       image:
         "https://images.unsplash.com/photo-1609220136736-443140cffec6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
     },
     {
       id: 2,
-      name: "The Meyer Family",
-      location: "Berlin, Germany",
-      children: "1 child (age 7)",
-      duration: "6-12 months",
-      startDate: "August 2025",
-      languages: ["German", "English"],
-      requirements:
-        "Experience with school-aged children, interest in arts and music",
+      name: "李家",
+      location: "北京, 中国",
+      children: "2个孩子 (3岁和7岁)",
+      duration: "10-12个月",
+      startDate: "2025年8月",
+      languages: ["英语"],
+      requirements: "有带领儿童活动经验，会弹钢琴优先",
       description:
-        "Our family values education and creativity. We're looking for an au pair who can help with homework and engage our child in enriching activities.",
+        "我们希望为孩子创造一个沉浸式的英语环境，同时培养他们的艺术兴趣。我们的大孩子正在学习钢琴，如果互惠生也会弹钢琴就更好了。",
       image:
         "https://images.unsplash.com/photo-1581952976147-5a2d15560349?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
     },
     {
       id: 3,
-      name: "The Chen Family",
-      location: "Vancouver, Canada",
-      children: "3 children (ages 2, 4, and 8)",
-      duration: "12-24 months",
-      startDate: "July 2025",
-      languages: ["English", "Mandarin a plus"],
-      requirements:
-        "Experience with multiple children, patience, driver's license",
+      name: "王家",
+      location: "深圳, 中国",
+      children: "1个孩子 (4岁)",
+      duration: "12个月",
+      startDate: "2025年7月",
+      languages: ["英语", "中文基础"],
+      requirements: "有幼儿教育经验，性格活泼开朗",
       description:
-        "We're a busy multicultural family looking for a responsible and energetic au pair who can handle the dynamics of three children of different ages.",
+        "我们的女儿非常活泼好动，希望找到一位充满活力、有爱心的互惠生。我们会为互惠生提供语言学习机会和文化体验活动。",
       image:
-        "https://images.unsplash.com/photo-1577368287217-16ff9373a733?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1581952976147-5a2d15560349?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
     },
     {
       id: 4,
-      name: "The Dubois Family",
-      location: "Paris, France",
-      children: "2 children (ages 6 and 9)",
-      duration: "10-12 months",
-      startDate: "October 2025",
-      languages: ["French", "English"],
-      requirements: "Interest in cooking, sports, and helping with homework",
+      name: "陈家",
+      location: "杭州, 中国",
+      children: "2个孩子 (6岁和8岁)",
+      duration: "12个月",
+      startDate: "2025年9月",
+      languages: ["英语"],
+      requirements: "有辅导功课经验，擅长体育活动",
       description:
-        "We are looking for an au pair who can be a positive role model for our children and help them with their English while enjoying life in Paris.",
+        "我们的两个孩子都在国际学校就读，需要互惠生协助他们的英语学习和课后作业。我们喜欢户外运动，希望互惠生也能和孩子们一起参与体育活动。",
       image:
-        "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1609220136736-443140cffec6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
     },
     {
       id: 5,
-      name: "The Tanaka Family",
-      location: "Tokyo, Japan",
-      children: "1 child (age 4)",
-      duration: "12 months",
-      startDate: "August 2025",
-      languages: ["Japanese", "English"],
-      requirements:
-        "Early childhood education experience preferred, interest in Japanese culture",
+      name: "刘家",
+      location: "成都, 中国",
+      children: "1个孩子 (2岁)",
+      duration: "6-12个月",
+      startDate: "2025年8月",
+      languages: ["英语", "中文基础优先"],
+      requirements: "有照顾幼儿经验，有早教经验优先",
       description:
-        "We are seeking an au pair who is patient and creative to care for our daughter. We value cultural exchange and would love to share Japanese traditions while learning about yours.",
+        "我们有一个可爱的小女儿，希望从小培养她的英语语感。我们希望互惠生不仅可以照顾孩子的生活起居，还能设计一些适合年龄的早教活动。",
       image:
-        "https://images.unsplash.com/photo-1551995184-f34d2be3531c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1581952976147-5a2d15560349?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
     },
     {
       id: 6,
-      name: "The Martinez Family",
-      location: "Barcelona, Spain",
-      children: "2 children (ages 3 and 6)",
-      duration: "9-12 months",
-      startDate: "September 2025",
-      languages: ["Spanish", "English"],
-      requirements: "Energetic, creative, enjoys outdoor activities",
+      name: "吴家",
+      location: "广州, 中国",
+      children: "3个孩子 (4岁、6岁和8岁)",
+      duration: "12个月",
+      startDate: "2025年9月",
+      languages: ["英语"],
+      requirements: "有带多个孩子经验，性格耐心",
       description:
-        "Our family loves the beach, arts, and exploring the city. We're looking for an au pair who shares these interests and can bring fun learning experiences to our children.",
+        "我们有三个活泼可爱的孩子，需要一位经验丰富、充满活力的互惠生。我们会提供舒适的住宿环境和丰厚的薪资待遇。周末经常会组织家庭出游，互惠生可以一起参与。",
       image:
-        "https://images.unsplash.com/photo-1484723091739-30a097e8f929?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1609220136736-443140cffec6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
     },
   ];
 
@@ -184,52 +183,46 @@ const FindFamily = () => {
 
               {/* Filters */}
               {filtersOpen && (
-                <div className="mt-4 p-4 bg-white rounded-md shadow-lg text-left text-gray-800">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="absolute z-10 left-0 right-0 mt-2 p-4 bg-white border rounded-lg shadow-lg">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {/* Location Filter */}
                     <div>
-                      <h3 className="font-semibold text-gray-900 mb-2">
+                      <h4 className="font-medium mb-2">
                         Location
-                      </h3>
+                      </h4>
                       <div className="space-y-2">
-                        {[
-                          "USA",
-                          "Canada",
-                          "Germany",
-                          "France",
-                          "Japan",
-                          "Spain",
-                        ].map((country) => (
-                          <label key={country} className="flex items-center">
+                        {Array.from(new Set(families.map(f => f.location.split(", ")[0]))).map((city) => (
+                          <label key={city} className="flex items-center">
                             <input
                               type="checkbox"
-                              className="rounded text-blue-600 focus:ring-blue-500 h-4 w-4"
-                              checked={selectedCountries.includes(country)}
-                              onChange={() => toggleCountry(country)}
+                              checked={selectedCountries.includes(city)}
+                              onChange={() => toggleCountry(city)}
+                              className="rounded border-gray-300 text-blue-600"
                             />
-                            <span className="ml-2">{country}</span>
+                            <span className="ml-2">{city}</span>
                           </label>
                         ))}
                       </div>
                     </div>
 
+                    {/* Children Age Filter */}
                     <div>
-                      <h3 className="font-semibold text-gray-900 mb-2">
-                        Children's Ages
-                      </h3>
+                      <h4 className="font-medium mb-2">
+                        Children Age
+                      </h4>
                       <div className="space-y-2">
                         {[
-                          "Infants (0-1)",
-                          "Toddlers (2-3)",
-                          "Preschool (4-5)",
-                          "School Age (6-12)",
-                          "Teenagers (13+)",
+                          "0-2岁",
+                          "3-5岁",
+                          "6-8岁",
+                          "9岁以上"
                         ].map((age) => (
                           <label key={age} className="flex items-center">
                             <input
                               type="checkbox"
-                              className="rounded text-blue-600 focus:ring-blue-500 h-4 w-4"
                               checked={childrenAges.includes(age)}
                               onChange={() => toggleChildrenAge(age)}
+                              className="rounded border-gray-300 text-blue-600"
                             />
                             <span className="ml-2">{age}</span>
                           </label>
@@ -237,75 +230,30 @@ const FindFamily = () => {
                       </div>
                     </div>
 
+                    {/* Duration Filter */}
                     <div>
-                      <h3 className="font-semibold text-gray-900 mb-2">
+                      <h4 className="font-medium mb-2">
                         Duration
-                      </h3>
+                      </h4>
                       <div className="space-y-2">
                         {[
-                          "3-6 months",
-                          "6-9 months",
-                          "9-12 months",
-                          "12+ months",
+                          "6个月",
+                          "6-12个月",
+                          "12个月",
+                          "12个月以上"
                         ].map((dur) => (
                           <label key={dur} className="flex items-center">
                             <input
                               type="checkbox"
-                              className="rounded text-blue-600 focus:ring-blue-500 h-4 w-4"
                               checked={duration.includes(dur)}
                               onChange={() => toggleDuration(dur)}
+                              className="rounded border-gray-300 text-blue-600"
                             />
                             <span className="ml-2">{dur}</span>
                           </label>
                         ))}
                       </div>
-
-                      <h3 className="font-semibold text-gray-900 mt-4 mb-2">
-                        Special Requirements
-                      </h3>
-                      <div className="space-y-2">
-                        <label className="flex items-center">
-                          <input
-                            type="checkbox"
-                            className="rounded text-blue-600 focus:ring-blue-500 h-4 w-4"
-                          />
-                          <span className="ml-2">Driver's License</span>
-                        </label>
-                        <label className="flex items-center">
-                          <input
-                            type="checkbox"
-                            className="rounded text-blue-600 focus:ring-blue-500 h-4 w-4"
-                          />
-                          <span className="ml-2">Swimming</span>
-                        </label>
-                        <label className="flex items-center">
-                          <input
-                            type="checkbox"
-                            className="rounded text-blue-600 focus:ring-blue-500 h-4 w-4"
-                          />
-                          <span className="ml-2">First Aid</span>
-                        </label>
-                      </div>
                     </div>
-                  </div>
-
-                  <div className="mt-6 flex justify-end space-x-3">
-                    <button
-                      className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 bg-white hover:bg-gray-50"
-                      onClick={() => {
-                        setSelectedCountries([]);
-                        setChildrenAges([]);
-                        setDuration([]);
-                      }}
-                    >
-                      Clear All
-                    </button>
-                    <button
-                      className="px-4 py-2 border border-transparent rounded-md bg-blue-600 text-white hover:bg-blue-700"
-                      onClick={() => setFiltersOpen(false)}
-                    >
-                      Apply Filters
-                    </button>
                   </div>
                 </div>
               )}

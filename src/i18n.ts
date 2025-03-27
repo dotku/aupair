@@ -191,7 +191,7 @@ i18n
             },
             language: {
               title: "Language Learning",
-              description: "Natural English environment through daily communication",
+              description: "Natural English environment through daily interaction",
             },
             safety: {
               title: "Safety First",
@@ -253,6 +253,8 @@ i18n
             }
           },
           footer: {
+            title: "联系我们",
+            subtitle: "如果您有任何问题，请随时联系我们",
             company: "Company",
             about: "We specialize in connecting Chinese families with qualified college students from the US and Europe, promoting international cultural exchange.",
             quickLinks: "Quick Links",
@@ -339,31 +341,55 @@ i18n
                 "Language proficiency",
               ],
             },
+            listings: {
+              title: "可选互惠生",
+              sortBy: "排序方式",
+              recentlyActive: "最近活跃",
+              experienceHighToLow: "经验：从高到低",
+              ageYoungToOld: "年龄：从小到大",
+              ageOldToYoung: "年龄：从大到小",
+              languages: "语言能力",
+              education: "教育背景",
+              contact: "联系",
+              viewProfile: "查看档案",
+              loadMore: "加载更多"
+            },
+            testimonials: {
+              title: "家庭反馈",
+              subtitle: "听听其他家庭的真实体验",
+              quote1: "通过霍普互惠生，我们找到了一位来自西班牙的优秀互惠生。她已经和我们在一起一年多了，已经成为了我们家庭的一部分。我们的孩子都很喜欢她！",
+              quote2: "作为一对忙碌的职业夫妻，有双胞胎的我们找到合适的育儿帮手至关重要。我们的中国互惠生就是一个福音 - 可靠、有爱心，而且还在教我们的孩子中文！",
+              quote3: "匹配过程非常细致，我们一次就找到了完美的互惠生。她理解我们的家庭价值观，为我们的家带来了很多欢乐和文化交流。",
+              hostFamily1: "来自美国的寄宿家庭",
+              hostFamily2: "来自加拿大的寄宿家庭",
+              hostFamily3: "来自英国的寄宿家庭"
+            },
+            cta: {
+              title: "准备好找到您的理想互惠生了吗？",
+              subtitle: "今天就创建您的家庭档案，开始与来自世界各地的优秀互惠生建立联系。",
+              createProfile: "创建家庭档案"
+            }
           },
           findFamily: {
-            title: "Find a Host Family",
+            title: "寻找寄宿家庭",
+            subtitle: "浏览中国各地的寄宿家庭",
             search: {
-              title: "Search Families",
+              title: "搜索家庭",
+              placeholder: "输入关键词搜索",
               filters: {
-                location: "Location",
-                children: "Number of Children",
-                duration: "Program Duration",
-                start: "Start Date",
-              },
+                title: "筛选",
+                location: "城市",
+                childrenAge: "孩子年龄",
+                duration: "期望时长"
+              }
             },
-            featured: {
-              title: "Featured Families",
-              viewDetails: "View Details",
-            },
-            benefits: {
-              title: "Benefits",
-              list: [
-                "Cultural immersion",
-                "Language practice",
-                "Safe accommodation",
-                "Monthly stipend",
-              ],
-            },
+            listings: {
+              title: "家庭列表",
+              sortBy: "排序方式",
+              recentlyActive: "最近活跃",
+              contact: "联系家庭",
+              viewProfile: "查看详情"
+            }
           },
           englishEducation: {
             title: "English Education Program",
@@ -688,6 +714,8 @@ i18n
             }
           },
           footer: {
+            title: "联系我们",
+            subtitle: "如果您有任何问题，请随时联系我们",
             company: "公司",
             about: "我们专注于为中国家庭引进欧美优秀大学生互惠生，致力于促进中外青年文化交流与理解。",
             quickLinks: "快速导航",
@@ -752,53 +780,72 @@ i18n
           },
           findAuPair: {
             title: "找到理想的互惠生",
+            subtitle: "为您的家庭找到最合适的互惠生伙伴",
             search: {
               title: "搜索互惠生",
+              placeholder: "输入关键词搜索",
               filters: {
                 nationality: "国籍",
                 language: "语言",
                 experience: "经验",
                 education: "教育背景",
+                availability: "可入职时间",
+                age: "年龄",
+                gender: "性别",
+                skills: "特长技能"
               },
+              apply: "应用筛选",
+              clear: "清除筛选"
             },
-            featured: {
-              title: "推荐互惠生",
+            listings: {
+              title: "可选互惠生",
+              sortBy: "排序方式",
+              recentlyActive: "最近活跃",
+              experienceHighToLow: "经验：从高到低",
+              ageYoungToOld: "年龄：从小到大",
+              ageOldToYoung: "年龄：从大到小",
+              languages: "语言能力",
+              education: "教育背景",
+              contact: "联系",
               viewProfile: "查看档案",
+              loadMore: "加载更多"
             },
-            requirements: {
-              title: "申请要求",
-              list: [
-                "有效的学生身份",
-                "无犯罪记录",
-                "育儿经验",
-                "语言能力",
-              ],
+            testimonials: {
+              title: "家庭反馈",
+              subtitle: "听听其他家庭的真实体验",
+              quote1: "通过霍普互惠生，我们找到了一位来自西班牙的优秀互惠生。她已经和我们在一起一年多了，已经成为了我们家庭的一部分。我们的孩子都很喜欢她！",
+              quote2: "作为一对忙碌的职业夫妻，有双胞胎的我们找到合适的育儿帮手至关重要。我们的中国互惠生就是一个福音 - 可靠、有爱心，而且还在教我们的孩子中文！",
+              quote3: "匹配过程非常细致，我们一次就找到了完美的互惠生。她理解我们的家庭价值观，为我们的家带来了很多欢乐和文化交流。",
+              hostFamily1: "来自美国的寄宿家庭",
+              hostFamily2: "来自加拿大的寄宿家庭",
+              hostFamily3: "来自英国的寄宿家庭"
             },
+            cta: {
+              title: "准备好找到您的理想互惠生了吗？",
+              subtitle: "今天就创建您的家庭档案，开始与来自世界各地的优秀互惠生建立联系。",
+              createProfile: "创建家庭档案"
+            }
           },
           findFamily: {
             title: "寻找寄宿家庭",
+            subtitle: "浏览中国各地的寄宿家庭",
             search: {
               title: "搜索家庭",
+              placeholder: "输入关键词搜索",
               filters: {
-                location: "地点",
-                children: "孩子数量",
-                duration: "项目时长",
-                start: "开始日期",
-              },
+                title: "筛选",
+                location: "城市",
+                childrenAge: "孩子年龄",
+                duration: "期望时长"
+              }
             },
-            featured: {
-              title: "推荐家庭",
-              viewDetails: "查看详情",
-            },
-            benefits: {
-              title: "项目福利",
-              list: [
-                "文化沉浸",
-                "语言实践",
-                "安全住宿",
-                "月度津贴",
-              ],
-            },
+            listings: {
+              title: "家庭列表",
+              sortBy: "排序方式",
+              recentlyActive: "最近活跃",
+              contact: "联系家庭",
+              viewProfile: "查看详情"
+            }
           },
           englishEducation: {
             title: "英语教育项目",

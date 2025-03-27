@@ -42,7 +42,7 @@ const HowItWorks = () => {
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1591035897819-f4bdf739f446?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80')",
+              "url('https://images.unsplash.com/photo-1602052793312-b99c2a9ee797?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80')",
             opacity: 0.2,
           }}
         ></div>
@@ -87,9 +87,9 @@ const HowItWorks = () => {
                   <UserPlus className="h-6 w-6" />
                 </div>
                 <div className="md:w-1/2 pl-8 md:text-left">
-                  <ul className="text-gray-600 list-disc ml-5">
+                  <ul className="text-gray-600 space-y-2">
                     {getTranslatedList('howItWorks.steps.profile.items').map((item: string, index: number) => (
-                      <li key={index}>{item}</li>
+                      <li key={index} className="py-1">{item}</li>
                     ))}
                   </ul>
                 </div>
@@ -100,9 +100,9 @@ const HowItWorks = () => {
             <div className="relative mb-16">
               <div className="md:flex items-center">
                 <div className="md:w-1/2 pr-8 md:text-right order-1 md:order-1">
-                  <ul className="text-gray-600 list-disc ml-5 md:mr-5 md:ml-0 md:text-right">
+                  <ul className="text-gray-600 space-y-2">
                     {getTranslatedList('howItWorks.steps.search.items').map((item: string, index: number) => (
-                      <li key={index}>{item}</li>
+                      <li key={index} className="py-1">{item}</li>
                     ))}
                   </ul>
                 </div>
@@ -135,9 +135,9 @@ const HowItWorks = () => {
                   <MessageCircle className="h-6 w-6" />
                 </div>
                 <div className="md:w-1/2 pl-8 md:text-left">
-                  <ul className="text-gray-600 list-disc ml-5">
+                  <ul className="text-gray-600 space-y-2">
                     {getTranslatedList('howItWorks.steps.connect.items').map((item: string, index: number) => (
-                      <li key={index}>{item}</li>
+                      <li key={index} className="py-1">{item}</li>
                     ))}
                   </ul>
                 </div>
@@ -148,9 +148,9 @@ const HowItWorks = () => {
             <div className="relative mb-16">
               <div className="md:flex items-center">
                 <div className="md:w-1/2 pr-8 md:text-right order-1 md:order-1">
-                  <ul className="text-gray-600 list-disc ml-5 md:mr-5 md:ml-0 md:text-right">
+                  <ul className="text-gray-600 space-y-2">
                     {getTranslatedList('howItWorks.steps.match.items').map((item: string, index: number) => (
-                      <li key={index}>{item}</li>
+                      <li key={index} className="py-1">{item}</li>
                     ))}
                   </ul>
                 </div>
@@ -183,9 +183,9 @@ const HowItWorks = () => {
                   <CheckCircle className="h-6 w-6" />
                 </div>
                 <div className="md:w-1/2 pl-8 md:text-left">
-                  <ul className="text-gray-600 list-disc ml-5">
+                  <ul className="text-gray-600 space-y-2">
                     {getTranslatedList('howItWorks.steps.begin.items').map((item: string, index: number) => (
-                      <li key={index}>{item}</li>
+                      <li key={index} className="py-1">{item}</li>
                     ))}
                   </ul>
                 </div>
@@ -312,9 +312,9 @@ const HowItWorks = () => {
 
             <div className="rounded-lg overflow-hidden shadow-xl">
               <img
-                src="https://images.unsplash.com/photo-1484665754804-74b091911a1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
                 alt="Family with au pair"
-                className="w-full h-full object-cover"
+                className="w-full h-64 object-cover"
               />
             </div>
           </div>
@@ -334,9 +334,9 @@ const HowItWorks = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1 rounded-lg overflow-hidden shadow-xl">
               <img
-                src="https://images.unsplash.com/photo-1516627145497-ae6968895b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+                src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
                 alt="Au pair with children"
-                className="w-full h-full object-cover"
+                className="w-full h-64 object-cover"
               />
             </div>
 
