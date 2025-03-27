@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { MessageCircle, Send, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import parseMarkdown from "../utils/markdownParser";
 
 interface Message {
   role: "user" | "assistant";
@@ -125,11 +126,14 @@ export const Chatbot = () => {
                   className={`max-w-[80%] rounded-lg p-3 ${
                     message.role === "user"
                       ? "bg-yellow-500 text-white"
-                      : "bg-yellow-50 text-gray-800"
+                      : "bg-yellow-50 text-gray-800 prose prose-sm max-w-none prose-pre:bg-gray-800 prose-pre:text-white prose-pre:p-3 prose-pre:rounded prose-code:text-blue-600 prose-code:bg-blue-50 prose-code:px-1 prose-code:rounded"
                   }`}
-                >
-                  {message.content}
-                </div>
+                  dangerouslySetInnerHTML={{
+                    __html: message.role === "assistant" 
+                      ? parseMarkdown(message.content)
+                      : message.content
+                  }}
+                />
               </div>
             ))}
             {isLoading && (

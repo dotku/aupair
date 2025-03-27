@@ -1,262 +1,135 @@
-import { useState } from "react";
 import {
   Search,
-  Filter,
-  MapPin,
+  Globe,
   Heart,
-  MessageCircle,
-  Star,
-  ChevronDown,
-  ChevronUp,
-  Users,
-  Home,
-  DollarSign,
   Clock,
-  Globe
+  Users,
+  MessageCircle,
+  Home,
+  GraduationCap
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import Testimonials from "../components/Testimonials";
+
+interface Story {
+  name: string;
+  location: string;
+  quote: string;
+  details: string;
+}
+
+interface Benefit {
+  title: string;
+  description: string;
+}
+
+interface Family {
+  id: number;
+  name: string;
+  location: string;
+  children: string;
+  duration: string;
+  startDate: string;
+  languages: string[];
+  requirements: string;
+  description: string;
+  image: string;
+}
 
 const FindFamily = () => {
-  const [filtersOpen, setFiltersOpen] = useState(false);
-  const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
-  const [childrenAges, setChildrenAges] = useState<string[]>([]);
-  const [duration, setDuration] = useState<string[]>([]);
+  const { t } = useTranslation("findFamily");
 
   // Sample family data
-  const families = [
+  const families: Family[] = [
     {
       id: 1,
       name: "张家",
-      location: "上海, 中国",
-      children: "1个孩子 (5岁)",
+      location: "上海",
+      children: "2个孩子 (5岁和8岁)",
       duration: "12个月",
-      startDate: "2025年9月",
+      startDate: "2024年8月",
       languages: ["英语", "中文"],
-      requirements: "需要驾照，有教育相关经验优先",
+      requirements: "有教学经验，喜欢孩子，有耐心",
       description:
-        "我们是一个重视教育的家庭，希望找到一位能帮助孩子提高英语水平，同时富有耐心和创造力的互惠生。我们提供独立的房间和舒适的生活环境。",
+        "我们是一个充满活力的家庭，希望能找到一位有爱心和责任心的互惠生。两个孩子都很活泼，喜欢学习和户外活动。",
       image:
-        "https://images.unsplash.com/photo-1609220136736-443140cffec6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     },
     {
       id: 2,
       name: "李家",
-      location: "北京, 中国",
-      children: "2个孩子 (3岁和7岁)",
-      duration: "10-12个月",
-      startDate: "2025年8月",
+      location: "北京",
+      children: "1个孩子 (6岁)",
+      duration: "10个月",
+      startDate: "2024年9月",
       languages: ["英语"],
-      requirements: "有带领儿童活动经验，会弹钢琴优先",
+      requirements: "有相关证书，性格开朗",
       description:
-        "我们希望为孩子创造一个沉浸式的英语环境，同时培养他们的艺术兴趣。我们的大孩子正在学习钢琴，如果互惠生也会弹钢琴就更好了。",
+        "我们的女儿非常喜欢画画和音乐，希望能找到一位有艺术特长的互惠生。我们会将你视为家庭的一员。",
       image:
-        "https://images.unsplash.com/photo-1581952976147-5a2d15560349?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1591035897819-f4bdf739f446?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     },
     {
       id: 3,
       name: "王家",
-      location: "深圳, 中国",
-      children: "1个孩子 (4岁)",
+      location: "深圳",
+      children: "3个孩子 (4岁、7岁和9岁)",
       duration: "12个月",
-      startDate: "2025年7月",
-      languages: ["英语", "中文基础"],
-      requirements: "有幼儿教育经验，性格活泼开朗",
+      startDate: "2024年7月",
+      languages: ["英语", "中文"],
+      requirements: "有带3个以上孩子的经验，有驾照优先",
       description:
-        "我们的女儿非常活泼好动，希望找到一位充满活力、有爱心的互惠生。我们会为互惠生提供语言学习机会和文化体验活动。",
+        "三个孩子都在上国际学校，希望能找到一位经验丰富的互惠生。我们提供独立的住所和优厚的条件。",
       image:
-        "https://images.unsplash.com/photo-1581952976147-5a2d15560349?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     },
     {
       id: 4,
-      name: "陈家",
-      location: "杭州, 中国",
-      children: "2个孩子 (6岁和8岁)",
-      duration: "12个月",
-      startDate: "2025年9月",
-      languages: ["英语"],
-      requirements: "有辅导功课经验，擅长体育活动",
-      description:
-        "我们的两个孩子都在国际学校就读，需要互惠生协助他们的英语学习和课后作业。我们喜欢户外运动，希望互惠生也能和孩子们一起参与体育活动。",
-      image:
-        "https://images.unsplash.com/photo-1609220136736-443140cffec6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-    },
-    {
-      id: 5,
       name: "刘家",
-      location: "成都, 中国",
-      children: "1个孩子 (2岁)",
-      duration: "6-12个月",
-      startDate: "2025年8月",
-      languages: ["英语", "中文基础优先"],
-      requirements: "有照顾幼儿经验，有早教经验优先",
-      description:
-        "我们有一个可爱的小女儿，希望从小培养她的英语语感。我们希望互惠生不仅可以照顾孩子的生活起居，还能设计一些适合年龄的早教活动。",
-      image:
-        "https://images.unsplash.com/photo-1581952976147-5a2d15560349?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-    },
-    {
-      id: 6,
-      name: "吴家",
-      location: "广州, 中国",
-      children: "3个孩子 (4岁、6岁和8岁)",
-      duration: "12个月",
-      startDate: "2025年9月",
+      location: "杭州",
+      children: "2个孩子 (3岁和5岁)",
+      duration: "6个月",
+      startDate: "2024年10月",
       languages: ["英语"],
-      requirements: "有带多个孩子经验，性格耐心",
+      requirements: "有幼教经验，会弹钢琴优先",
       description:
-        "我们有三个活泼可爱的孩子，需要一位经验丰富、充满活力的互惠生。我们会提供舒适的住宿环境和丰厚的薪资待遇。周末经常会组织家庭出游，互惠生可以一起参与。",
+        "我们希望孩子们能在快乐的环境中学习英语。家里有钢琴，如果互惠生会弹奏那就太完美了。",
       image:
-        "https://images.unsplash.com/photo-1609220136736-443140cffec6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1597413545419-4013431dbfec?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     },
   ];
-
-  const toggleCountry = (country: string) => {
-    if (selectedCountries.includes(country)) {
-      setSelectedCountries(selectedCountries.filter((c) => c !== country));
-    } else {
-      setSelectedCountries([...selectedCountries, country]);
-    }
-  };
-
-  const toggleChildrenAge = (age: string) => {
-    if (childrenAges.includes(age)) {
-      setChildrenAges(childrenAges.filter((a) => a !== age));
-    } else {
-      setChildrenAges([...childrenAges, age]);
-    }
-  };
-
-  const toggleDuration = (dur: string) => {
-    if (duration.includes(dur)) {
-      setDuration(duration.filter((d) => d !== dur));
-    } else {
-      setDuration([...duration, dur]);
-    }
-  };
 
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative bg-blue-600 text-white">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-800 to-blue-600 opacity-90"></div>
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1484723091739-30a097e8f929?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80')",
-            opacity: 0.2,
-          }}
-        ></div>
+      <section className="relative bg-gradient-to-r from-blue-600 to-blue-800 py-24">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1536749393129-0bff49c4c2fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80"
+            alt="Chinese Family Hero"
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-800 mix-blend-multiply" />
+        </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Find Your Host Family
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white drop-shadow-lg">
+              {t("title")}
             </h1>
-            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-              Discover families around the world looking for an au pair like you
+            <p className="mt-4 text-xl text-white/90 max-w-3xl mx-auto mb-8 drop-shadow">
+              {t("subtitle")}
             </p>
-
-            <div className="max-w-3xl mx-auto">
-              <div className="flex flex-col md:flex-row gap-2">
-                <div className="relative flex-grow">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Search className="h-5 w-5 text-gray-400" />
-                  </div>
-                  <input
-                    type="text"
-                    className="block w-full pl-10 pr-3 py-3 border border-transparent rounded-md leading-5 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="Search by location, children's ages..."
-                  />
-                </div>
-                <button
-                  onClick={() => setFiltersOpen(!filtersOpen)}
-                  className="flex items-center justify-center px-4 py-3 border border-transparent rounded-md bg-blue-700 hover:bg-blue-800 text-white"
-                >
-                  <Filter className="h-5 w-5 mr-2" />
-                  Filters
-                  {filtersOpen ? (
-                    <ChevronUp className="h-4 w-4 ml-1" />
-                  ) : (
-                    <ChevronDown className="h-4 w-4 ml-1" />
-                  )}
+            <div className="max-w-2xl mx-auto">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder={t("search.placeholder")}
+                  className="w-full px-4 py-3 rounded-lg shadow-lg text-gray-900 placeholder-gray-500 bg-white/95 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <button className="absolute right-2 top-1/2 transform -translate-y-1/2 p-2 text-gray-500 hover:text-gray-700">
+                  <Search className="h-5 w-5" />
                 </button>
               </div>
-
-              {/* Filters */}
-              {filtersOpen && (
-                <div className="absolute z-10 left-0 right-0 mt-2 p-4 bg-white border rounded-lg shadow-lg">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {/* Location Filter */}
-                    <div>
-                      <h4 className="font-medium mb-2">
-                        Location
-                      </h4>
-                      <div className="space-y-2">
-                        {Array.from(new Set(families.map(f => f.location.split(", ")[0]))).map((city) => (
-                          <label key={city} className="flex items-center">
-                            <input
-                              type="checkbox"
-                              checked={selectedCountries.includes(city)}
-                              onChange={() => toggleCountry(city)}
-                              className="rounded border-gray-300 text-blue-600"
-                            />
-                            <span className="ml-2">{city}</span>
-                          </label>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Children Age Filter */}
-                    <div>
-                      <h4 className="font-medium mb-2">
-                        Children Age
-                      </h4>
-                      <div className="space-y-2">
-                        {[
-                          "0-2岁",
-                          "3-5岁",
-                          "6-8岁",
-                          "9岁以上"
-                        ].map((age) => (
-                          <label key={age} className="flex items-center">
-                            <input
-                              type="checkbox"
-                              checked={childrenAges.includes(age)}
-                              onChange={() => toggleChildrenAge(age)}
-                              className="rounded border-gray-300 text-blue-600"
-                            />
-                            <span className="ml-2">{age}</span>
-                          </label>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Duration Filter */}
-                    <div>
-                      <h4 className="font-medium mb-2">
-                        Duration
-                      </h4>
-                      <div className="space-y-2">
-                        {[
-                          "6个月",
-                          "6-12个月",
-                          "12个月",
-                          "12个月以上"
-                        ].map((dur) => (
-                          <label key={dur} className="flex items-center">
-                            <input
-                              type="checkbox"
-                              checked={duration.includes(dur)}
-                              onChange={() => toggleDuration(dur)}
-                              className="rounded border-gray-300 text-blue-600"
-                            />
-                            <span className="ml-2">{dur}</span>
-                          </label>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
             </div>
           </div>
         </div>
@@ -282,69 +155,53 @@ const FindFamily = () => {
             {families.map((family) => (
               <div
                 key={family.id}
-                className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition"
+                className="bg-white rounded-lg shadow-md overflow-hidden"
               >
-                <div className="relative">
+                <div className="relative h-48">
                   <img
                     src={family.image}
                     alt={family.name}
-                    className="w-full h-64 object-cover"
+                    className="w-full h-full object-cover"
                   />
-                  <button className="absolute top-3 right-3 p-2 bg-white rounded-full shadow-md hover:bg-gray-100">
-                    <Heart className="h-5 w-5 text-gray-500 hover:text-red-500" />
-                  </button>
                 </div>
-
                 <div className="p-6">
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-xl font-bold text-gray-900">
-                      {family.name}
-                    </h3>
-                    <div className="flex items-center bg-blue-100 px-2 py-1 rounded text-blue-800 text-sm">
-                      <MapPin className="h-4 w-4 mr-1" />
-                      {family.location}
-                    </div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    {family.name}
+                  </h3>
+                  <div className="flex items-start mb-2">
+                    <Globe className="h-5 w-5 text-gray-500 mr-2 mt-0.5" />
+                    <span className="text-gray-600">{family.location}</span>
                   </div>
-
-                  <div className="space-y-2 mb-4">
-                    <div className="flex items-start">
-                      <Users className="h-5 w-5 text-gray-500 mr-2 mt-0.5" />
-                      <span className="text-gray-600">{family.children}</span>
-                    </div>
-                    <div className="flex items-start">
-                      <Clock className="h-5 w-5 text-gray-500 mr-2 mt-0.5" />
-                      <span className="text-gray-600">
-                        {family.duration}, starting {family.startDate}
-                      </span>
-                    </div>
-                    <div className="flex items-start">
-                      <Globe className="h-5 w-5 text-gray-500 mr-2 mt-0.5" />
-                      <span className="text-gray-600">
-                        {family.languages.join(", ")}
-                      </span>
-                    </div>
+                  <div className="flex items-start mb-2">
+                    <Users className="h-5 w-5 text-gray-500 mr-2 mt-0.5" />
+                    <span className="text-gray-600">
+                      {family.children} {t("listings.children")}
+                    </span>
                   </div>
-
-                  <div className="mb-4">
-                    <h4 className="text-sm font-semibold text-gray-700 mb-1">
-                      Requirements
-                    </h4>
-                    <p className="text-gray-600 text-sm">
-                      {family.requirements}
-                    </p>
+                  <div className="flex items-start mb-2">
+                    <Clock className="h-5 w-5 text-gray-500 mr-2 mt-0.5" />
+                    <span className="text-gray-600">
+                      {family.duration}, {t("listings.starting")}{" "}
+                      {family.startDate}
+                    </span>
                   </div>
-
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-3">
-                    {family.description}
-                  </p>
-
-                  <div className="flex space-x-2">
-                    <button className="flex-1 flex items-center justify-center px-4 py-2 border border-transparent rounded-md bg-blue-600 text-white hover:bg-blue-700">
-                      <MessageCircle className="h-4 w-4 mr-2" />
+                  <div className="flex items-start mb-4">
+                    <MessageCircle className="h-5 w-5 text-gray-500 mr-2 mt-0.5" />
+                    <span className="text-gray-600">
+                      {t("listings.languages")}:{" "}
+                      {family.languages.join(", ")}
+                    </span>
+                  </div>
+                  <p className="text-gray-600 mb-4">{family.description}</p>
+                  <div className="flex justify-between items-center">
+                    <a
+                      href="#contact"
+                      className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700"
+                    >
                       Contact
-                    </button>
-                    <button className="flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md text-gray-700 bg-white hover:bg-gray-50">
-                      View Profile
+                    </a>
+                    <button className="text-gray-400 hover:text-red-500">
+                      <Heart className="h-6 w-6" />
                     </button>
                   </div>
                 </div>
@@ -360,153 +217,81 @@ const FindFamily = () => {
         </div>
       </section>
 
-      {/* Benefits Section */}
+      {/* Success Stories Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">
-              Benefits of Being an Au Pair
-            </h2>
-            <p className="mt-4 text-xl text-gray-600">
-              Why thousands of young adults choose the au pair experience
-            </p>
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+            {t("successStories.title")}
+          </h2>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            {(
+              t("successStories.stories", {
+                returnObjects: true,
+              }) as Story[]
+            ).map((story: Story, index: number) => (
+              <div key={index} className="bg-white rounded-lg shadow-md p-6">
+                <div className="flex items-center mb-4">
+                  <img
+                    src={
+                      [
+                        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&q=80",
+                        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&q=80",
+                        "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&q=80",
+                      ][index]
+                    }
+                    alt={story.name}
+                    className="w-12 h-12 rounded-full object-cover"
+                  />
+                  <div className="ml-4">
+                    <h3 className="font-semibold text-gray-900">
+                      {story.name}
+                    </h3>
+                    <p className="text-gray-600">{story.location}</p>
+                  </div>
+                </div>
+                <blockquote className="text-gray-600 italic mb-4">
+                  "{story.quote}"
+                </blockquote>
+                <p className="text-gray-600">{story.details}</p>
+              </div>
+            ))}
           </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Globe className="h-8 w-8 text-blue-600" />
+      {/* Benefits Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+            {t("benefits.title")}
+          </h2>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {(
+              t("benefits.list", {
+                returnObjects: true,
+              }) as Benefit[]
+            ).map((benefit: Benefit, index: number) => (
+              <div key={index} className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center">
+                  {index === 0 && <Globe className="h-8 w-8 text-blue-600" />}
+                  {index === 1 && (
+                    <GraduationCap className="h-8 w-8 text-blue-600" />
+                  )}
+                  {index === 2 && <Home className="h-8 w-8 text-blue-600" />}
+                  {index === 3 && <Heart className="h-8 w-8 text-blue-600" />}
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  {benefit.title}
+                </h3>
+                <p className="text-gray-600">{benefit.description}</p>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Cultural Immersion</h3>
-              <p className="text-gray-600">
-                Experience a new culture firsthand by living with a local family
-                and participating in their daily life.
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Home className="h-8 w-8 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Safe Accommodation</h3>
-              <p className="text-gray-600">
-                Enjoy the security of living with a vetted host family with
-                private room and meals included.
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <DollarSign className="h-8 w-8 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Weekly Stipend</h3>
-              <p className="text-gray-600">
-                Receive a regular allowance to cover personal expenses while
-                most of your basic needs are covered.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">
-              Au Pair Success Stories
-            </h2>
-            <p className="mt-4 text-xl text-gray-600">
-              Hear from au pairs who found their perfect match
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <div className="flex items-center mb-4">
-                <div className="flex text-yellow-400">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-current" />
-                  ))}
-                </div>
-              </div>
-              <p className="text-gray-600 italic mb-4">
-                "Being an au pair in the USA has been the best decision of my
-                life. I've improved my English, made lifelong friends, and
-                gained a second family who treats me like their own."
-              </p>
-              <div className="flex items-center">
-                <img
-                  className="h-10 w-10 rounded-full object-cover mr-4"
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=144&h=144&q=80"
-                  alt="Maria Rodriguez"
-                />
-                <div>
-                  <h4 className="text-sm font-semibold">Maria Rodriguez</h4>
-                  <p className="text-xs text-gray-500">Au Pair from Spain</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <div className="flex items-center mb-4">
-                <div className="flex text-yellow-400">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-current" />
-                  ))}
-                </div>
-              </div>
-              <p className="text-gray-600 italic mb-4">
-                "My host family in Germany has been incredibly supportive of my
-                goals. They've helped me improve my German and even encouraged
-                me to take university courses during my stay."
-              </p>
-              <div className="flex items-center">
-                <img
-                  className="h-10 w-10 rounded-full object-cover mr-4"
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=144&h=144&q=80"
-                  alt="Thomas Lee"
-                />
-                <div>
-                  <h4 className="text-sm font-semibold">Thomas Lee</h4>
-                  <p className="text-xs text-gray-500">
-                    Au Pair from South Korea
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <div className="flex items-center mb-4">
-                <div className="flex text-yellow-400">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-current" />
-                  ))}
-                </div>
-              </div>
-              <p className="text-gray-600 italic mb-4">
-                "I was nervous about living abroad, but Mary AuPair matched me
-                with the perfect family in Canada. The children are wonderful,
-                and I've had amazing opportunities to travel and explore."
-              </p>
-              <div className="flex items-center">
-                <img
-                  className="h-10 w-10 rounded-full object-cover mr-4"
-                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=144&h=144&q=80"
-                  alt="Emma Wilson"
-                />
-                <div>
-                  <h4 className="text-sm font-semibold">Emma Wilson</h4>
-                  <p className="text-xs text-gray-500">
-                    Au Pair from Australia
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      <Testimonials />
       {/* CTA Section */}
       <section className="py-16 bg-blue-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
