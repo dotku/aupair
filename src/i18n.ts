@@ -30,13 +30,13 @@ i18n
             title: "How Hope AuPair Works",
             subtitle: "Your step-by-step guide to finding the perfect au pair or host family",
             process: {
-              title: "The Process",
-              subtitle: "Simple steps to your cultural exchange journey"
+              title: "Application Process",
+              subtitle: "Simple steps to start your cultural exchange journey"
             },
             steps: {
               profile: {
-                title: "Create Your Profile",
-                description: "Sign up and create a detailed profile that showcases who you are, your preferences, and what you're looking for in a match.",
+                title: "Create Profile",
+                description: "Register and create a detailed profile showcasing who you are, your preferences, and what you're looking for in a match.",
                 items: [
                   "Complete your personal information",
                   "Upload photos and videos",
@@ -45,34 +45,112 @@ i18n
                 ]
               },
               search: {
-                title: "Search for Matches",
-                description: "Browse through our database of verified profiles to find potential matches that meet your criteria.",
+                title: "Search Matches",
+                description: "Browse through our verified database of profiles to find potential matches that meet your criteria.",
                 items: [
-                  "Browse through verified profiles",
+                  "Browse verified profiles",
                   "Use filters to narrow your search",
-                  "Save favorites for later",
+                  "Save your favorite profiles",
                   "Get personalized recommendations"
                 ]
               },
               connect: {
-                title: "Connect and Interview",
+                title: "Connect & Interview",
                 description: "Get to know potential matches through our secure platform.",
                 items: [
                   "Schedule video calls",
                   "Ask and answer questions",
                   "Discuss expectations",
-                  "Share additional information"
+                  "Share more information"
                 ]
               },
               match: {
-                title: "Make the Match",
-                description: "Once you've found the right match, we'll help you make it official.",
+                title: "Confirm Match",
+                description: "Once you've found the right match, we'll help you complete the formal process.",
                 items: [
                   "Review and sign agreements",
                   "Complete necessary paperwork",
-                  "Set up arrival details",
+                  "Arrange arrival details",
                   "Prepare for the journey"
                 ]
+              },
+              begin: {
+                title: "Begin Journey",
+                description: "Start your au pair experience with confidence, knowing we're here to support you.",
+                items: [
+                  "Access resources and support",
+                  "Join local au pair community",
+                  "Get guidance on challenges",
+                  "Share experiences and feedback"
+                ]
+              }
+            },
+            forFamilies: {
+              title: "Host Family Guide",
+              description: "What to know about hosting an au pair",
+              benefits: {
+                title: "Benefits of Hosting an Au Pair",
+                item1: "Flexible childcare that adapts to your family's schedule",
+                item2: "Cultural exchange and language learning opportunities for your children",
+                item3: "Welcome a new family member with fresh perspectives",
+                item4: "Cost-effective childcare solution for multiple children",
+                item5: "Build lasting relationships beyond the program"
+              },
+              responsibilities: {
+                title: "Family Responsibilities",
+                item1: "Provide private room and meals",
+                item2: "Pay weekly stipend",
+                item3: "Respect work hours and time off",
+                item4: "Include au pair in family activities"
+              }
+            },
+            forAuPairs: {
+              title: "Au Pair Guide",
+              description: "What to know about becoming an au pair",
+              benefits: {
+                title: "Benefits of Being an Au Pair",
+                item1: "Experience a new culture and country from the inside",
+                item2: "Improve your language skills through daily interaction",
+                item3: "Develop valuable childcare skills and experience",
+                item4: "Receive room, board, and weekly stipend",
+                item5: "Build international connections and friendships"
+              },
+              responsibilities: {
+                title: "Au Pair Responsibilities",
+                item1: "Provide childcare according to family needs",
+                item2: "Help with child-related household tasks",
+                item3: "Respect family rules and privacy",
+                item4: "Share your culture and language"
+              }
+            },
+            faq: {
+              title: "FAQ",
+              description: "Common questions about the au pair program",
+              questions: {
+                q1: {
+                  title: "How long does an au pair program typically last?",
+                  answer: "Most au pair programs last 6-12 months, with the possibility to extend up to 2 years depending on country regulations and mutual agreement."
+                },
+                q2: {
+                  title: "What are typical au pair working hours?",
+                  answer: "Au pairs typically work 25-45 hours per week, depending on the country and specific arrangements. They have at least one full day off per week and adequate free time."
+                },
+                q3: {
+                  title: "How much does it cost to host an au pair?",
+                  answer: "Costs vary by country but typically include weekly stipend, room and board, and may include language courses or other benefits. Our platform provides detailed cost breakdowns for each country."
+                },
+                q4: {
+                  title: "What happens if the match doesn't work out?",
+                  answer: "We offer rematch services to help both parties find more suitable arrangements. Our support team provides mediation and assistance throughout the process."
+                },
+                q5: {
+                  title: "Do au pairs need a special visa?",
+                  answer: "Yes, most countries require specific au pair or cultural exchange visas. We provide guidance on visa requirements and application processes for different countries."
+                },
+                q6: {
+                  title: "What qualifications do au pairs need?",
+                  answer: "Requirements vary by country, but typically au pairs should be between 18-30 years old, have childcare experience, basic language skills, and pass background checks. Some countries may have additional requirements."
+                }
               }
             },
             support: {
@@ -80,20 +158,20 @@ i18n
               description: "We're here to help every step of the way",
               items: [
                 {
-                  title: "24/7 Assistance",
-                  description: "Round-the-clock support for both families and au pairs"
+                  title: "24/7 Support",
+                  description: "Round-the-clock assistance for families and au pairs"
                 },
                 {
-                  title: "Verified Profiles",
-                  description: "Thorough screening and verification process"
+                  title: "Profile Verification",
+                  description: "Rigorous screening and verification process"
                 },
                 {
                   title: "Cultural Support",
-                  description: "Help with cultural adjustment and integration"
+                  description: "Help with cultural adaptation and integration"
                 },
                 {
                   title: "Program Duration",
-                  description: "Flexible program lengths from 3-12 months"
+                  description: "Flexible 3-12 month program lengths"
                 }
               ]
             },
@@ -361,6 +439,28 @@ i18n
             inputPlaceholder: "Type your question...",
             send: "Send message",
             errorMessage: "Sorry, there seems to be a technical issue. Please try again later or contact us at info@hopeaupair.com"
+          },
+          support: {
+            title: "Our Support",
+            description: "We're here to help every step of the way",
+            items: [
+              {
+                title: "24/7 Support",
+                description: "Round-the-clock assistance for families and au pairs"
+              },
+              {
+                title: "Profile Verification",
+                description: "Rigorous screening and verification process"
+              },
+              {
+                title: "Cultural Support",
+                description: "Help with cultural adaptation and integration"
+              },
+              {
+                title: "Program Duration",
+                description: "Flexible 3-12 month program lengths"
+              }
+            ]
           },
         },
       },
