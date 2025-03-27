@@ -1,4 +1,4 @@
-import { VercelRequest, VercelResponse } from '@vercel/node';
+import { VercelRequest, VercelResponse } from "@vercel/node";
 import OpenAI from "openai";
 
 const client = new OpenAI({
@@ -10,8 +10,8 @@ export default async function handler(
   request: VercelRequest,
   response: VercelResponse
 ) {
-  if (request.method !== 'POST') {
-    return response.status(405).json({ error: 'Method not allowed' });
+  if (request.method !== "POST") {
+    return response.status(405).json({ error: "Method not allowed" });
   }
 
   try {
@@ -26,7 +26,7 @@ export default async function handler(
       messages: [
         {
           role: "system",
-          content: `You are Mary Au Pair's AI assistant. We are a professional au pair cultural exchange agency specializing in connecting Chinese families with qualified college students from the US and Europe.
+          content: `You are Hope AuPair's AI assistant. We are a professional au pair cultural exchange agency specializing in connecting Chinese families with qualified college students from the US and Europe.
 
 Our services include:
 - Au Pair Matching:
@@ -47,7 +47,7 @@ Language Policy:
 - Respond in the same language as the user's question
 - For Chinese users, use simplified Chinese (简体中文)
 - For English users, use standard American English
-- Be culturally sensitive and appropriate`
+- Be culturally sensitive and appropriate`,
         },
         ...messages,
       ],
@@ -60,6 +60,8 @@ Language Policy:
     });
   } catch (error) {
     console.error("Error in chat API:", error);
-    return response.status(500).json({ error: "Failed to process the request" });
+    return response
+      .status(500)
+      .json({ error: "Failed to process the request" });
   }
 }

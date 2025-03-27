@@ -27,50 +27,81 @@ i18n
             findFamily: "Become a Host Family",
           },
           howItWorks: {
-            title: "How It Works",
-            subtitle: "Simple Steps to Start Your Au Pair Journey",
-            description: "We make the process easy and straightforward",
-            forFamilies: {
-              title: "For Families",
-              steps: {
-                register: {
-                  title: "Register",
-                  description: "Create your family profile and specify your requirements"
-                },
-                search: {
-                  title: "Search",
-                  description: "Browse through verified au pair profiles"
-                },
-                interview: {
-                  title: "Interview",
-                  description: "Connect with potential au pairs through our platform"
-                },
-                match: {
-                  title: "Match",
-                  description: "Select your au pair and finalize arrangements"
-                }
+            title: "How Hope AuPair Works",
+            subtitle: "Your step-by-step guide to finding the perfect au pair or host family",
+            process: {
+              title: "The Process",
+              subtitle: "Simple steps to your cultural exchange journey"
+            },
+            steps: {
+              profile: {
+                title: "Create Your Profile",
+                description: "Sign up and create a detailed profile that showcases who you are, your preferences, and what you're looking for in a match.",
+                items: [
+                  "Complete your personal information",
+                  "Upload photos and videos",
+                  "Describe your expectations and preferences",
+                  "Highlight your skills and experience"
+                ]
+              },
+              search: {
+                title: "Search for Matches",
+                description: "Browse through our database of verified profiles to find potential matches that meet your criteria.",
+                items: [
+                  "Browse through verified profiles",
+                  "Use filters to narrow your search",
+                  "Save favorites for later",
+                  "Get personalized recommendations"
+                ]
+              },
+              connect: {
+                title: "Connect and Interview",
+                description: "Get to know potential matches through our secure platform.",
+                items: [
+                  "Schedule video calls",
+                  "Ask and answer questions",
+                  "Discuss expectations",
+                  "Share additional information"
+                ]
+              },
+              match: {
+                title: "Make the Match",
+                description: "Once you've found the right match, we'll help you make it official.",
+                items: [
+                  "Review and sign agreements",
+                  "Complete necessary paperwork",
+                  "Set up arrival details",
+                  "Prepare for the journey"
+                ]
               }
             },
-            forAuPairs: {
-              title: "For Au Pairs",
-              steps: {
-                apply: {
-                  title: "Apply",
-                  description: "Submit your application and verify your qualifications"
+            support: {
+              title: "Our Support",
+              description: "We're here to help every step of the way",
+              items: [
+                {
+                  title: "24/7 Assistance",
+                  description: "Round-the-clock support for both families and au pairs"
                 },
-                profile: {
-                  title: "Create Profile",
-                  description: "Build your profile showcasing your skills and experience"
+                {
+                  title: "Verified Profiles",
+                  description: "Thorough screening and verification process"
                 },
-                connect: {
-                  title: "Connect",
-                  description: "Interview with interested families"
+                {
+                  title: "Cultural Support",
+                  description: "Help with cultural adjustment and integration"
                 },
-                prepare: {
-                  title: "Prepare",
-                  description: "Complete necessary documentation and preparation"
+                {
+                  title: "Program Duration",
+                  description: "Flexible program lengths from 3-12 months"
                 }
-              }
+              ]
+            },
+            cta: {
+              title: "Ready to Begin?",
+              description: "Start your au pair journey today",
+              buttonFamily: "Find an Au Pair",
+              buttonAuPair: "Find a Host Family"
             }
           },
           features: {
@@ -169,7 +200,7 @@ i18n
             allRights: "All Rights Reserved",
           },
           about: {
-            title: "About Mary Au Pair",
+            title: "About Hope AuPair",
             mission: {
               title: "Our Mission",
               description: "To create meaningful cultural exchange experiences through quality au pair placements, fostering understanding between Chinese families and international students.",
@@ -196,6 +227,14 @@ i18n
             team: {
               title: "Our Team",
               description: "Our experienced team brings together expertise in cultural exchange, education, and family services.",
+            },
+            history: {
+              title: "Our History",
+              description: "Founded in Shenzhen, we have been dedicated to promoting international cultural exchange and understanding between China and the West.",
+            },
+            commitment: {
+              title: "Our Commitment",
+              description: "We are committed to providing safe, enriching, and transformative au pair experiences for both families and students.",
             },
           },
           findAuPair: {
@@ -345,50 +384,137 @@ i18n
             findFamily: "成为寄宿家庭",
           },
           howItWorks: {
-            title: "服务流程",
-            subtitle: "轻松开启互惠生之旅",
-            description: "我们让申请流程简单直观",
+            title: "霍普互惠生服务流程",
+            subtitle: "寻找完美互惠生或寄宿家庭的分步指南",
+            process: {
+              title: "申请流程",
+              subtitle: "开启文化交流之旅的简单步骤"
+            },
+            steps: {
+              profile: {
+                title: "创建个人档案",
+                description: "注册并创建详细的个人档案，展示您是谁，您的偏好以及您在寻找什么样的匹配。",
+                items: [
+                  "完善个人信息",
+                  "上传照片和视频",
+                  "描述您的期望和偏好",
+                  "突出您的技能和经验"
+                ]
+              },
+              search: {
+                title: "搜索匹配",
+                description: "浏览我们经过验证的档案数据库，找到符合您标准的潜在匹配。",
+                items: [
+                  "浏览已验证的档案",
+                  "使用筛选器缩小搜索范围",
+                  "保存喜欢的档案",
+                  "获取个性化推荐"
+                ]
+              },
+              connect: {
+                title: "联系和面试",
+                description: "通过我们的安全平台了解潜在的匹配对象。",
+                items: [
+                  "安排视频通话",
+                  "提问和回答问题",
+                  "讨论期望",
+                  "分享更多信息"
+                ]
+              },
+              match: {
+                title: "确认匹配",
+                description: "一旦找到合适的匹配，我们将帮助您完成正式程序。",
+                items: [
+                  "审查并签署协议",
+                  "完成必要的文书工作",
+                  "安排到达细节",
+                  "为旅程做准备"
+                ]
+              },
+              begin: {
+                title: "开始旅程",
+                description: "带着信心开始您的互惠生体验，我们将全程为您提供支持。",
+                items: [
+                  "获取资源和支持",
+                  "加入当地互惠生社区",
+                  "获得挑战指导",
+                  "分享经验和反馈"
+                ]
+              }
+            },
             forFamilies: {
-              title: "家庭流程",
-              steps: {
-                register: {
-                  title: "注册",
-                  description: "创建您的家庭档案并说明具体要求"
-                },
-                search: {
-                  title: "搜索",
-                  description: "浏览经过验证的互惠生档案"
-                },
-                interview: {
-                  title: "面试",
-                  description: "通过我们的平台与潜在的互惠生联系"
-                },
-                match: {
-                  title: "匹配",
-                  description: "选择您的互惠生并确定最终安排"
-                }
+              title: "寄宿家庭指南",
+              description: "接待互惠生需要了解的事项",
+              benefits: {
+                title: "接待互惠生的好处",
+                item1: "灵活的育儿服务，适应您家庭的时间安排",
+                item2: "为您的孩子提供文化交流和语言学习机会",
+                item3: "迎接一位带来新视角的家庭成员",
+                item4: "对于多个孩子来说是经济实惠的育儿方案",
+                item5: "建立超越互惠生项目的长期关系"
+              },
+              responsibilities: {
+                title: "家庭责任",
+                item1: "提供私人房间和餐食",
+                item2: "支付每周津贴",
+                item3: "尊重工作时间和休息时间",
+                item4: "邀请互惠生参与家庭活动"
               }
             },
             forAuPairs: {
-              title: "互惠生流程",
-              steps: {
-                apply: {
-                  title: "申请",
-                  description: "提交申请并验证您的资格"
+              title: "互惠生指南",
+              description: "成为互惠生需要了解的事项",
+              benefits: {
+                title: "成为互惠生的好处",
+                item1: "从内部体验新的文化和国家",
+                item2: "通过日常生活交流，让孩子自然习得英语，培养跨文化交际能力",
+                item3: "培养宝贵的育儿技能和经验",
+                item4: "获得住宿、餐食和每周津贴",
+                item5: "建立国际关系网和友谊"
+              },
+              responsibilities: {
+                title: "互惠生责任",
+                item1: "根据家庭需求提供育儿服务",
+                item2: "协助与孩子相关的家务",
+                item3: "尊重家庭规则和隐私",
+                item4: "与家庭分享您的文化和语言"
+              }
+            },
+            faq: {
+              title: "常见问题",
+              description: "关于互惠生项目的常见问题解答",
+              questions: {
+                q1: {
+                  title: "互惠生项目一般持续多长时间？",
+                  answer: "大多数互惠生项目持续6-12个月，根据国家规定和双方协议可以延长至2年。"
                 },
-                profile: {
-                  title: "创建档案",
-                  description: "建立展示您的技能和经验的个人档案"
+                q2: {
+                  title: "互惠生的典型工作时间是怎样的？",
+                  answer: "根据国家和具体安排，互惠生每周工作25-45小时。他们每周至少有一天完整的休息日和充足的自由时间。"
                 },
-                connect: {
-                  title: "联系",
-                  description: "与感兴趣的家庭进行面试"
+                q3: {
+                  title: "接待互惠生的费用是多少？",
+                  answer: "费用因国家而异，通常包括每周津贴、住宿和餐食，可能还包括语言课程或其他福利。我们的平台提供每个国家的详细费用明细。"
                 },
-                prepare: {
-                  title: "准备",
-                  description: "完成必要的文件和准备工作"
+                q4: {
+                  title: "如果匹配不成功怎么办？",
+                  answer: "我们提供重新匹配服务，帮助双方找到更合适的安排。我们的支持团队全程提供调解和协助。"
+                },
+                q5: {
+                  title: "互惠生需要特殊签证吗？",
+                  answer: "是的，大多数国家要求特定的互惠生或文化交流签证。我们为不同国家的签证要求和申请流程提供指导。"
+                },
+                q6: {
+                  title: "互惠生需要哪些资格？",
+                  answer: "要求因国家而异，但通常互惠生应年龄在18-30岁之间，有育儿经验，基本的语言能力，并通过背景调查。某些国家可能有额外要求。"
                 }
               }
+            },
+            cta: {
+              title: "准备开始？",
+              description: "今天就开启您的互惠生之旅",
+              buttonFamily: "寻找互惠生",
+              buttonAuPair: "寻找寄宿家庭"
             }
           },
           features: {
@@ -490,30 +616,38 @@ i18n
             title: "关于玛丽互惠",
             mission: {
               title: "我们的使命",
-              description: "通过优质的互惠生安排创造有意义的文化交流体验，促进中国家庭与国际学生之间的理解。",
+              description: "通过优质的互惠生项目创造有意义的文化交流体验，促进中国家庭与国际学生之间的理解。",
             },
             values: {
               title: "我们的价值观",
               integrity: {
                 title: "诚信",
-                description: "我们在所有运营中保持最高的诚信和透明度标准。",
+                description: "在所有运营中保持最高标准的诚实和透明。",
               },
               quality: {
                 title: "品质",
-                description: "我们仔细筛选并匹配互惠生和家庭，以确保最佳体验。",
+                description: "严格筛选并匹配互惠生和家庭，确保最佳体验。",
               },
               support: {
                 title: "支持",
-                description: "我们在整个互惠生旅程中提供全面的支持。",
+                description: "在整个互惠生项目过程中提供全面的支持服务。",
               },
               culture: {
                 title: "文化交流",
-                description: "我们促进有意义的文化交流体验，丰富家庭和互惠生的生活。",
+                description: "促进有意义的文化交流体验，丰富家庭和互惠生的生活。",
               },
             },
             team: {
               title: "我们的团队",
               description: "我们经验丰富的团队汇集了文化交流、教育和家庭服务方面的专业知识。",
+            },
+            history: {
+              title: "我们的历史",
+              description: "公司成立于深圳，致力于促进中国与西方之间的国际文化交流与理解。",
+            },
+            commitment: {
+              title: "我们的承诺",
+              description: "我们致力于为家庭和学生提供安全、充实和变革性的互惠生体验。",
             },
           },
           findAuPair: {
@@ -640,6 +774,28 @@ i18n
             inputPlaceholder: "请输入您的问题...",
             send: "发送消息",
             errorMessage: "抱歉，出现了技术问题。请稍后再试或发送邮件至 info@hopeaupair.com 联系我们。"
+          },
+          support: {
+            title: "我们的支持",
+            description: "全程为您提供帮助",
+            items: [
+              {
+                title: "24/7 全天候服务",
+                description: "为家庭和互惠生提供全天候支持"
+              },
+              {
+                title: "档案验证",
+                description: "严格的筛选和验证流程"
+              },
+              {
+                title: "文化支持",
+                description: "提供文化适应和融入帮助"
+              },
+              {
+                title: "项目期限",
+                description: "灵活的3-12个月项目期限"
+              }
+            ]
           },
         },
       },
