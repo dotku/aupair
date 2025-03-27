@@ -1,5 +1,13 @@
-import { useTranslation } from 'react-i18next';
-import { Book, Users, Clock, Video, Target, Globe, ChevronRight } from 'lucide-react';
+import { useTranslation } from "react-i18next";
+import {
+  Book,
+  Users,
+  Clock,
+  Video,
+  Target,
+  Globe,
+  ChevronRight,
+} from "lucide-react";
 
 interface Program {
   title: string;
@@ -13,63 +21,66 @@ const defaultPrograms: Program[] = [
     title: "少儿英语",
     ageRange: "4-12岁",
     description: "通过游戏、故事和互动活动培养孩子的英语兴趣",
-    features: ["趣味教学", "互动练习", "主题活动"]
+    features: ["趣味教学", "互动练习", "主题活动"],
   },
   {
     title: "青少年英语",
     ageRange: "13-18岁",
     description: "针对性提高学术英语和日常交际能力",
-    features: ["考试辅导", "口语训练", "写作提升"]
+    features: ["考试辅导", "口语训练", "写作提升"],
   },
   {
     title: "商务英语",
     ageRange: "成人",
     description: "面向职场人士的专业英语培训",
-    features: ["商务写作", "谈判技巧", "演讲培训"]
-  }
+    features: ["商务写作", "谈判技巧", "演讲培训"],
+  },
 ];
 
 const EnglishEducation = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("education");
 
   const features = [
     {
       icon: <Book className="h-6 w-6" />,
-      title: t('education.features.personalizedLearning.title'),
-      description: t('education.features.personalizedLearning.description'),
+      title: t("features.personalizedLearning.title"),
+      description: t("features.personalizedLearning.description"),
     },
     {
       icon: <Users className="h-6 w-6" />,
-      title: t('education.features.nativeSpeakers.title'),
-      description: t('education.features.nativeSpeakers.description'),
+      title: t("features.nativeSpeakers.title"),
+      description: t("features.nativeSpeakers.description"),
     },
     {
       icon: <Clock className="h-6 w-6" />,
-      title: t('education.features.flexibleSchedule.title'),
-      description: t('education.features.flexibleSchedule.description'),
+      title: t("features.flexibleSchedule.title"),
+      description: t("features.flexibleSchedule.description"),
     },
     {
       icon: <Video className="h-6 w-6" />,
-      title: t('education.features.onlineClasses.title'),
-      description: t('education.features.onlineClasses.description'),
+      title: t("features.onlineClasses.title"),
+      description: t("features.onlineClasses.description"),
     },
     {
       icon: <Target className="h-6 w-6" />,
-      title: t('education.features.practicalSkills.title'),
-      description: t('education.features.practicalSkills.description'),
+      title: t("features.practicalSkills.title"),
+      description: t("features.practicalSkills.description"),
     },
     {
       icon: <Globe className="h-6 w-6" />,
-      title: t('education.features.culturalExchange.title'),
-      description: t('education.features.culturalExchange.description'),
+      title: t("features.culturalExchange.title"),
+      description: t("features.culturalExchange.description"),
     },
   ];
 
   // Try to get translated programs, fallback to default if not available
-  const translatedPrograms = t('education.programs.list', { returnObjects: true });
-  const programsList = Array.isArray(translatedPrograms) && translatedPrograms.length > 0
-    ? translatedPrograms as Program[]
-    : defaultPrograms;
+  const translatedPrograms = t("programs.list", {
+    returnObjects: true,
+  });
+  const programsList =
+    Array.isArray(translatedPrograms) && translatedPrograms.length > 0
+      ? (translatedPrograms as Program[])
+      : defaultPrograms;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -77,10 +88,10 @@ const EnglishEducation = () => {
       <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            {t('education.title')}
+            {t("title")}
           </h1>
           <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
-            {t('education.subtitle')}
+            {t("subtitle")}
           </p>
         </div>
       </section>
@@ -90,10 +101,10 @@ const EnglishEducation = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">
-              {t('education.overview.title')}
+              {t("overview.title")}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              {t('education.overview.description')}
+              {t("overview.description")}
             </p>
           </div>
         </div>
@@ -104,10 +115,10 @@ const EnglishEducation = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">
-              {t('education.features.title')}
+              {t("features.title")}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              {t('education.features.description')}
+              {t("features.description")}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -132,21 +143,27 @@ const EnglishEducation = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">
-              {t('education.programs.title')}
+              {t("programs.title")}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
-              {t('education.programs.description')}
+              {t("programs.description")}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {programsList.map((program, index) => (
-              <div key={index} className="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-shadow">
+              <div
+                key={index}
+                className="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-shadow"
+              >
                 <h3 className="text-xl font-semibold mb-2">{program.title}</h3>
                 <p className="text-blue-600 mb-4">{program.ageRange}</p>
                 <p className="text-gray-600 mb-4">{program.description}</p>
                 <ul className="space-y-2">
                   {program.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-gray-600">
+                    <li
+                      key={featureIndex}
+                      className="flex items-center text-gray-600"
+                    >
                       <ChevronRight className="h-4 w-4 text-blue-600 mr-2" />
                       {feature}
                     </li>
@@ -162,16 +179,18 @@ const EnglishEducation = () => {
       <section className="bg-blue-50 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">
-            {t('education.cta.title')}
+            {t("cta.title")}
           </h2>
           <p className="text-xl text-gray-600 mb-8">
-            {t('education.cta.subtitle')}
+            {t("cta.subtitle")}
           </p>
           <button
             className="bg-yellow-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-yellow-600 transition-colors"
-            onClick={() => {/* Add booking logic */}}
+            onClick={() => {
+              /* Add booking logic */
+            }}
           >
-            {t('education.cta.button')}
+            {t("cta.button")}
           </button>
         </div>
       </section>
