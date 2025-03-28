@@ -1,19 +1,20 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { supabase } from '../lib/supabase';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { supabase } from "../lib/supabase";
 
 export default function Register() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState('');
-  const { t } = useTranslation('common');
+  const [message, setMessage] = useState("");
+  const { t } = useTranslation("common");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setMessage('');
+    setMessage("");
 
     try {
       const { data, error } = await supabase.auth.signUp({
@@ -26,12 +27,38 @@ export default function Register() {
       }
 
       if (data.user) {
-        setMessage(t('auth.registerSuccess'));
-        setEmail('');
-        setPassword('');
+        setMessage(t("auth.registerSuccess"));
+        setEmail("");
+        setPassword("");
       }
     } catch (error) {
-      setMessage(error instanceof Error ? error.message : t('auth.registerError'));
+      setMessage(
+        error instanceof Error ? error.message : t("auth.registerError")
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleLogin = async () => {
+    setLoading(true);
+    setMessage("");
+
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      if (data.user) {
+        navigate("/profile");
+      }
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : t("auth.loginError"));
     } finally {
       setLoading(false);
     }
@@ -42,15 +69,15 @@ export default function Register() {
       <div className="max-w-md w-full space-y-8">
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            {t('auth.createAccount')}
+            {t("auth.createAccount")}
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
-            {t('auth.or')}{' '}
+            {t("auth.or")}{" "}
             <Link
               to="/login"
               className="font-medium text-primary hover:text-primary-dark"
             >
-              {t('auth.loginExisting')}
+              {t("auth.loginExisting")}
             </Link>
           </p>
         </div>
@@ -58,7 +85,7 @@ export default function Register() {
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
               <label htmlFor="email" className="sr-only">
-                {t('auth.email')}
+                {t("auth.email")}
               </label>
               <input
                 id="email"
@@ -66,14 +93,14 @@ export default function Register() {
                 type="email"
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm"
-                placeholder={t('auth.emailPlaceholder')}
+                placeholder={t("auth.emailPlaceholder")}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div>
               <label htmlFor="password" className="sr-only">
-                {t('auth.password')}
+                {t("auth.password")}
               </label>
               <input
                 id="password"
@@ -81,7 +108,7 @@ export default function Register() {
                 type="password"
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm"
-                placeholder={t('auth.passwordPlaceholder')}
+                placeholder={t("auth.passwordPlaceholder")}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -92,9 +119,9 @@ export default function Register() {
             <div className="text-sm text-center">
               <p
                 className={`${
-                  message.includes(t('auth.registerSuccess').slice(0, 10))
-                    ? 'text-green-600'
-                    : 'text-red-600'
+                  message.includes(t("auth.registerSuccess").slice(0, 10))
+                    ? "text-green-600"
+                    : "text-red-600"
                 }`}
               >
                 {message}
@@ -108,14 +135,16 @@ export default function Register() {
               disabled={loading}
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50"
             >
-              {loading ? t('auth.registering') : t('auth.register')}
+              {loading ? t("auth.registering") : t("auth.register")}
             </button>
-            <Link
-              to="/login"
-              className="group relative w-full flex justify-center py-2 px-4 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+            <button
+              type="button"
+              onClick={handleLogin}
+              disabled={loading}
+              className="group relative w-full flex justify-center py-2 px-4 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50"
             >
-              {t('auth.login')}
-            </Link>
+              {loading ? t("auth.loggingIn") : t("auth.login")}
+            </button>
           </div>
         </form>
       </div>

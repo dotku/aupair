@@ -13,8 +13,8 @@ export default {
         "Fill in basic information",
         "Upload photos and videos",
         "Describe your experience and expectations",
-        "Set preferences and requirements"
-      ]
+        "Set preferences and requirements",
+      ],
     },
     search: {
       title: "Search Matches",
@@ -23,8 +23,8 @@ export default {
         "Use advanced filters",
         "View detailed profiles",
         "Save interesting candidates",
-        "Compare different options"
-      ]
+        "Compare different options",
+      ],
     },
     connect: {
       title: "Connect & Communicate",
@@ -33,8 +33,8 @@ export default {
         "Send messages",
         "Schedule video calls",
         "Discuss expectations",
-        "Get to know each other"
-      ]
+        "Get to know each other",
+      ],
     },
     match: {
       title: "Confirm Match",
@@ -43,8 +43,8 @@ export default {
         "Reach agreement",
         "Finalize details",
         "Sign contract",
-        "Prepare next steps"
-      ]
+        "Prepare next steps",
+      ],
     },
     begin: {
       title: "Begin Journey",
@@ -53,11 +53,11 @@ export default {
         "Process visa",
         "Arrange travel",
         "Prepare documents",
-        "Start new life"
-      ]
-    }
+        "Start new life",
+      ],
+    },
   },
-  "for-families": {
+  forFamilies: {
     title: "Host Family Guide",
     description: "Learn how to be a great host family",
     benefits: {
@@ -66,17 +66,17 @@ export default {
       item2: "Cultural exchange opportunity",
       item3: "Language learning environment",
       item4: "Build lasting friendships",
-      item5: "Cost-effective solution"
+      item5: "Cost-effective solution",
     },
     responsibilities: {
       title: "Family Responsibilities",
       item1: "Provide comfortable accommodation",
       item2: "Set clear work hours and duties",
       item3: "Offer fair compensation",
-      item4: "Support cultural integration"
-    }
+      item4: "Support cultural integration",
+    },
   },
-  "for-au-pairs": {
+  forAuPairs: {
     title: "Au Pair Guide",
     description: "Learn how to be a great au pair",
     benefits: {
@@ -85,15 +85,15 @@ export default {
       item2: "Cultural exchange experience",
       item3: "Language improvement",
       item4: "Gain work experience",
-      item5: "Explore new country"
+      item5: "Explore new country",
     },
     responsibilities: {
       title: "Au Pair Responsibilities",
       item1: "Childcare and light housework",
       item2: "Follow house rules",
       item3: "Maintain good communication",
-      item4: "Show professional attitude"
-    }
+      item4: "Show professional attitude",
+    },
   },
   support: {
     title: "Full Support",
@@ -101,21 +101,21 @@ export default {
     items: [
       {
         title: "Visa Support",
-        description: "Assistance with necessary visas and documentation"
+        description: "Assistance with necessary visas and documentation",
       },
       {
         title: "Safety Guarantee",
-        description: "Strict background checks and safety measures"
+        description: "Strict background checks and safety measures",
       },
       {
         title: "24/7 Support",
-        description: "Round-the-clock customer service"
+        description: "Round-the-clock customer service",
       },
       {
         title: "Training & Guidance",
-        description: "Provide necessary training and guidance"
-      }
-    ]
+        description: "Provide necessary training and guidance",
+      },
+    ],
   },
   faq: {
     title: "Frequently Asked Questions",
@@ -123,34 +123,40 @@ export default {
     questions: {
       q1: {
         title: "What is an au pair program?",
-        answer: "An au pair program is a cultural exchange program where young people provide childcare services while living with a host family and experiencing a different culture and way of life."
+        answer:
+          "An au pair program is a cultural exchange program where young people provide childcare services while living with a host family and experiencing a different culture and way of life.",
       },
       q2: {
         title: "What are the requirements?",
-        answer: "Typically, you need to be 18-30 years old, have childcare experience, clean criminal record, and basic language skills."
+        answer:
+          "Typically, you need to be 18-30 years old, have childcare experience, clean criminal record, and basic language skills.",
       },
       q3: {
         title: "How much does it cost?",
-        answer: "Costs vary by region and service type. We provide detailed cost breakdowns for your reference."
+        answer:
+          "Costs vary by region and service type. We provide detailed cost breakdowns for your reference.",
       },
       q4: {
         title: "How long to find a match?",
-        answer: "Usually 1-3 months, but timing varies based on individual circumstances."
+        answer:
+          "Usually 1-3 months, but timing varies based on individual circumstances.",
       },
       q5: {
         title: "How do you ensure safety?",
-        answer: "We conduct thorough background checks, provide insurance coverage, and offer 24/7 support services."
+        answer:
+          "We conduct thorough background checks, provide insurance coverage, and offer 24/7 support services.",
       },
       q6: {
         title: "Can I terminate early?",
-        answer: "Yes, if special circumstances arise, we'll help both parties handle the termination properly."
-      }
-    }
+        answer:
+          "Yes, if special circumstances arise, we'll help both parties handle the termination properly.",
+      },
+    },
   },
   cta: {
     title: "Ready to Get Started?",
     description: "Join our community and begin your au pair journey",
-    "button-family": "I'm a Host Family",
-    "button-au-pair": "I'm an Au Pair"
-  }
+    buttonFamily: "I'm a Host Family",
+    buttonAuPair: "I'm an Au Pair",
+  },
 };

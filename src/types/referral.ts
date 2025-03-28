@@ -1,4 +1,4 @@
-export type ReferralTypeString = 'au_pair' | 'host_family' | 'english_student';
+export type ReferralTypeString = "au_pair" | "host_family" | "english_student";
 
 export interface BaseReferral {
   id: string;
@@ -11,20 +11,20 @@ export interface BaseReferral {
   phone: string;
   nationality: string;
   notes?: string;
-  status: 'pending' | 'approved' | 'rejected';
+  status: "pending" | "approved" | "rejected";
   type: ReferralTypeString;
 }
 
 export interface AuPairReferral extends BaseReferral {
-  type: 'au_pair';
+  type: "au_pair";
   age: number;
   experience: string;
-  englishLevel: 'beginner' | 'intermediate' | 'advanced' | 'fluent';
+  englishLevel: "beginner" | "intermediate" | "advanced" | "fluent";
   availability: string;
 }
 
 export interface HostFamilyReferral extends BaseReferral {
-  type: 'host_family';
+  type: "host_family";
   location: string;
   childrenCount: number;
   childrenAges: string;
@@ -35,12 +35,15 @@ export interface HostFamilyReferral extends BaseReferral {
 }
 
 export interface EnglishStudentReferral extends BaseReferral {
-  type: 'english_student';
+  type: "english_student";
   age: number;
-  currentLevel: 'beginner' | 'intermediate' | 'advanced' | 'fluent';
+  currentLevel: "beginner" | "intermediate" | "advanced" | "fluent";
   learningGoals: string;
   preferredSchedule: string;
-  preferredFormat: 'online' | 'in-person' | 'both';
+  preferredFormat: "online" | "in-person" | "both";
 }
 
-export type ReferralType = AuPairReferral | HostFamilyReferral | EnglishStudentReferral;
+export type ReferralType =
+  | AuPairReferral
+  | HostFamilyReferral
+  | EnglishStudentReferral;
