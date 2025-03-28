@@ -35,10 +35,10 @@
       "englishStudent": "英语学习者"
     },
     "yourReferrals": "我的推荐",
-    "assignedReferrals": "分配给我的推荐",
+    "assignedReferrals": "我管理的推荐",
     "add": "添加推荐",
     "noReferrals": "暂无推荐",
-    "noAssignedReferrals": "暂无分配的推荐",
+    "noAssignedReferrals": "暂无管理的推荐",
     "newReferral": "新推荐",
     "type": "类型",
     "name": "姓名",

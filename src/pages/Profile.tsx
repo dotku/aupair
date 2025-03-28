@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { supabase } from "../lib/supabase";
@@ -40,9 +40,14 @@ export default function Profile() {
     address: "",
   });
   const [profileStatus, setProfileStatus] = useState<string>("");
-  const [profileStatusType, setProfileStatusType] = useState<"success" | "error">("success");
+  const [profileStatusType, setProfileStatusType] = useState<
+    "success" | "error"
+  >("success");
   const { t } = useTranslation("common");
   const navigate = useNavigate();
+
+  // Create a ref to hold debounce timers for each field
+  const debounceTimers = useRef<{[key: string]: NodeJS.Timeout}>({});
 
   // Define loadProfileData with useCallback to prevent recreation on every render
   const loadProfileData = useCallback(async (userId: string) => {
@@ -64,7 +69,7 @@ export default function Profile() {
         // Initialize from user metadata if profile doesn't exist
         const userData = await supabase.auth.getUser();
         const userMetadata = userData?.data?.user?.user_metadata || {};
-        
+
         setProfileData({
           full_name: userMetadata.name || "",
           phone_number: userMetadata.phone || "",
@@ -129,7 +134,7 @@ export default function Profile() {
 
   useEffect(() => {
     let isMounted = true; // Track if component is mounted
-    
+
     const checkUser = async () => {
       try {
         const {
@@ -139,17 +144,17 @@ export default function Profile() {
           navigate("/login");
           return;
         }
-        
+
         // Only update state if component is still mounted
         if (isMounted) {
           setUser(user);
-          
+
           // First ensure a profile exists for this user
           await ensureProfileExists(user.id);
-          
+
           // Then fetch the profile data
           await loadProfileData(user.id);
-          
+
           await loadReferrals(user.id);
 
           // Check if coming back from email change confirmation
@@ -174,12 +179,19 @@ export default function Profile() {
     };
 
     checkUser();
-    
+
     // Cleanup function to prevent state updates after unmount
     return () => {
       isMounted = false;
     };
-  }, [navigate, searchParams, t, loadProfileData, ensureProfileExists, loadReferrals]);
+  }, [
+    navigate,
+    searchParams,
+    t,
+    loadProfileData,
+    ensureProfileExists,
+    loadReferrals,
+  ]);
 
   const handleSignOut = async () => {
     try {
@@ -231,47 +243,72 @@ export default function Profile() {
 
   const handleProfileUpdate = async (field: string, value: string) => {
     if (!user) return;
-    
+
     try {
-      setSubmitting(true);
-      setProfileStatus("Updating profile...");
+      // Update UI immediately for responsiveness
+      setProfileData(prevData => ({
+        ...prevData,
+        [field]: value
+      }));
+      
+      // Show a subtle status indicator
+      setProfileStatus("Typing...");
       setProfileStatusType("success");
       
-      // Update the corresponding field in profileData directly without mapping
-      const updatedProfileData = { ...profileData };
-      
-      // Directly assign value to the field in profileData
-      updatedProfileData[field as keyof typeof updatedProfileData] = value;
-      
-      setProfileData(updatedProfileData);
-      
-      // Save to Profile table using ProfileService
-      console.log("Updating profile with data:", updatedProfileData);
-      const result = await ProfileService.upsertProfile(user.id, updatedProfileData);
-      
-      if (result.success) {
-        setProfileStatus("Profile updated successfully!");
-        setProfileStatusType("success");
-        
-        // Reload profile data to confirm changes
-        await loadProfileData(user.id);
-      } else {
-        setProfileStatus("Failed to update profile. Please try again.");
-        setProfileStatusType("error");
-        console.error("Profile update error:", result.error);
+      // Clear any existing timeout for this specific field
+      if (debounceTimers.current[field]) {
+        console.log(`Clearing previous debounce timer for ${field}`);
+        clearTimeout(debounceTimers.current[field]);
       }
       
-    } catch (error) {
-      console.error(`Error updating ${field}:`, error);
-      setProfileStatus("An error occurred while updating your profile.");
-      setProfileStatusType("error");
-    } finally {
-      setSubmitting(false);
+      // Set debounce delay - longer for phone_number to make it obvious
+      const delay = field === 'phone_number' ? 3000 : 800;
+      console.log(`Setting debounce delay of ${delay}ms for ${field}`);
       
-      // Clear status message after 3 seconds
-      setTimeout(() => {
-        setProfileStatus("");
-      }, 3000);
+      // Set new debounce timer
+      debounceTimers.current[field] = setTimeout(async () => {
+        try {
+          console.log(`Debounce complete for ${field} - sending API update`);
+          setSubmitting(true);
+          setProfileStatus("Updating profile...");
+          
+          // Get the current profile data for the update
+          const updatedProfileData = { ...profileData, [field]: value };
+          
+          // Call the API after debounce period
+          const result = await ProfileService.upsertProfile(user.id, updatedProfileData);
+          
+          if (result.success) {
+            console.log("Profile update successful");
+            setProfileStatus("Profile updated successfully!");
+            setProfileStatusType("success");
+            
+            // Refresh data to confirm changes
+            await loadProfileData(user.id);
+          } else {
+            console.error("Profile update error:", result.error);
+            setProfileStatus("Failed to update profile. Please try again.");
+            setProfileStatusType("error");
+          }
+        } catch (error) {
+          console.error(`Error updating ${field}:`, error);
+          setProfileStatus("An error occurred while updating your profile.");
+          setProfileStatusType("error");
+        } finally {
+          // Clear the timer reference after it's done
+          delete debounceTimers.current[field];
+          setSubmitting(false);
+          
+          // Clear status after a delay
+          setTimeout(() => {
+            setProfileStatus("");
+          }, 3000);
+        }
+      }, delay);
+    } catch (error) {
+      console.error(`Error in handleProfileUpdate for ${field}:`, error);
+      setProfileStatus("An unexpected error occurred.");
+      setProfileStatusType("error");
     }
   };
 
@@ -379,7 +416,7 @@ export default function Profile() {
               <h3 className="text-lg font-medium text-gray-900 mb-2">
                 {t("profile.basicInfo")}
               </h3>
-              
+
               {/* Profile status message */}
               {profileStatus && (
                 <div
@@ -392,12 +429,14 @@ export default function Profile() {
                   {profileStatus}
                 </div>
               )}
-              
+
               <div className="space-y-4">
                 <FormField
                   label={t("profile.name")}
                   type="text"
-                  value={profileData.full_name || user?.user_metadata?.name || ""}
+                  value={
+                    profileData.full_name || user?.user_metadata?.name || ""
+                  }
                   onChange={(e) => {
                     handleProfileUpdate("full_name", e.target.value);
                   }}
@@ -407,7 +446,9 @@ export default function Profile() {
                 <FormField
                   label={t("profile.phone")}
                   type="tel"
-                  value={profileData.phone_number || user?.user_metadata?.phone || ""}
+                  value={
+                    profileData.phone_number || user?.user_metadata?.phone || ""
+                  }
                   onChange={(e) => {
                     handleProfileUpdate("phone_number", e.target.value);
                   }}
@@ -417,7 +458,9 @@ export default function Profile() {
                 <FormField
                   label={t("profile.address")}
                   type="text"
-                  value={profileData.address || user?.user_metadata?.address || ""}
+                  value={
+                    profileData.address || user?.user_metadata?.address || ""
+                  }
                   onChange={(e) => {
                     handleProfileUpdate("address", e.target.value);
                   }}
