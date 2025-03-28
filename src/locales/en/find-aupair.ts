@@ -32,6 +32,7 @@ export default {
     messageButton: "Send Message",
     saveButton: "Save Profile",
     viewProfile: "View Full Profile",
+<<<<<<< HEAD
     noResults: "No au pairs found matching your criteria",
     countries: {
       Spain: "Spain",
@@ -84,5 +85,23 @@ export default {
         details: "Au Pair from Philippines",
       },
     ],
+=======
+    contact: "Contact Au Pair",
+  },
+  noResults: {
+    title: "No Au Pairs Found",
+    message: "Try adjusting your filters or search criteria",
+    suggestion:
+      "You can also contact us for personalized assistance in finding the right au pair",
+  },
+  featured: {
+    title: "Featured Au Pairs",
+    subtitle: "Our top-rated and most experienced au pairs",
+  },
+  cta: {
+    title: "Can't Find What You're Looking For?",
+    message: "Let us help you find the perfect au pair for your family",
+    button: "Contact Us",
+>>>>>>> parent of 0f49ebb (success feed the mock data)
   },
 };

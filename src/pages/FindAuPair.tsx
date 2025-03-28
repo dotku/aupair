@@ -10,6 +10,7 @@ import {
 import { useTranslation } from "react-i18next";
 import Testimonials from "../components/Testimonials";
 
+<<<<<<< HEAD
 interface AuPair {
   id: number;
   name: string;
@@ -24,6 +25,8 @@ interface AuPair {
   image: string;
 }
 
+=======
+>>>>>>> parent of 0f49ebb (success feed the mock data)
 const FindAuPair = () => {
   const { t } = useTranslation("findAuPair");
 
@@ -252,7 +255,117 @@ const FindAuPair = () => {
       </section>
 
       {/* Testimonials */}
+<<<<<<< HEAD
       <Testimonials />
+=======
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900">
+              {t("testimonials.title")}
+            </h2>
+            <p className="mt-4 text-xl text-gray-600">
+              {t("testimonials.subtitle")}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="flex items-center mb-4">
+                <div className="flex text-yellow-400">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 fill-current" />
+                  ))}
+                </div>
+              </div>
+              <p className="text-gray-600 italic mb-4">
+                {t("testimonials.quote1")}
+              </p>
+              <div className="flex items-center">
+                <img
+                  className="h-10 w-10 rounded-full object-cover mr-4"
+                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=144&h=144&q=80"
+                  alt="Jennifer Wilson"
+                />
+                <div>
+                  <h4 className="text-sm font-semibold">Jennifer Wilson</h4>
+                  <p className="text-xs text-gray-500">
+                    {t("testimonials.hostFamily1")}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="flex items-center mb-4">
+                <div className="flex text-yellow-400">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 fill-current" />
+                  ))}
+                </div>
+              </div>
+              <p className="text-gray-600 italic mb-4">
+                {t("testimonials.quote2")}
+              </p>
+              <div className="flex items-center">
+                <img
+                  className="h-10 w-10 rounded-full object-cover mr-4"
+                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=144&h=144&q=80"
+                  alt="Michael Brown"
+                />
+                <div>
+                  <h4 className="text-sm font-semibold">Michael Brown</h4>
+                  <p className="text-xs text-gray-500">
+                    {t("testimonials.hostFamily2")}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="flex items-center mb-4">
+                <div className="flex text-yellow-400">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 fill-current" />
+                  ))}
+                </div>
+              </div>
+              <p className="text-gray-600 italic mb-4">
+                {t("testimonials.quote3")}
+              </p>
+              <div className="flex items-center">
+                <img
+                  className="h-10 w-10 rounded-full object-cover mr-4"
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=144&h=144&q=80"
+                  alt="Sarah Johnson"
+                />
+                <div>
+                  <h4 className="text-sm font-semibold">Sarah Johnson</h4>
+                  <p className="text-xs text-gray-500">
+                    {t("testimonials.hostFamily3")}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-blue-600 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold mb-6">
+            {t("cta.title")}
+          </h2>
+          <p className="text-xl mb-8 max-w-3xl mx-auto">
+            {t("cta.subtitle")}
+          </p>
+          <button className="px-8 py-3 bg-white text-blue-600 font-bold rounded-md hover:bg-gray-100 transition">
+            {t("cta.createProfile")}
+          </button>
+        </div>
+      </section>
+>>>>>>> parent of 0f49ebb (success feed the mock data)
     </div>
   );
 };

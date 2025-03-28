@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { Menu, X } from "lucide-react";
+>>>>>>> parent of 0f49ebb (success feed the mock data)
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -6,6 +12,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+<<<<<<< HEAD
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const { t } = useTranslation("common");
 
@@ -14,6 +21,8 @@ const Navbar = () => {
     { name: t("nav.findAuPair"), href: "/find-aupair" },
     { name: t("nav.findFamily"), href: "/find-family" },
   ];
+=======
+>>>>>>> parent of 0f49ebb (success feed the mock data)
 
   return (
     <nav className="bg-white shadow-lg">
@@ -94,7 +103,38 @@ const Navbar = () => {
             </div>
           </div>
 
+<<<<<<< HEAD
           <div className="-mr-2 flex items-center sm:hidden">
+=======
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-8">
+            <Link to="/" className="text-gray-700 hover:text-primary">
+              {t('nav.home')}
+            </Link>
+            <Link to="/about" className="text-gray-700 hover:text-primary">
+              {t('nav.about')}
+            </Link>
+            <Link to="/how-it-works" className="text-gray-700 hover:text-primary">
+              {t('nav.howItWorks')}
+            </Link>
+            <Link to="/find-aupair" className="text-gray-700 hover:text-primary">
+              {t('nav.findAuPair')}
+            </Link>
+            <Link to="/find-family" className="text-gray-700 hover:text-primary">
+              {t('nav.findFamily')}
+            </Link>
+            <Link to="/english-education" className="text-gray-700 hover:text-primary">
+              {t('nav.englishEducation')}
+            </Link>
+            <Link to="/contact" className="text-gray-700 hover:text-primary">
+              {t('nav.contact')}
+            </Link>
+            <LanguageSwitcher />
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden flex items-center">
+>>>>>>> parent of 0f49ebb (success feed the mock data)
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
@@ -139,14 +179,20 @@ const Navbar = () => {
               </div>
             )}
             <Link
+<<<<<<< HEAD
               to="/english-education"
               className="block pl-3 pr-4 py-2 text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50"
+=======
+              to="/"
+              className="block px-3 py-2 text-gray-700 hover:text-primary"
+>>>>>>> parent of 0f49ebb (success feed the mock data)
               onClick={() => setIsOpen(false)}
             >
               {t("nav.englishEducation")}
             </Link>
             <Link
               to="/about"
+<<<<<<< HEAD
               className="block pl-3 pr-4 py-2 text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50"
               onClick={() => setIsOpen(false)}
             >
@@ -155,6 +201,44 @@ const Navbar = () => {
             <Link
               to="/contact"
               className="block pl-3 pr-4 py-2 text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50"
+=======
+              className="block px-3 py-2 text-gray-700 hover:text-primary"
+              onClick={() => setIsOpen(false)}
+            >
+              {t('nav.about')}
+            </Link>
+            <Link
+              to="/how-it-works"
+              className="block px-3 py-2 text-gray-700 hover:text-primary"
+              onClick={() => setIsOpen(false)}
+            >
+              {t('nav.howItWorks')}
+            </Link>
+            <Link
+              to="/find-aupair"
+              className="block px-3 py-2 text-gray-700 hover:text-primary"
+              onClick={() => setIsOpen(false)}
+            >
+              {t('nav.findAuPair')}
+            </Link>
+            <Link
+              to="/find-family"
+              className="block px-3 py-2 text-gray-700 hover:text-primary"
+              onClick={() => setIsOpen(false)}
+            >
+              {t('nav.findFamily')}
+            </Link>
+            <Link
+              to="/english-education"
+              className="block px-3 py-2 text-gray-700 hover:text-primary"
+              onClick={() => setIsOpen(false)}
+            >
+              {t('nav.englishEducation')}
+            </Link>
+            <Link
+              to="/contact"
+              className="block px-3 py-2 text-gray-700 hover:text-primary"
+>>>>>>> parent of 0f49ebb (success feed the mock data)
               onClick={() => setIsOpen(false)}
             >
               {t("nav.contact")}

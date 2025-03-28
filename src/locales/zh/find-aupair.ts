@@ -14,6 +14,7 @@ export default {
   listings: {
     loadMore: "加载更多",
   },
+<<<<<<< HEAD
   testimonials: {
     title: "成功案例",
     subtitle: "听听我们的互惠生和寄宿家庭的故事",
@@ -40,5 +41,11 @@ export default {
         details: "来自菲律宾的互惠生",
       },
     ],
+=======
+  cta: {
+    title: "没有找到合适的人选？",
+    message: "让我们帮您找到最适合您家庭的互惠生",
+    button: "联系我们",
+>>>>>>> parent of 0f49ebb (success feed the mock data)
   },
 };

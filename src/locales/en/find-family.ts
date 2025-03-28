@@ -8,8 +8,12 @@ export default {
     startDate: "Start Date",
     languages: "Required Languages",
     apply: "Apply Filters",
+<<<<<<< HEAD
     reset: "Reset",
     allLocations: "All Locations",
+=======
+    reset: "Reset"
+>>>>>>> parent of 0f49ebb (success feed the mock data)
   },
   search: {
     placeholder: "Search by location or requirements",
@@ -23,6 +27,7 @@ export default {
       startDate: "Start Date",
     },
   },
+<<<<<<< HEAD
   listings: {
     title: "Host Families",
     languages: "Languages",
@@ -35,6 +40,8 @@ export default {
       shenzhen: "Shenzhen",
     },
   },
+=======
+>>>>>>> parent of 0f49ebb (success feed the mock data)
   family: {
     location: "Location",
     children: "Children",
@@ -45,21 +52,26 @@ export default {
     viewDetails: "View Details",
     apply: "Apply Now",
   },
-  testimonials: {
-    title: "Testimonials",
-    subtitle: "Hear from our au pairs",
+  successStories: {
+    title: "Success Stories",
     stories: [
       {
         name: "Sarah's Experience",
         location: "Beijing, China",
+<<<<<<< HEAD
         quote:
           "My time with the Zhang family has been unforgettable. They welcomed me like their own daughter.",
         details:
           "Teaching English while learning Mandarin and Chinese culture.",
+=======
+        quote: "My time with the Zhang family has been incredible. They welcomed me like their own daughter.",
+        details: "Teaching English to their two children while learning Mandarin and Chinese culture."
+>>>>>>> parent of 0f49ebb (success feed the mock data)
       },
       {
-        name: "Thomas's Story",
+        name: "Emma's Journey",
         location: "Shanghai, China",
+<<<<<<< HEAD
         quote:
           "My host family in China has been incredibly supportive of my goals. They've helped me improve my Mandarin and even encouraged me to take university courses.",
         details: "Teaching English and Korean while learning Chinese.",
@@ -73,6 +85,18 @@ export default {
           "Teaching English and music, passionate about Chinese culture.",
       },
     ],
+=======
+        quote: "The cultural exchange experience has been beyond my expectations.",
+        details: "Helping with homework and organizing educational activities while exploring Chinese traditions."
+      },
+      {
+        name: "Michael's Adventure",
+        location: "Shenzhen, China",
+        quote: "Living with a Chinese family has given me unique insights into the culture.",
+        details: "Teaching English through games and activities while experiencing daily life in China."
+      }
+    ]
+>>>>>>> parent of 0f49ebb (success feed the mock data)
   },
   benefits: {
     title: "Benefits of Being an Au Pair in China",
@@ -97,11 +121,14 @@ export default {
       },
     ],
   },
+<<<<<<< HEAD
   ready: {
     title: "Ready to Start Your Au Pair Adventure?",
     subtitle: "Let's begin this memorable cultural exchange journey together",
     button: "Apply Now",
   },
+=======
+>>>>>>> parent of 0f49ebb (success feed the mock data)
   cta: {
     title: "Ready to Start Your Journey?",
     message: "We'll help you find the perfect host family in China",
