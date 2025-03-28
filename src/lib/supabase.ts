@@ -1,18 +1,11 @@
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabaseUrl =
+  import.meta.env.VITE_SUPABASE_URL || "http://localhost:3000";
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || "mock-key";
 
-if (
-  !supabaseUrl ||
-  !supabaseAnonKey ||
-  supabaseUrl === "http://localhost:3000" ||
-  supabaseAnonKey === "mock-key"
-) {
-  console.error("Invalid or missing Supabase configuration");
-  throw new Error(
-    "Please check your .env.local file for proper Supabase configuration"
-  );
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error("Missing Supabase environment variables");
 }
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {

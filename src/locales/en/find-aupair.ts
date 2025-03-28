@@ -6,8 +6,8 @@ export default {
     filters: {
       nationality: "Nationality",
       languages: "Languages",
-      experience: "Experience",
-    },
+      experience: "Experience"
+    }
   },
   filters: {
     title: "Filters",
@@ -17,7 +17,7 @@ export default {
     search: "Search",
     searchPlaceholder: "Search by name or location...",
     apply: "Apply Filters",
-    clear: "Clear All",
+    clear: "Clear All"
   },
   listings: {
     loadMore: "Load More",
@@ -28,20 +28,33 @@ export default {
     age: "Age",
     yearsOld: "years old",
     yearsExperience: "years experience",
+    contact: "Contact Au Pair",
     contactButton: "Contact Au Pair",
     messageButton: "Send Message",
     saveButton: "Save Profile",
     viewProfile: "View Full Profile",
 <<<<<<< HEAD
     noResults: "No au pairs found matching your criteria",
+    starting: "Starting",
+    perMonth: "per month",
+    availability: "Availability",
+    availableFrom: "Available from",
+    duration: "Duration",
+    skills: "Skills",
+    about: "About",
     countries: {
       Spain: "Spain",
       China: "China",
       Germany: "Germany",
       Brazil: "Brazil",
       Japan: "Japan",
-      Australia: "Australia",
+      Australia: "Australia"
     },
+    durations: {
+      shortTerm: "Short Term (1-3 months)",
+      mediumTerm: "Medium Term (3-6 months)",
+      longTerm: "Long Term (6+ months)"
+    }
   },
   cta: {
     title: "Ready to Start Your Au Pair Journey?",
@@ -55,9 +68,9 @@ export default {
         "Verified profiles and background checks",
         "Personalized matching system",
         "24/7 support during your stay",
-        "Cultural exchange opportunities",
-      ],
-    },
+        "Cultural exchange opportunities"
+      ]
+    }
   },
   testimonials: {
     title: "Success Stories",
@@ -66,20 +79,19 @@ export default {
       {
         name: "Sarah Chen",
         location: "Shanghai",
-        quote:
-          "Being an au pair has been an incredible journey of growth and cultural exchange. I've learned so much about myself and made lifelong connections.",
-        details: "Au Pair from China",
+        quote: "Being an au pair has been an incredible journey of growth and cultural exchange. I've learned so much about myself and made lifelong connections.",
+        details: "Au Pair from China"
       },
       {
         name: "The Wilson Family",
         location: "California",
-        quote:
-          "Our au pair has become part of our family. She's not just helping with childcare, she's bringing a whole new cultural perspective to our home.",
-        details: "Host Family in USA",
+        quote: "Our au pair has become part of our family. She's not just helping with childcare, she's bringing a whole new cultural perspective to our home.",
+        details: "Host Family in USA"
       },
       {
         name: "Maria Santos",
         location: "Beijing",
+<<<<<<< HEAD
         quote:
           "The support from Hope International made my transition so smooth. They were there every step of the way.",
         details: "Au Pair from Philippines",
@@ -104,4 +116,11 @@ export default {
     button: "Contact Us",
 >>>>>>> parent of 0f49ebb (success feed the mock data)
   },
+=======
+        quote: "The support from Hope International made my transition so smooth. They were there every step of the way.",
+        details: "Au Pair from Philippines"
+      }
+    ]
+  }
+>>>>>>> parent of b1849b9 (user able to update profile)
 };

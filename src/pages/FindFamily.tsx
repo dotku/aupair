@@ -37,7 +37,7 @@ interface Family {
 }
 
 const FindFamily = () => {
-  const { t } = useTranslation("findFamily");
+  const { t } = useTranslation("find-family");
 
   // Sample family data
   const families: Family[] = [
@@ -289,9 +289,13 @@ const FindFamily = () => {
           </div>
         </div>
       </section>
+<<<<<<< HEAD
 
       {/* Testimonials */}
       <Testimonials />
+=======
+      <Testimonials namespace="find-family" />
+>>>>>>> parent of b1849b9 (user able to update profile)
       {/* CTA Section */}
       <section className="py-16 bg-blue-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

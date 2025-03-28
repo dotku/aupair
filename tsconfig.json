@@ -6,7 +6,8 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
@@ -15,11 +16,9 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "esModuleInterop": true,
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    "esModuleInterop": true
   },
+<<<<<<< HEAD
   "include": ["src/**/*"],
   "references": [{ "path": "./tsconfig.node.json" }]
 =======
@@ -30,4 +29,8 @@
     { "path": "./tsconfig.node.json" }
   ]
 >>>>>>> parent of 0f49ebb (success feed the mock data)
+=======
+  "include": [ "src/**/*"],
+  "references": [{ "path": "./tsconfig.node.json" }],
+>>>>>>> parent of b1849b9 (user able to update profile)
 }

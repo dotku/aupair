@@ -1,11 +1,13 @@
+<<<<<<< HEAD
 import { useEffect, useState, useCallback, useRef } from "react";
+=======
+import { useEffect, useState } from "react";
+>>>>>>> parent of b1849b9 (user able to update profile)
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { supabase } from "../lib/supabase";
 import type { User } from "@supabase/supabase-js";
 import type { ReferralType } from "../types/referral";
-import { ProfileService } from "../services/ProfileService";
-import { ProfileFormData, type Profile } from "../types/profile";
 import ReferralForm from "../components/ReferralForm";
 import ReferralCard from "../components/ReferralCard";
 import { FormField } from "../components/ui/FormField";
@@ -20,8 +22,6 @@ export default function Profile() {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [showReferralForm, setShowReferralForm] = useState(false);
-  const [referralFormType, setReferralFormType] =
-    useState<ReferralType["type"]>("au_pair");
   const [referrals, setReferrals] = useState<Referrals>({
     referred: [],
     assigned: [],
@@ -34,6 +34,7 @@ export default function Profile() {
   const [messageType, setMessageType] = useState<"success" | "error">(
     "success"
   );
+<<<<<<< HEAD
   const [profileData, setProfileData] = useState<ProfileFormData>({
     full_name: "",
     phone_number: "",
@@ -81,26 +82,44 @@ export default function Profile() {
       // Don't update state if there's an error to prevent infinite loops
     }
   }, []); // Remove the user dependency to prevent loops
+=======
+  const { t } = useTranslation("common");
+  const navigate = useNavigate();
 
-  // Define ensureProfileExists with useCallback
-  const ensureProfileExists = useCallback(async (userId: string) => {
-    try {
-      console.log("Ensuring profile exists for user:", userId);
-      const result = await ProfileService.createEmptyProfile(userId);
-      if (result.success) {
-        console.log("Profile exists or was created successfully");
-      } else {
-        console.error("Failed to create profile:", result.error);
-        setProfileStatus("Failed to create profile. Please try again later.");
-        setProfileStatusType("error");
+  useEffect(() => {
+    const checkUser = async () => {
+      try {
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
+        if (!user) {
+          navigate("/login");
+          return;
+        }
+        setUser(user);
+        await loadReferrals(user.id);
+>>>>>>> parent of b1849b9 (user able to update profile)
+
+        // Check if coming back from email change confirmation
+        const emailChanged = searchParams.get("emailChanged");
+        if (emailChanged === "true") {
+          setEmailMessage(t("profile.emailConfirmationRequired"));
+          setMessageType("success");
+          // Remove the query parameter
+          navigate("/profile", { replace: true });
+        }
+      } catch (error) {
+        console.error("Error checking user:", error);
+        navigate("/login");
+      } finally {
+        setLoading(false);
       }
-    } catch (error) {
-      console.error("Error ensuring profile exists:", error);
-      // Don't retry on error
-    }
-  }, []);
+    };
 
-  const loadReferrals = useCallback(async (userId: string) => {
+    checkUser();
+  }, [navigate, searchParams, t]);
+
+  const loadReferrals = async (userId: string) => {
     try {
       const { data: referralData, error } = await supabase
         .from("Referral")
@@ -109,8 +128,7 @@ export default function Profile() {
           *,
           AuPairDetails (*),
           HostFamilyDetails (*),
-          EnglishStudentDetails (*),
-          referredBy:users!Referral_referredBy_fkey(id, email, user_metadata)
+          EnglishStudentDetails (*)
         `
         )
         .or(`referredBy.eq.${userId},accountManager.eq.${userId}`)
@@ -130,6 +148,7 @@ export default function Profile() {
     } catch (error) {
       console.error("Error loading referrals:", error);
     }
+<<<<<<< HEAD
   }, []);
 
   useEffect(() => {
@@ -192,6 +211,9 @@ export default function Profile() {
     ensureProfileExists,
     loadReferrals,
   ]);
+=======
+  };
+>>>>>>> parent of b1849b9 (user able to update profile)
 
   const handleSignOut = async () => {
     try {
@@ -241,6 +263,7 @@ export default function Profile() {
     }
   };
 
+<<<<<<< HEAD
   const handleProfileUpdate = async (field: string, value: string) => {
     if (!user) return;
 
@@ -312,6 +335,8 @@ export default function Profile() {
     }
   };
 
+=======
+>>>>>>> parent of b1849b9 (user able to update profile)
   const handleUpdateEmail = async () => {
     if (!newEmail) {
       setEmailError(t("error.required"));
@@ -352,48 +377,7 @@ export default function Profile() {
     }
   };
 
-  if (loading) {
-    return (
-      <div className="min-h-[80vh] py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto space-y-8">
-          <div className="bg-white shadow rounded-lg p-6">
-            <div className="flex items-center justify-between mb-8">
-              <div className="h-8 w-48 bg-gray-200 rounded animate-pulse"></div>
-              <div className="h-10 w-24 bg-gray-200 rounded animate-pulse"></div>
-            </div>
-            <div className="space-y-6">
-              <div>
-                <div className="h-6 w-32 bg-gray-200 rounded animate-pulse mb-4"></div>
-                <div className="h-10 w-full bg-gray-200 rounded animate-pulse"></div>
-              </div>
-              <div>
-                <div className="h-6 w-40 bg-gray-200 rounded animate-pulse mb-4"></div>
-                <div className="h-6 w-24 bg-gray-200 rounded animate-pulse"></div>
-              </div>
-              <div className="border-t pt-6">
-                <div className="h-6 w-32 bg-gray-200 rounded animate-pulse mb-4"></div>
-                <div className="h-10 w-full bg-gray-200 rounded animate-pulse"></div>
-              </div>
-            </div>
-          </div>
-          <div className="bg-white shadow rounded-lg p-6">
-            <div className="space-y-8">
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="h-6 w-40 bg-gray-200 rounded animate-pulse"></div>
-                  <div className="h-10 w-24 bg-gray-200 rounded animate-pulse"></div>
-                </div>
-                <div className="space-y-4">
-                  <div className="h-24 w-full bg-gray-200 rounded animate-pulse"></div>
-                  <div className="h-24 w-full bg-gray-200 rounded animate-pulse"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  if (loading) return <div>Loading...</div>;
 
   return (
     <div className="min-h-[80vh] py-12 px-4 sm:px-6 lg:px-8">
@@ -414,6 +398,7 @@ export default function Profile() {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-medium text-gray-900 mb-2">
+<<<<<<< HEAD
                 {t("profile.basicInfo")}
               </h3>
 
@@ -471,6 +456,8 @@ export default function Profile() {
             </div>
             <div>
               <h3 className="text-lg font-medium text-gray-900 mb-2">
+=======
+>>>>>>> parent of b1849b9 (user able to update profile)
                 {t("profile.emailTitle")}
               </h3>
               {emailMessage && (
@@ -555,46 +542,16 @@ export default function Profile() {
               </div>
             </div>
 
-            <div>
-              <h3 className="text-lg font-medium text-gray-900 mb-2">
-                {t("profile.applyAsRole")}
+            <div className="border-t pt-6">
+              <h3 className="text-lg font-medium text-gray-900 mb-4">
+                {t("profile.actions")}
               </h3>
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+              <div className="grid grid-cols-1 gap-4">
                 <button
-                  onClick={() => {
-                    setShowReferralForm(true);
-                    setReferralFormType("au_pair");
-                  }}
-                  className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
+                  onClick={() => navigate("/profile/edit")}
+                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
                 >
-                  <span className="text-lg mb-2">👩‍👧</span>
-                  <span className="text-sm font-medium">
-                    {t("referral.types.auPair")}
-                  </span>
-                </button>
-                <button
-                  onClick={() => {
-                    setShowReferralForm(true);
-                    setReferralFormType("host_family");
-                  }}
-                  className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
-                >
-                  <span className="text-lg mb-2">🏠</span>
-                  <span className="text-sm font-medium">
-                    {t("referral.types.hostFamily")}
-                  </span>
-                </button>
-                <button
-                  onClick={() => {
-                    setShowReferralForm(true);
-                    setReferralFormType("english_student");
-                  }}
-                  className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50"
-                >
-                  <span className="text-lg mb-2">📚</span>
-                  <span className="text-sm font-medium">
-                    {t("referral.types.englishStudent")}
-                  </span>
+                  {t("profile.editProfile")}
                 </button>
               </div>
             </div>
@@ -663,7 +620,6 @@ export default function Profile() {
               onSubmit={handleSubmit}
               onClose={() => setShowReferralForm(false)}
               submitting={submitting}
-              initialType={referralFormType}
             />
           )}
         </div>

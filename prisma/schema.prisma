@@ -18,7 +18,6 @@ model Referral {
   type        String    // 'au_pair', 'host_family', 'english_student'
   status      String    @default("pending") // 'pending', 'approved', 'rejected'
   referredBy  String    @db.Uuid
-  accountManager String? @db.Uuid
   name        String
   email       String
   phone       String

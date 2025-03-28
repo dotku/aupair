@@ -18,20 +18,21 @@
     "@prisma/client": "6.5.0",
     "@supabase/auth-helpers-react": "^0.5.0",
     "@supabase/supabase-js": "^2.49.3",
+<<<<<<< HEAD
     "@types/pg": "^8.11.11",
 =======
     "preview": "vite preview"
   },
   "dependencies": {
 >>>>>>> parent of 0f49ebb (success feed the mock data)
+=======
+>>>>>>> parent of b1849b9 (user able to update profile)
     "i18next": "^24.2.3",
     "i18next-browser-languagedetector": "^7.2.0",
     "lucide-react": "^0.344.0",
     "openai": "^4.89.1",
-    "pg": "^8.14.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-hook-form": "^7.54.2",
     "react-i18next": "^14.1.0",
     "react-icons": "^5.5.0",
     "react-router-dom": "^6.22.3"

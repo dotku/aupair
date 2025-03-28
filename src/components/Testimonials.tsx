@@ -1,19 +1,36 @@
 import { Star } from "lucide-react";
 
+<<<<<<< HEAD
 export default function Testimonials() {
 <<<<<<< HEAD
   const { t } = useTranslation("findFamily");
   const stories = t("testimonials.stories", { returnObjects: true }) as Story[];
+=======
+interface TestimonialsProps {
+  namespace?: string;
+}
+
+export default function Testimonials({ namespace = "findFamily" }: TestimonialsProps) {
+  const { t } = useTranslation(namespace);
+  const stories = t("testimonials.stories", { returnObjects: true }) as Story[] || [];
+>>>>>>> parent of b1849b9 (user able to update profile)
 
   // Fixed avatar URLs
   const avatarUrls = [
     "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&q=80",
     "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&q=80",
-    "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&q=80",
+    "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&q=80"
   ];
 
+<<<<<<< HEAD
 =======
 >>>>>>> parent of 0f49ebb (success feed the mock data)
+=======
+  if (!Array.isArray(stories) || stories.length === 0) {
+    return null;
+  }
+
+>>>>>>> parent of b1849b9 (user able to update profile)
   return (
     <section className="py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -29,24 +46,23 @@ export default function Testimonials() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 <<<<<<< HEAD
           {stories.map((story: Story, index: number) => (
-            <div
-              key={index}
-              className="bg-white p-6 rounded-lg shadow-md flex flex-col"
-            >
+            <div key={index} className="bg-white p-6 rounded-lg shadow-md flex flex-col">
               <div className="flex items-center mb-4">
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-5 w-5"
-                      fill="#facc15"
+                    <Star 
+                      key={i} 
+                      className="h-5 w-5" 
+                      fill="#facc15"  
                       stroke="#facc15"
                     />
                   ))}
                 </div>
               </div>
               <div className="flex-grow">
-                <p className="text-gray-600 italic mb-4">{story.quote}</p>
+                <p className="text-gray-600 italic mb-4">
+                  {story.quote}
+                </p>
               </div>
               <div className="flex items-end">
                 <img
