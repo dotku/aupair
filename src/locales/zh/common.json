@@ -1,0 +1,74 @@
+{
+  "auth": {
+    "loginTitle": "登录",
+    "login": "登录",
+    "loggingIn": "登录中...",
+    "register": "注册",
+    "createNewAccount": "创建新账户",
+    "or": "或",
+    "email": "邮箱",
+    "emailPlaceholder": "请输入邮箱",
+    "password": "密码",
+    "passwordPlaceholder": "请输入密码",
+    "loginError": "登录失败",
+    "signOut": "退出登录"
+  },
+  "profile": {
+    "title": "个人资料",
+    "emailTitle": "邮箱地址",
+    "newEmail": "新邮箱地址",
+    "emailUpdateSuccess": "邮箱更新成功，请查看邮箱确认更改",
+    "emailUpdateError": "邮箱更新失败",
+    "emailConfirmationRequired": "请查看邮箱确认更改",
+    "accountStatus": "账户状态",
+    "verified": "已验证",
+    "pendingVerification": "等待验证",
+    "applyAsRole": "申请角色",
+    "confirmingEmailChange": "正在确认邮箱更改...",
+    "emailChangeError": "邮箱更改失败",
+    "emailChangeSuccess": "邮箱更改成功"
+  },
+  "referral": {
+    "types": {
+      "auPair": "互惠生",
+      "hostFamily": "寄宿家庭",
+      "englishStudent": "英语学习者"
+    },
+    "yourReferrals": "我的推荐",
+    "assignedReferrals": "我管理的推荐",
+    "add": "添加推荐",
+    "noReferrals": "暂无推荐",
+    "noAssignedReferrals": "暂无管理的推荐",
+    "newReferral": "新推荐",
+    "type": "类型",
+    "name": "姓名",
+    "email": "邮箱",
+    "phone": "电话",
+    "nationality": "国籍",
+    "age": "年龄",
+    "experience": "经验",
+    "englishLevel": "英语水平",
+    "availability": "可用时间",
+    "notes": "备注",
+    "submit": "提交",
+    "status": {
+      "pending": "待处理",
+      "approved": "已通过",
+      "rejected": "已拒绝"
+    },
+    "successMessage": "推荐提交成功",
+    "errorMessage": "推荐提交失败"
+  },
+  "common": {
+    "save": "保存",
+    "saving": "保存中...",
+    "cancel": "取消"
+  },
+  "edit": "编辑",
+  "error": {
+    "required": "必填项",
+    "invalidEmail": "无效的邮箱地址",
+    "unknown": "未知错误",
+    "notAuthenticated": "请先登录"
+  }
+}

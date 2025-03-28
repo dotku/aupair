@@ -1,0 +1,81 @@
+{
+  "auth": {
+    "loginTitle": "Login",
+    "login": "Login",
+    "loggingIn": "Logging in...",
+    "register": "Register",
+    "createNewAccount": "Create new account",
+    "or": "or",
+    "email": "Email",
+    "emailPlaceholder": "Please enter your email",
+    "password": "Password",
+    "passwordPlaceholder": "Please enter your password",
+    "loginError": "Login failed",
+    "signOut": "Sign Out"
+  },
+  "profile": {
+    "title": "Profile",
+    "basicInfo": "Basic Information",
+    "name": "Full Name",
+    "namePlaceholder": "Enter your full name",
+    "phone": "Phone Number",
+    "phonePlaceholder": "Enter your phone number",
+    "address": "Address",
+    "addressPlaceholder": "Enter your address",
+    "emailTitle": "Email Address",
+    "newEmail": "New Email Address",
+    "emailUpdateSuccess": "Email update successful. Please check your inbox to confirm the change",
+    "emailUpdateError": "Email update failed",
+    "emailConfirmationRequired": "Please check your email to confirm the change",
+    "accountStatus": "Account Status",
+    "verified": "Verified",
+    "pendingVerification": "Pending Verification",
+    "applyAsRole": "Apply as",
+    "confirmingEmailChange": "Confirming email change...",
+    "emailChangeError": "Email change failed",
+    "emailChangeSuccess": "Email change successful"
+  },
+  "referral": {
+    "types": {
+      "auPair": "Au Pair",
+      "hostFamily": "Host Family",
+      "englishStudent": "English Student"
+    },
+    "yourReferrals": "Your Referrals",
+    "assignedReferrals": "Assigned Referrals",
+    "add": "Add Referral",
+    "noReferrals": "No referrals yet",
+    "noAssignedReferrals": "No assigned referrals",
+    "newReferral": "New Referral",
+    "type": "Type",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "nationality": "Nationality",
+    "age": "Age",
+    "experience": "Experience",
+    "englishLevel": "English Level",
+    "availability": "Availability",
+    "notes": "Notes",
+    "submit": "Submit",
+    "status": {
+      "pending": "Pending",
+      "approved": "Approved",
+      "rejected": "Rejected"
+    },
+    "successMessage": "Referral submitted successfully",
+    "errorMessage": "Failed to submit referral"
+  },
+  "common": {
+    "save": "Save",
+    "saving": "Saving...",
+    "cancel": "Cancel"
+  },
+  "edit": "Edit",
+  "error": {
+    "required": "Required field",
+    "invalidEmail": "Invalid email address",
+    "unknown": "Unknown error",
+    "notAuthenticated": "Please login first"
+  }
+}
