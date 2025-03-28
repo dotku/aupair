@@ -11,12 +11,12 @@ importers:
       '@prisma/client':
         specifier: 6.5.0
         version: 6.5.0(prisma@6.5.0(typescript@5.8.2))(typescript@5.8.2)
+      '@supabase/auth-helpers-react':
+        specifier: ^0.5.0
+        version: 0.5.0(@supabase/supabase-js@2.49.3)
       '@supabase/supabase-js':
         specifier: ^2.49.3
         version: 2.49.3
-      dotenv:
-        specifier: ^16.4.7
-        version: 16.4.7
       i18next:
         specifier: ^24.2.3
         version: 24.2.3(typescript@5.8.2)
@@ -78,6 +78,9 @@ importers:
       autoprefixer:
         specifier: ^10.4.18
         version: 10.4.21(postcss@8.5.3)
+      dotenv:
+        specifier: ^16.4.7
+        version: 16.4.7
       env-cmd:
         specifier: ^10.1.0
         version: 10.1.0
@@ -777,6 +780,12 @@ packages:
     resolution: {integrity: sha512-LWbXUBwn/bcLx2sSsqy7pK5o+Nr+VCoRoAohfJ5C/aBio9nfJmGQqHAhU6pwxV/RmyTk5AqdySma7uwWGlmeuA==}
     cpu: [x64]
     os: [win32]
+
+  '@supabase/auth-helpers-react@0.5.0':
+    resolution: {integrity: sha512-5QSaV2CGuhDhd7RlQCoviVEAYsP7XnrFMReOcBazDvVmqSIyjKcDwhLhWvnrxMOq5qjOaA44MHo7wXqDiF0puQ==}
+    deprecated: This package is now deprecated - please use the @supabase/ssr package instead.
+    peerDependencies:
+      '@supabase/supabase-js': ^2.39.8
 
   '@supabase/auth-js@2.69.1':
     resolution: {integrity: sha512-FILtt5WjCNzmReeRLq5wRs3iShwmnWgBvxHfqapC/VoljJl+W8hDAyFmf1NVw3zH+ZjZ05AKxiKxVeb0HNWRMQ==}
@@ -2877,6 +2886,10 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.37.0':
     optional: true
+
+  '@supabase/auth-helpers-react@0.5.0(@supabase/supabase-js@2.49.3)':
+    dependencies:
+      '@supabase/supabase-js': 2.49.3
 
   '@supabase/auth-js@2.69.1':
     dependencies:

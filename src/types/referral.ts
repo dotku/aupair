@@ -1,15 +1,18 @@
-export type ReferralType = 'au_pair' | 'host_family' | 'english_student';
+export type ReferralTypeString = 'au_pair' | 'host_family' | 'english_student';
 
 export interface BaseReferral {
   id: string;
-  created_at: string;
-  referred_by: string;
+  createdAt: string;
+  updatedAt?: string;
+  referredBy: string;
+  accountManager?: string;
   name: string;
   email: string;
   phone: string;
   nationality: string;
   notes?: string;
   status: 'pending' | 'approved' | 'rejected';
+  type: ReferralTypeString;
 }
 
 export interface AuPairReferral extends BaseReferral {
@@ -39,3 +42,5 @@ export interface EnglishStudentReferral extends BaseReferral {
   preferredSchedule: string;
   preferredFormat: 'online' | 'in-person' | 'both';
 }
+
+export type ReferralType = AuPairReferral | HostFamilyReferral | EnglishStudentReferral;

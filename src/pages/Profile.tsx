@@ -1,116 +1,190 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { supabase } from '../lib/supabase';
-import type { User } from '@supabase/supabase-js';
-import type { AuPairReferral, HostFamilyReferral, EnglishStudentReferral } from '../types/referral';
-import ReferralForm from '../components/ReferralForm';
+import { useEffect, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { supabase } from "../lib/supabase";
+import type { User } from "@supabase/supabase-js";
+import type { ReferralType } from "../types/referral";
+import ReferralForm from "../components/ReferralForm";
+import ReferralCard from "../components/ReferralCard";
+import { FormField } from "../components/ui/FormField";
 
-type ReferralType = AuPairReferral | HostFamilyReferral | EnglishStudentReferral;
+type Referrals = {
+  referred: ReferralType[];
+  assigned: ReferralType[];
+};
 
 export default function Profile() {
+  const [searchParams] = useSearchParams();
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [showReferralForm, setShowReferralForm] = useState(false);
-  const [referrals, setReferrals] = useState<ReferralType[]>([]);
+  const [referrals, setReferrals] = useState<Referrals>({
+    referred: [],
+    assigned: [],
+  });
   const [submitting, setSubmitting] = useState(false);
-  const { t } = useTranslation('common');
+  const [isEditingEmail, setIsEditingEmail] = useState(false);
+  const [newEmail, setNewEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [emailMessage, setEmailMessage] = useState("");
+  const [messageType, setMessageType] = useState<"success" | "error">(
+    "success"
+  );
+  const { t } = useTranslation("common");
   const navigate = useNavigate();
 
   useEffect(() => {
     const checkUser = async () => {
       try {
-        const { data: { user } } = await supabase.auth.getUser();
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
         if (!user) {
-          navigate('/login');
+          navigate("/login");
           return;
         }
         setUser(user);
         await loadReferrals(user.id);
+
+        // Check if coming back from email change confirmation
+        const emailChanged = searchParams.get("emailChanged");
+        if (emailChanged === "true") {
+          setEmailMessage(t("profile.emailConfirmationRequired"));
+          setMessageType("success");
+          // Remove the query parameter
+          navigate("/profile", { replace: true });
+        }
       } catch (error) {
-        console.error('Error checking user:', error);
-        navigate('/login');
+        console.error("Error checking user:", error);
+        navigate("/login");
       } finally {
         setLoading(false);
       }
     };
 
     checkUser();
-  }, [navigate]);
+  }, [navigate, searchParams, t]);
 
   const loadReferrals = async (userId: string) => {
     try {
-      const [auPairs, hostFamilies, students] = await Promise.all([
-        supabase
-          .from('au_pair_referrals')
-          .select('*')
-          .eq('referred_by', userId)
-          .order('created_at', { ascending: false }),
-        supabase
-          .from('host_family_referrals')
-          .select('*')
-          .eq('referred_by', userId)
-          .order('created_at', { ascending: false }),
-        supabase
-          .from('english_student_referrals')
-          .select('*')
-          .eq('referred_by', userId)
-          .order('created_at', { ascending: false })
-      ]);
+      const { data: referralData, error } = await supabase
+        .from("Referral")
+        .select(
+          `
+          *,
+          AuPairDetails (*),
+          HostFamilyDetails (*),
+          EnglishStudentDetails (*)
+        `
+        )
+        .or(`referredBy.eq.${userId},accountManager.eq.${userId}`)
+        .order("createdAt", { ascending: false });
 
-      const allReferrals = [
-        ...(auPairs.data || []),
-        ...(hostFamilies.data || []),
-        ...(students.data || [])
-      ].sort((a, b) => 
-        new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
-      );
+      if (error) throw error;
 
-      setReferrals(allReferrals);
+      // Group referrals by type (referred vs assigned)
+      const referred =
+        referralData?.filter((r) => r.referredBy === userId) || [];
+      const assigned =
+        referralData?.filter(
+          (r) => r.accountManager === userId && r.referredBy !== userId
+        ) || [];
+
+      setReferrals({ referred, assigned });
     } catch (error) {
-      console.error('Error loading referrals:', error);
+      console.error("Error loading referrals:", error);
     }
   };
 
   const handleSignOut = async () => {
     try {
       await supabase.auth.signOut();
-      navigate('/login');
+      navigate("/login");
     } catch (error) {
-      console.error('Error signing out:', error);
+      console.error("Error signing out:", error);
     }
   };
 
-  const handleSubmit = async (data: Partial<ReferralType>) => {
-    if (!user) return;
+  const handleSubmit = async (data: ReferralType) => {
     setSubmitting(true);
-    
+
     try {
-      const { error } = await supabase
-        .from(`${data.type}_referrals`)
-        .insert([data]);
+      const { error } = await supabase.from("Referral").insert([data]);
 
       if (error) throw error;
-      await loadReferrals(user.id);
+
+      await loadReferrals(user!.id);
       setShowReferralForm(false);
     } catch (error) {
-      console.error('Error submitting referral:', error);
-      throw error;
+      console.error("Error submitting referral:", error);
     } finally {
       setSubmitting(false);
     }
   };
 
-  if (loading) {
-    return (
-      <div className="min-h-[80vh] flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto"></div>
-          <p className="mt-4 text-gray-600">{t('common.loading')}</p>
-        </div>
-      </div>
-    );
-  }
+  const updateReferralInfo = async (
+    referralId: string,
+    updates: Partial<ReferralType>
+  ) => {
+    try {
+      setSubmitting(true);
+      const { error } = await supabase
+        .from("Referral")
+        .update(updates)
+        .eq("id", referralId);
+
+      if (error) throw error;
+
+      // Reload referrals to get updated data
+      await loadReferrals(user!.id);
+    } catch (error) {
+      console.error("Error updating referral:", error);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const handleUpdateEmail = async () => {
+    if (!newEmail) {
+      setEmailError(t("error.required"));
+      return;
+    }
+    if (!/\S+@\S+\.\S+/.test(newEmail)) {
+      setEmailError(t("error.invalidEmail"));
+      return;
+    }
+
+    try {
+      setSubmitting(true);
+      const { error } = await supabase.auth.updateUser(
+        {
+          email: newEmail,
+        },
+        {
+          emailRedirectTo: `${window.location.origin}/confirm-email-change`,
+        }
+      );
+
+      if (error) throw error;
+
+      // Show success message and reset state
+      setIsEditingEmail(false);
+      setEmailError("");
+      setEmailMessage(t("profile.emailUpdateSuccess"));
+      setMessageType("success");
+    } catch (error) {
+      console.error("Error updating email:", error);
+      setEmailError(
+        error instanceof Error ? error.message : t("error.unknown")
+      );
+      setEmailMessage(t("profile.emailUpdateError"));
+      setMessageType("error");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  if (loading) return <div>Loading...</div>;
 
   return (
     <div className="min-h-[80vh] py-12 px-4 sm:px-6 lg:px-8">
@@ -118,53 +192,113 @@ export default function Profile() {
         <div className="bg-white shadow rounded-lg p-6">
           <div className="flex items-center justify-between mb-8">
             <h1 className="text-2xl font-bold text-gray-900">
-              {t('profile.title')}
+              {t("profile.title")}
             </h1>
             <button
               onClick={handleSignOut}
               className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
             >
-              {t('auth.signOut')}
+              {t("auth.signOut")}
             </button>
           </div>
 
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-medium text-gray-900 mb-2">
-                {t('profile.emailTitle')}
+                {t("profile.emailTitle")}
               </h3>
-              <p className="text-gray-600">{user?.email}</p>
+              {emailMessage && (
+                <div
+                  className={`p-4 mb-4 rounded ${
+                    messageType === "success"
+                      ? "bg-green-100 text-green-700"
+                      : "bg-red-100 text-red-700"
+                  }`}
+                >
+                  {emailMessage}
+                </div>
+              )}
+              {isEditingEmail ? (
+                <div className="space-y-4">
+                  <FormField
+                    label={t("profile.newEmail")}
+                    type="email"
+                    value={newEmail}
+                    onChange={(e) => {
+                      setNewEmail(e.target.value);
+                      setEmailError("");
+                    }}
+                    error={emailError}
+                    disabled={submitting}
+                    placeholder={user?.email || ""}
+                    required
+                  />
+                  <div className="flex space-x-4">
+                    <button
+                      onClick={handleUpdateEmail}
+                      disabled={submitting}
+                      className="px-4 py-2 text-sm font-medium text-white bg-primary hover:bg-primary-dark rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50"
+                    >
+                      {submitting ? t("common.saving") : t("common.save")}
+                    </button>
+                    <button
+                      onClick={() => {
+                        setIsEditingEmail(false);
+                        setNewEmail("");
+                        setEmailError("");
+                      }}
+                      disabled={submitting}
+                      className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+                    >
+                      {t("common.cancel")}
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <div className="flex items-center space-x-4">
+                  <p className="text-gray-600">{user?.email}</p>
+                  <button
+                    onClick={() => {
+                      setIsEditingEmail(true);
+                      setNewEmail(user?.email || "");
+                    }}
+                    className="text-sm text-primary hover:text-primary-dark focus:outline-none"
+                  >
+                    {t("edit")}
+                  </button>
+                </div>
+              )}
             </div>
 
             <div>
               <h3 className="text-lg font-medium text-gray-900 mb-2">
-                {t('profile.accountStatus')}
+                {t("profile.accountStatus")}
               </h3>
               <div className="flex items-center">
                 <span
                   className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                     user?.confirmed_at
-                      ? 'bg-green-100 text-green-800'
-                      : 'bg-yellow-100 text-yellow-800'
+                      ? "bg-green-100 text-green-800"
+                      : "bg-yellow-100 text-yellow-800"
                   }`}
                 >
                   {user?.confirmed_at
-                    ? t('profile.verified')
-                    : t('profile.pendingVerification')}
+                    ? t("profile.verified")
+                    : t("profile.pendingVerification")}
                 </span>
               </div>
             </div>
 
             <div className="border-t pt-6">
               <h3 className="text-lg font-medium text-gray-900 mb-4">
-                {t('profile.actions')}
+                {t("profile.actions")}
               </h3>
               <div className="grid grid-cols-1 gap-4">
                 <button
-                  onClick={() => navigate('/profile/edit')}
+                  onClick={() => navigate("/profile/edit")}
                   className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
                 >
-                  {t('profile.editProfile')}
+                  {t("profile.editProfile")}
                 </button>
               </div>
             </div>
@@ -172,86 +306,69 @@ export default function Profile() {
         </div>
 
         <div className="bg-white shadow rounded-lg p-6">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-bold text-gray-900">
-              {t('referral.title')}
-            </h2>
-            <button
-              onClick={() => setShowReferralForm(!showReferralForm)}
-              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
-            >
-              {showReferralForm ? t('referral.cancel') : t('referral.add')}
-            </button>
-          </div>
-
-          {showReferralForm && user && (
-            <div className="mb-6">
-              <ReferralForm
-                userId={user.id}
-                onSubmit={handleSubmit}
-                loading={submitting}
-              />
-            </div>
-          )}
-
-          <div className="space-y-4">
-            <h3 className="text-lg font-medium text-gray-900">
-              {t('referral.yourReferrals')}
-            </h3>
-            {referrals.length === 0 ? (
-              <p className="text-gray-500">{t('referral.noReferrals')}</p>
-            ) : (
-              <div className="grid gap-4">
-                {referrals.map((referral) => (
-                  <div
-                    key={referral.id}
-                    className="border rounded-lg p-4 hover:bg-gray-50"
-                  >
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <h4 className="text-sm font-medium text-gray-900">
-                          {referral.name}
-                        </h4>
-                        <p className="text-sm text-gray-500">
-                          {referral.type === 'au_pair' && (
-                            <>
-                              {referral.nationality}, {referral.age} {t('referral.yearsOld')}
-                            </>
-                          )}
-                          {referral.type === 'host_family' && (
-                            <>
-                              {referral.location}, {referral.childrenCount} {t('referral.children')}
-                            </>
-                          )}
-                          {referral.type === 'english_student' && (
-                            <>
-                              {t('referral.level')}: {t(`referral.levels.${referral.currentLevel}`)}
-                            </>
-                          )}
-                        </p>
-                      </div>
-                      <span
-                        className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                          referral.status === 'approved'
-                            ? 'bg-green-100 text-green-800'
-                            : referral.status === 'rejected'
-                            ? 'bg-red-100 text-red-800'
-                            : 'bg-yellow-100 text-yellow-800'
-                        }`}
-                      >
-                        {t(`referral.status.${referral.status}`)}
-                      </span>
-                    </div>
-                    <p className="mt-2 text-sm text-gray-600">
-                      {referral.type === 'au_pair' && referral.experience}
-                      {referral.type === 'host_family' && referral.requirements}
-                      {referral.type === 'english_student' && referral.learningGoals}
-                    </p>
-                  </div>
-                ))}
+          <div className="space-y-8">
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-medium text-gray-900">
+                  {t("referral.yourReferrals")}
+                </h3>
+                <button
+                  onClick={() => setShowReferralForm(true)}
+                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                >
+                  {t("referral.add")}
+                </button>
               </div>
-            )}
+
+              {referrals.referred.length > 0 ? (
+                <div className="space-y-6">
+                  {referrals.referred.map((referral) => (
+                    <ReferralCard
+                      key={referral.id}
+                      referral={referral}
+                      onUpdate={updateReferralInfo}
+                      isSubmitting={submitting}
+                      isOwner={true}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <p className="text-gray-500">{t("referral.noReferrals")}</p>
+              )}
+            </div>
+
+            <div>
+              <h3 className="text-lg font-medium text-gray-900 mb-4">
+                {t("referral.assignedReferrals")}
+              </h3>
+
+              {referrals.assigned.length > 0 ? (
+                <div className="space-y-6">
+                  {referrals.assigned.map((referral) => (
+                    <ReferralCard
+                      key={referral.id}
+                      referral={referral}
+                      onUpdate={updateReferralInfo}
+                      isSubmitting={submitting}
+                      isOwner={false}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <p className="text-gray-500">
+                  {t("referral.noAssignedReferrals")}
+                </p>
+              )}
+            </div>
           </div>
+
+          {showReferralForm && (
+            <ReferralForm
+              onSubmit={handleSubmit}
+              onClose={() => setShowReferralForm(false)}
+              submitting={submitting}
+            />
+          )}
         </div>
       </div>
     </div>

@@ -1,0 +1,5 @@
+-- Enable RLS
+ALTER TABLE "public"."Referral" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "public"."AuPairDetails" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "public"."HostFamilyDetails" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "public"."EnglishStudentDetails" ENABLE ROW LEVEL SECURITY;

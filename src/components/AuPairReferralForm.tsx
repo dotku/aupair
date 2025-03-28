@@ -1,12 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import type { AuPairReferral } from '../types/referral';
-import { FormField, FormSelect, FormSubmitButton } from './ui/FormField';
-
-interface AuPairReferralFormProps {
-  onSubmit: (data: Partial<AuPairReferral>) => Promise<void>;
-  loading: boolean;
-}
+import { FormField, FormSubmitButton } from './ui/FormField';
+import type { ReferralTypeFormProps } from './ReferralForm';
 
 const NATIONALITY_OPTIONS = [
   'Chinese',
@@ -18,9 +13,14 @@ const NATIONALITY_OPTIONS = [
   'Other'
 ].map(value => ({ value, label: value }));
 
-const ENGLISH_LEVELS = ['beginner', 'intermediate', 'advanced', 'fluent'];
+const ENGLISH_LEVELS = [
+  { value: 'beginner', label: 'Beginner' },
+  { value: 'intermediate', label: 'Intermediate' },
+  { value: 'advanced', label: 'Advanced' },
+  { value: 'fluent', label: 'Fluent' }
+];
 
-export default function AuPairReferralForm({ onSubmit, loading }: AuPairReferralFormProps) {
+export default function AuPairReferralForm({ onSubmit, submitting }: ReferralTypeFormProps) {
   const { t } = useTranslation('common');
   const [message, setMessage] = useState('');
   const [formData, setFormData] = useState({
@@ -51,16 +51,31 @@ export default function AuPairReferralForm({ onSubmit, loading }: AuPairReferral
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
 
-    if (!validateEmail(formData.email)) {
-      newErrors.email = t('referral.emailError');
+    if (!formData.name) {
+      newErrors.name = t('error.required');
     }
-
-    if (!validatePhone(formData.phone)) {
-      newErrors.phone = t('referral.phoneError');
+    if (!formData.email) {
+      newErrors.email = t('error.required');
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = t('error.invalidEmail');
     }
-
-    if (!validateAge(formData.age)) {
-      newErrors.age = t('referral.ageError');
+    if (!formData.phone) {
+      newErrors.phone = t('error.required');
+    }
+    if (!formData.nationality) {
+      newErrors.nationality = t('error.required');
+    }
+    if (!formData.age) {
+      newErrors.age = t('error.required');
+    }
+    if (!formData.experience) {
+      newErrors.experience = t('error.required');
+    }
+    if (!formData.availability) {
+      newErrors.availability = t('error.required');
+    }
+    if (formData.nationality === 'Other' && !formData.otherNationality) {
+      newErrors.otherNationality = t('error.required');
     }
 
     setErrors(newErrors);
@@ -69,19 +84,15 @@ export default function AuPairReferralForm({ onSubmit, loading }: AuPairReferral
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setMessage('');
-
-    if (!validateForm()) {
-      return;
-    }
+    if (!validateForm()) return;
 
     try {
       await onSubmit({
         ...formData,
+        type: 'au_pair',
         nationality: formData.nationality === 'Other' ? formData.otherNationality : formData.nationality,
         age: parseInt(formData.age)
       });
-
       setMessage(t('referral.successMessage'));
       setFormData({
         name: '',
@@ -101,189 +112,125 @@ export default function AuPairReferralForm({ onSubmit, loading }: AuPairReferral
     }
   };
 
-  const validateAge = (value: string) => {
-    const age = parseInt(value);
-    return age >= 18 && age <= 35;
-  };
-
-  const validateEmail = (email: string) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  };
-
-  const validatePhone = (phone: string) => {
-    return /^[+]?[\d\s-]{8,}$/.test(phone);
-  };
-
   return (
-    <form onSubmit={handleSubmit} className="max-w-4xl mx-auto">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
-        <FormField
-          label={t('referral.name')}
-          help={t('referral.nameHelp')}
-          required
-        >
-          <input
-            type="text"
-            name="name"
-            required
-            minLength={2}
-            value={formData.name}
-            onChange={handleChange}
-          />
-        </FormField>
-
-        <FormField
-          label={t('referral.email')}
-          help={t('referral.emailHelp')}
-          error={errors.email}
-          required
-        >
-          <input
-            type="email"
-            name="email"
-            required
-            value={formData.email}
-            onChange={handleChange}
-          />
-        </FormField>
-
-        <FormField
-          label={t('referral.phone')}
-          help={t('referral.phoneHelp')}
-          error={errors.phone}
-          required
-        >
-          <input
-            type="tel"
-            name="phone"
-            required
-            value={formData.phone}
-            onChange={handleChange}
-            placeholder="+86 123 4567 8901"
-          />
-        </FormField>
-
-        <FormField
-          label={t('referral.nationality')}
-          required
-        >
-          <FormSelect
-            name="nationality"
-            value={formData.nationality}
-            onChange={handleChange}
-            options={NATIONALITY_OPTIONS}
-            aria-label={t('referral.selectNationality')}
-          />
-        </FormField>
-
-        {formData.nationality === 'Other' && (
-          <FormField
-            label={t('referral.specifyNationality')}
-            required
-          >
-            <input
-              type="text"
-              name="otherNationality"
-              required
-              value={formData.otherNationality}
-              onChange={handleChange}
-            />
-          </FormField>
-        )}
-
-        <FormField
-          label={t('referral.age')}
-          help={t('referral.ageHelp')}
-          error={errors.age}
-          required
-        >
-          <input
-            type="number"
-            name="age"
-            required
-            min="18"
-            max="35"
-            value={formData.age}
-            onChange={handleChange}
-          />
-        </FormField>
-
-        <FormField
-          label={t('referral.englishLevel')}
-          required
-        >
-          <FormSelect
-            name="englishLevel"
-            value={formData.englishLevel}
-            onChange={handleChange}
-            options={ENGLISH_LEVELS.map(level => ({
-              value: level,
-              label: t(`referral.levels.${level}`)
-            }))}
-          />
-        </FormField>
-
-        <div className="sm:col-span-2">
-          <FormField
-            label={t('referral.availability')}
-            help={t('referral.availabilityHelp')}
-            required
-          >
-            <input
-              type="text"
-              name="availability"
-              required
-              value={formData.availability}
-              onChange={handleChange}
-              placeholder={t('referral.availabilityPlaceholder')}
-            />
-          </FormField>
-        </div>
-
-        <div className="sm:col-span-2">
-          <FormField
-            label={t('referral.experience')}
-            help={t('referral.experienceHelp')}
-            required
-          >
-            <textarea
-              name="experience"
-              required
-              minLength={50}
-              value={formData.experience}
-              onChange={handleChange}
-              placeholder={t('referral.experiencePlaceholder')}
-            />
-          </FormField>
-        </div>
-
-        <div className="sm:col-span-2">
-          <FormField
-            label={t('referral.notes')}
-            help={t('referral.notesHelp')}
-          >
-            <textarea
-              name="notes"
-              value={formData.notes}
-              onChange={handleChange}
-              placeholder={t('referral.notesPlaceholder')}
-            />
-          </FormField>
-        </div>
-      </div>
-
+    <form onSubmit={handleSubmit} className="space-y-6">
       {message && (
-        <div className="mt-6 rounded-md p-4 text-sm text-center font-medium ${
-          message === t('referral.successMessage')
-            ? 'bg-green-50 text-green-800'
-            : 'bg-red-50 text-red-800'
-        }">
-          <p>{message}</p>
+        <div className={`p-4 rounded ${message === t('referral.successMessage') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+          {message}
         </div>
       )}
 
+      <FormField
+        label={t('referral.name')}
+        name="name"
+        value={formData.name}
+        onChange={handleChange}
+        error={errors.name}
+        disabled={submitting}
+        required
+      />
+
+      <FormField
+        label={t('referral.email')}
+        type="email"
+        name="email"
+        value={formData.email}
+        onChange={handleChange}
+        error={errors.email}
+        disabled={submitting}
+        required
+      />
+
+      <FormField
+        label={t('referral.phone')}
+        type="tel"
+        name="phone"
+        value={formData.phone}
+        onChange={handleChange}
+        error={errors.phone}
+        disabled={submitting}
+        required
+      />
+
+      <FormField
+        label={t('referral.nationality')}
+        name="nationality"
+        value={formData.nationality}
+        onChange={handleChange}
+        error={errors.nationality}
+        disabled={submitting}
+        options={NATIONALITY_OPTIONS}
+        required
+      />
+
+      {formData.nationality === 'Other' && (
+        <FormField
+          label={t('referral.specifyNationality')}
+          name="otherNationality"
+          value={formData.otherNationality}
+          onChange={handleChange}
+          error={errors.otherNationality}
+          disabled={submitting}
+          required
+        />
+      )}
+
+      <FormField
+        label={t('referral.age')}
+        type="number"
+        name="age"
+        value={formData.age}
+        onChange={handleChange}
+        error={errors.age}
+        disabled={submitting}
+        required
+      />
+
+      <FormField
+        label={t('referral.experience')}
+        name="experience"
+        value={formData.experience}
+        onChange={handleChange}
+        error={errors.experience}
+        disabled={submitting}
+        multiline
+        required
+      />
+
+      <FormField
+        label={t('referral.englishLevel')}
+        name="englishLevel"
+        value={formData.englishLevel}
+        onChange={handleChange}
+        error={errors.englishLevel}
+        disabled={submitting}
+        options={ENGLISH_LEVELS}
+        required
+      />
+
+      <FormField
+        label={t('referral.availability')}
+        name="availability"
+        value={formData.availability}
+        onChange={handleChange}
+        error={errors.availability}
+        disabled={submitting}
+        multiline
+        required
+      />
+
+      <FormField
+        label={t('referral.notes')}
+        name="notes"
+        value={formData.notes}
+        onChange={handleChange}
+        error={errors.notes}
+        disabled={submitting}
+        multiline
+      />
+
       <div className="mt-8 flex justify-end">
-        <FormSubmitButton loading={loading}>
+        <FormSubmitButton loading={submitting}>
           {t('referral.submit')}
         </FormSubmitButton>
       </div>
