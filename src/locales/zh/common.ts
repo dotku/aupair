@@ -8,6 +8,7 @@ export default {
     cancel: "取消",
     backToProfile: "返回个人资料",
     loginAgain: "重新登录",
+    learnMore: "了解更多"
   },
   edit: "编辑",
   nav: {
@@ -30,6 +31,42 @@ export default {
     findAuPairDesc: "为您的家庭找到合格的互惠生",
     findFamilyDesc: "为您的互惠生之旅找到温馨的寄宿家庭",
     englishEducationDesc: "通过我们的教育项目提升英语水平",
+    welcomeMessage: "欢迎来到霍普国际",
+    descriptionTitle: "我们提供的服务",
+    findFamilyButton: "寻找寄宿家庭",
+    findAuPairButton: "寻找互惠生",
+    testimonialTitle: "用户反馈",
+    testimonialSubtitle: "听听我们的互惠生和寄宿家庭的感受",
+    testimonialQuote: "与霍普国际合作改变了我们的生活。文化交流项目拉近了我们家庭成员之间的距离，让我们对不同的文化有了更深的理解。我们的互惠生已经像女儿一样成为了家庭的一部分。",
+    testimonialAuthor: "艾玛·约翰逊",
+    testimonialRole: "上海的寄宿家庭家长",
+    ctaTitle: "准备好开始您的旅程了吗？",
+    ctaDescription: "加入我们来自世界各地的互惠生和寄宿家庭社区",
+    ctaButton: "立即开始"
+  },
+  testimonials: {
+    title: "成功案例",
+    subtitle: "听听我们的互惠生和寄宿家庭的故事",
+    stories: [
+      {
+        name: "陈小姐",
+        location: "上海",
+        quote: "成为一名互惠生是一段令人难以置信的成长和文化交流之旅。我学到了很多关于自己的东西，也建立了终身的联系。",
+        details: "来自中国的互惠生"
+      },
+      {
+        name: "威尔逊家庭",
+        location: "加利福尼亚",
+        quote: "我们的互惠生已经成为我们家庭的一部分。她不仅帮助照顾孩子，还为我们的家庭带来了全新的文化视角。",
+        details: "美国的寄宿家庭"
+      },
+      {
+        name: "玛丽亚",
+        location: "北京",
+        quote: "霍普国际的支持让我的过渡非常顺利。他们一直在每一个环节为我提供帮助。",
+        details: "来自菲律宾的互惠生"
+      }
+    ]
   },
   auth: {
     createAccount: "创建新账户",

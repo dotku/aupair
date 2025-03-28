@@ -57,7 +57,7 @@ export default {
       ]
     }
   },
-  forFamilies: {
+  "for-families": {
     title: "Host Family Guide",
     description: "Learn how to be a great host family",
     benefits: {
@@ -76,7 +76,7 @@ export default {
       item4: "Support cultural integration"
     }
   },
-  forAuPairs: {
+  "for-au-pairs": {
     title: "Au Pair Guide",
     description: "Learn how to be a great au pair",
     benefits: {
@@ -150,7 +150,7 @@ export default {
   cta: {
     title: "Ready to Get Started?",
     description: "Join our community and begin your au pair journey",
-    buttonFamily: "I'm a Host Family",
-    buttonAuPair: "I'm an Au Pair"
+    "button-family": "I'm a Host Family",
+    "button-au-pair": "I'm an Au Pair"
   }
 };

@@ -12,7 +12,7 @@ import {
 import { Link } from "react-router-dom";
 
 const HowItWorks = () => {
-  const { t } = useTranslation("howItWorks");
+  const { t } = useTranslation("how-it-works");
 
   // 类型定义
   type ListItem = string;
@@ -199,16 +199,16 @@ const HowItWorks = () => {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">{t('forFamilies.title')}</h2>
+            <h2 className="text-3xl font-bold text-gray-900">{t('for-families.title')}</h2>
             <p className="mt-4 text-xl text-gray-600">
-              {t('forFamilies.description')}
+              {t('for-families.description')}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                {t('forFamilies.benefits.title')}
+                {t('for-families.benefits.title')}
               </h3>
               <ul className="space-y-3">
                 <li className="flex items-start">
@@ -218,7 +218,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('forFamilies.benefits.item1')}
+                    {t('for-families.benefits.item1')}
                   </p>
                 </li>
                 <li className="flex items-start">
@@ -228,7 +228,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('forFamilies.benefits.item2')}
+                    {t('for-families.benefits.item2')}
                   </p>
                 </li>
                 <li className="flex items-start">
@@ -238,7 +238,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('forFamilies.benefits.item3')}
+                    {t('for-families.benefits.item3')}
                   </p>
                 </li>
                 <li className="flex items-start">
@@ -248,7 +248,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('forFamilies.benefits.item4')}
+                    {t('for-families.benefits.item4')}
                   </p>
                 </li>
                 <li className="flex items-start">
@@ -258,13 +258,13 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('forFamilies.benefits.item5')}
+                    {t('for-families.benefits.item5')}
                   </p>
                 </li>
               </ul>
 
               <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-4">
-                {t('forFamilies.responsibilities.title')}
+                {t('for-families.responsibilities.title')}
               </h3>
               <ul className="space-y-3">
                 <li className="flex items-start">
@@ -274,7 +274,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('forFamilies.responsibilities.item1')}
+                    {t('for-families.responsibilities.item1')}
                   </p>
                 </li>
                 <li className="flex items-start">
@@ -284,7 +284,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('forFamilies.responsibilities.item2')}
+                    {t('for-families.responsibilities.item2')}
                   </p>
                 </li>
                 <li className="flex items-start">
@@ -294,7 +294,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('forFamilies.responsibilities.item3')}
+                    {t('for-families.responsibilities.item3')}
                   </p>
                 </li>
                 <li className="flex items-start">
@@ -304,7 +304,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('forFamilies.responsibilities.item4')}
+                    {t('for-families.responsibilities.item4')}
                   </p>
                 </li>
               </ul>
@@ -325,9 +325,9 @@ const HowItWorks = () => {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">{t('forAuPairs.title')}</h2>
+            <h2 className="text-3xl font-bold text-gray-900">{t('for-au-pairs.title')}</h2>
             <p className="mt-4 text-xl text-gray-600">
-              {t('forAuPairs.description')}
+              {t('for-au-pairs.description')}
             </p>
           </div>
 
@@ -342,7 +342,7 @@ const HowItWorks = () => {
 
             <div className="order-1 md:order-2">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                {t('forAuPairs.benefits.title')}
+                {t('for-au-pairs.benefits.title')}
               </h3>
               <ul className="space-y-3">
                 <li className="flex items-start">
@@ -352,7 +352,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('forAuPairs.benefits.item1')}
+                    {t('for-au-pairs.benefits.item1')}
                   </p>
                 </li>
                 <li className="flex items-start">
@@ -362,7 +362,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('forAuPairs.benefits.item2')}
+                    {t('for-au-pairs.benefits.item2')}
                   </p>
                 </li>
                 <li className="flex items-start">
@@ -372,7 +372,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('forAuPairs.benefits.item3')}
+                    {t('for-au-pairs.benefits.item3')}
                   </p>
                 </li>
                 <li className="flex items-start">
@@ -382,7 +382,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('forAuPairs.benefits.item4')}
+                    {t('for-au-pairs.benefits.item4')}
                   </p>
                 </li>
                 <li className="flex items-start">
@@ -392,13 +392,13 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('forAuPairs.benefits.item5')}
+                    {t('for-au-pairs.benefits.item5')}
                   </p>
                 </li>
               </ul>
 
               <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-4">
-                {t('forAuPairs.responsibilities.title')}
+                {t('for-au-pairs.responsibilities.title')}
               </h3>
               <ul className="space-y-3">
                 <li className="flex items-start">
@@ -408,7 +408,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('forAuPairs.responsibilities.item1')}
+                    {t('for-au-pairs.responsibilities.item1')}
                   </p>
                 </li>
                 <li className="flex items-start">
@@ -418,7 +418,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('forAuPairs.responsibilities.item2')}
+                    {t('for-au-pairs.responsibilities.item2')}
                   </p>
                 </li>
                 <li className="flex items-start">
@@ -428,7 +428,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('forAuPairs.responsibilities.item3')}
+                    {t('for-au-pairs.responsibilities.item3')}
                   </p>
                 </li>
                 <li className="flex items-start">
@@ -438,7 +438,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-600">
-                    {t('forAuPairs.responsibilities.item4')}
+                    {t('for-au-pairs.responsibilities.item4')}
                   </p>
                 </li>
               </ul>
@@ -558,13 +558,13 @@ const HowItWorks = () => {
               to="/find-aupair"
               className="inline-block bg-white text-yellow-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
             >
-              {t('cta.buttonFamily')}
+              {t('cta.button-family')}
             </Link>
             <Link
               to="/find-family"
               className="inline-block bg-transparent border-2 border-white text-white font-semibold px-8 py-3 rounded-lg hover:bg-white hover:text-yellow-600 transition-colors"
             >
-              {t('cta.buttonAuPair')}
+              {t('cta.button-au-pair')}
             </Link>
           </div>
         </div>

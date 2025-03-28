@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import FindFamily from "./pages/FindFamily";
@@ -12,6 +12,8 @@ import ConfirmEmailChange from "./pages/ConfirmEmailChange";
 import Services from "./pages/Services";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import FindAuPair from "./pages/FindAuPair";
+import HowItWorks from "./pages/HowItWorks";
 
 function App() {
   return (
@@ -23,12 +25,17 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/find-family" element={<FindFamily />} />
+          <Route path="/find-aupair" element={<FindAuPair />} />
           <Route path="/english-education" element={<EnglishEducation />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/confirm-email-change" element={<ConfirmEmailChange />} />
+          <Route path="/how-it-works" element={<HowItWorks />} />
+          <Route
+            path="/confirm-email-change"
+            element={<ConfirmEmailChange />}
+          />
         </Routes>
       </main>
       <Footer />

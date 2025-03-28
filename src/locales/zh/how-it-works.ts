@@ -57,7 +57,7 @@ export default {
       ]
     }
   },
-  forFamilies: {
+  "for-families": {
     title: "寄宿家庭指南",
     description: "了解如何成为一个优秀的寄宿家庭",
     benefits: {
@@ -76,7 +76,7 @@ export default {
       item4: "提供文化融入支持"
     }
   },
-  forAuPairs: {
+  "for-au-pairs": {
     title: "互惠生指南",
     description: "了解如何成为一个优秀的互惠生",
     benefits: {
@@ -150,7 +150,7 @@ export default {
   cta: {
     title: "准备好开始了吗？",
     description: "加入我们的社区，开启您的互惠生之旅",
-    buttonFamily: "我是寄宿家庭",
-    buttonAuPair: "我是互惠生"
+    "button-family": "我是寄宿家庭",
+    "button-au-pair": "我是互惠生"
   }
 };

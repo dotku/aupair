@@ -1,16 +1,27 @@
+import {
+  Filter,
+  Globe,
+  Heart,
+  MessageCircle,
+} from "lucide-react";
 import { useState } from "react";
-import { Filter, Globe, Heart, MessageCircle, Star } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import Testimonials from "../components/Testimonials";
 
-interface Story {
+interface Family {
+  id: number;
   name: string;
-  location: string;
-  quote: string;
-  details: string;
+  age: number;
+  country: string;
+  languages: string[];
+  experience: string;
+  education: string;
+  bio: string;
+  image: string;
 }
 
 const FindAuPair = () => {
-  const { t } = useTranslation("findAuPair");
+  const { t } = useTranslation("find-aupair");
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
   const [languages, setLanguages] = useState<string[]>([]);
@@ -18,7 +29,7 @@ const FindAuPair = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   // Sample au pair data
-  const auPairs = [
+  const auPairs: Family[] = [
     {
       id: 1,
       name: "Sofia Garcia",
@@ -357,57 +368,7 @@ const FindAuPair = () => {
       {/* Testimonials */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">
-              {t("testimonials.title")}
-            </h2>
-            <p className="mt-4 text-xl text-gray-600">
-              {t("testimonials.subtitle")}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {(t("testimonials.stories", {
-              returnObjects: true,
-            }) as Story[]).map((story: Story, index: number) => (
-              <div key={index} className="bg-white rounded-lg shadow-md p-6">
-                <div className="flex items-center mb-4">
-                  <div className="flex">
-                    {[...Array(5)].map((_, i) => (
-                      <Star 
-                        key={i} 
-                        className="h-5 w-5" 
-                        fill="#facc15"  
-                        stroke="#facc15"
-                      />
-                    ))}
-                  </div>
-                </div>
-                <blockquote className="text-gray-600 italic mb-4">
-                  "{story.quote}"
-                </blockquote>
-                <div className="flex items-end">
-                  <img
-                    src={
-                      [
-                        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&q=80",
-                        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&q=80",
-                        "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&q=80",
-                      ][index]
-                    }
-                    alt={story.name}
-                    className="w-12 h-12 rounded-full object-cover"
-                  />
-                  <div className="ml-4">
-                    <h3 className="font-semibold text-gray-900">
-                      {story.name}
-                    </h3>
-                    <p className="text-gray-600">{story.location}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <Testimonials namespace="find-aupair" />
         </div>
       </section>
 

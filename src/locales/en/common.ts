@@ -2,7 +2,8 @@ export default {
   companyName: "Hope (Shenzhen) International Cultural Exchange Co., Ltd",
   companyShortName: "Hope International",
   common: {
-    loading: 'Loading...'
+    loading: 'Loading...',
+    learnMore: 'Learn More'
   },
   nav: {
     home: "Home",
@@ -21,7 +22,43 @@ export default {
     howItWorksDesc: 'Learn about the au pair program and how to get started',
     findAuPairDesc: 'Find qualified au pairs for your family',
     findFamilyDesc: 'Find welcoming host families for your au pair journey',
-    englishEducationDesc: 'Improve your English skills with our educational programs'
+    englishEducationDesc: 'Improve your English skills with our educational programs',
+    welcomeMessage: 'Welcome to Hope International',
+    descriptionTitle: 'What We Offer',
+    findFamilyButton: 'Find Host Family',
+    findAuPairButton: 'Find Au Pair',
+    testimonialTitle: 'What People Say',
+    testimonialSubtitle: 'Hear from our satisfied au pairs and host families',
+    testimonialQuote: 'Working with Hope International changed our lives. The cultural exchange program brought our family closer together and gave us a deeper appreciation for different cultures. Our au pair became like a daughter to us.',
+    testimonialAuthor: 'Emma Johnson',
+    testimonialRole: 'Host Parent from Shanghai',
+    ctaTitle: 'Ready to Begin Your Journey?',
+    ctaDescription: 'Join our community of au pairs and host families from around the world',
+    ctaButton: 'Get Started Today'
+  },
+  testimonials: {
+    title: "Success Stories",
+    subtitle: "Hear from our au pairs and host families",
+    stories: [
+      {
+        name: "Sarah Chen",
+        location: "Shanghai",
+        quote: "Being an au pair has been an incredible journey of growth and cultural exchange. I've learned so much about myself and made lifelong connections.",
+        details: "Au Pair from China"
+      },
+      {
+        name: "The Wilson Family",
+        location: "California",
+        quote: "Our au pair has become part of our family. She's not just helping with childcare, she's bringing a whole new cultural perspective to our home.",
+        details: "Host Family in USA"
+      },
+      {
+        name: "Maria Santos",
+        location: "Beijing",
+        quote: "The support from Hope International made my transition so smooth. They were there every step of the way.",
+        details: "Au Pair from Philippines"
+      }
+    ]
   },
   auth: {
     createAccount: 'Create Account',

@@ -10,5 +10,8 @@ export default defineConfig({
     hmr: {
       clientPort: 3000
     }
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router-dom']
   }
 });

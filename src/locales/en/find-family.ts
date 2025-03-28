@@ -23,11 +23,47 @@ export default {
       startDate: "Start Date"
     }
   },
+  benefits: {
+    title: "Benefits of Being an Au Pair in China",
+    subtitle: "Discover the advantages of joining Chinese host families",
+    list: [
+      {
+        title: "Cultural Immersion",
+        description: "Experience authentic Chinese culture and daily life firsthand"
+      },
+      {
+        title: "Language Learning",
+        description: "Perfect opportunity to learn or improve your Chinese"
+      },
+      {
+        title: "Professional Growth",
+        description: "Gain valuable teaching and childcare experience"
+      },
+      {
+        title: "Travel Opportunities",
+        description: "Explore China's rich history and diverse landscapes"
+      }
+    ]
+  },
   listings: {
     title: "Host Families",
     languages: "Languages",
     contact: "Contact Family",
     loadMore: "Load More Families",
+    starting: "Compensation",
+    perMonth: "per month",
+    children: "Children",
+    childrenInfo: {
+      ages: "Children Ages",
+      singleChild: "1 child",
+      multipleChildren: "{{count}} children",
+      ageRange: "{{min}}-{{max}} years old",
+      infant: "Infant",
+      toddler: "Toddler",
+      preschooler: "Preschooler",
+      schoolAge: "School-age",
+      teenager: "Teenager"
+    },
     locations: {
       beijing: "Beijing",
       shanghai: "Shanghai",
@@ -66,27 +102,6 @@ export default {
         location: "Guangzhou, China",
         quote: "I was nervous about living abroad, but Mary AuPair matched me with the perfect family. The children are wonderful, and I've had amazing opportunities to travel and explore. Most importantly, I found a second home.",
         details: "Teaching English and music, passionate about Chinese culture."
-      }
-    ]
-  },
-  benefits: {
-    title: "Benefits of Being an Au Pair in China",
-    list: [
-      {
-        title: "Cultural Immersion",
-        description: "Experience authentic Chinese culture and daily life firsthand"
-      },
-      {
-        title: "Language Learning",
-        description: "Perfect opportunity to learn or improve your Mandarin skills"
-      },
-      {
-        title: "Professional Growth",
-        description: "Gain valuable teaching and childcare experience"
-      },
-      {
-        title: "Travel Opportunities",
-        description: "Explore China's rich history and diverse landscapes"
       }
     ]
   },

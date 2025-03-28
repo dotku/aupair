@@ -8,9 +8,13 @@ interface Story {
   details: string;
 }
 
-export default function Testimonials() {
-  const { t } = useTranslation("findFamily");
-  const stories = t("testimonials.stories", { returnObjects: true }) as Story[];
+interface TestimonialsProps {
+  namespace?: string;
+}
+
+export default function Testimonials({ namespace = "findFamily" }: TestimonialsProps) {
+  const { t } = useTranslation(namespace);
+  const stories = t("testimonials.stories", { returnObjects: true }) as Story[] || [];
 
   // Fixed avatar URLs
   const avatarUrls = [
@@ -18,6 +22,10 @@ export default function Testimonials() {
     "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&q=80",
     "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&q=80"
   ];
+
+  if (!Array.isArray(stories) || stories.length === 0) {
+    return null;
+  }
 
   return (
     <section className="py-16">

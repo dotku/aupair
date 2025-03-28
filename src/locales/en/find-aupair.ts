@@ -1,74 +1,98 @@
 export default {
   title: "Find Your Perfect Au Pair",
-  subtitle: "Browse through our qualified au pairs from the US and Europe",
-  filters: {
-    title: "Search Filters",
-    nationality: "Nationality",
-    language: "Languages",
-    education: "Education Level",
-    experience: "Experience",
-    availability: "Availability",
-    apply: "Apply Filters",
-    reset: "Reset",
-  },
+  subtitle: "Connect with qualified and caring au pairs",
   search: {
-    placeholder: "Search by name, skills, or interests",
-    button: "Search",
+    placeholder: "Search by name, location, or skills...",
+    filters: {
+      nationality: "Nationality",
+      languages: "Languages",
+      experience: "Experience"
+    }
   },
-  sort: {
-    label: "Sort by",
-    options: {
-      newest: "Newest First",
-      experience: "Most Experienced",
-      availability: "Earliest Available",
-    },
+  filters: {
+    title: "Filters",
+    country: "Country",
+    language: "Language",
+    experience: "Experience",
+    search: "Search",
+    searchPlaceholder: "Search by name or location...",
+    apply: "Apply Filters",
+    clear: "Clear All"
   },
   listings: {
-    languages: "Languages",
-    education: "Education",
-    experience: "Experience",
-    contact: "Contact",
-    viewProfile: "View Profile",
     loadMore: "Load More",
-    skills: "Skills",
-    interests: "Interests",
-  },
-  profile: {
-    nationality: "Nationality",
     languages: "Languages",
-    education: "Education",
     experience: "Experience",
-    skills: "Skills",
-    interests: "Interests",
-    availability: "Available From",
-    viewProfile: "View Full Profile",
+    education: "Education",
+    location: "Location",
+    age: "Age",
+    yearsOld: "years old",
+    yearsExperience: "years experience",
     contact: "Contact Au Pair",
-  },
-  noResults: {
-    title: "No Au Pairs Found",
-    message: "Try adjusting your filters or search criteria",
-    suggestion:
-      "You can also contact us for personalized assistance in finding the right au pair",
-  },
-  featured: {
-    title: "Featured Au Pairs",
-    subtitle: "Our top-rated and most experienced au pairs",
-  },
-  testimonials: {
-    title: "Family Testimonials",
-    subtitle: "Hear from our host families",
-    quote1: "Our au pair not only helped our children learn English but became a true member of our family. She brought new perspectives and cultural exchange - it's been an invaluable experience.",
-    hostFamily1: "Zhang Family, Beijing",
-    quote2: "The au pair we found through Mary AuPair is professional, patient, and passionate about education. The children love her.",
-    hostFamily2: "Li Family, Shanghai",
-    quote3: "This is our second time using Mary AuPair, and they've consistently matched us with the perfect au pair for our family. Professional and caring service!",
-    hostFamily3: "Wang Family, Shenzhen"
+    contactButton: "Contact Au Pair",
+    messageButton: "Send Message",
+    saveButton: "Save Profile",
+    viewProfile: "View Full Profile",
+    noResults: "No au pairs found matching your criteria",
+    starting: "Starting",
+    perMonth: "per month",
+    availability: "Availability",
+    availableFrom: "Available from",
+    duration: "Duration",
+    skills: "Skills",
+    about: "About",
+    countries: {
+      Spain: "Spain",
+      China: "China",
+      Germany: "Germany",
+      Brazil: "Brazil",
+      Japan: "Japan",
+      Australia: "Australia"
+    },
+    durations: {
+      shortTerm: "Short Term (1-3 months)",
+      mediumTerm: "Medium Term (3-6 months)",
+      longTerm: "Long Term (6+ months)"
+    }
   },
   cta: {
-    title: "Can't Find What You're Looking For?",
-    subtitle: "Join our au pair community and start your cultural exchange journey",
-    message: "Don't worry! We have an extensive database of qualified au pairs. Our expert consultants will help you find the perfect match for your family. We'll create a customized matching plan based on your specific needs.",
-    button: "Contact Us for Help",
-    createProfile: "Create Au Pair Profile"
+    title: "Ready to Start Your Au Pair Journey?",
+    subtitle: "Join our community of international au pairs and host families",
+    registerButton: "Register as Au Pair",
+    learnMoreButton: "Learn More About Process",
+    createProfile: "Create Your Profile",
+    benefits: {
+      title: "Why Choose Us?",
+      items: [
+        "Verified profiles and background checks",
+        "Personalized matching system",
+        "24/7 support during your stay",
+        "Cultural exchange opportunities"
+      ]
+    }
   },
+  testimonials: {
+    title: "Success Stories",
+    subtitle: "Hear from our au pairs and host families",
+    stories: [
+      {
+        name: "Sarah Chen",
+        location: "Shanghai",
+        quote: "Being an au pair has been an incredible journey of growth and cultural exchange. I've learned so much about myself and made lifelong connections.",
+        details: "Au Pair from China"
+      },
+      {
+        name: "The Wilson Family",
+        location: "California",
+        quote: "Our au pair has become part of our family. She's not just helping with childcare, she's bringing a whole new cultural perspective to our home.",
+        details: "Host Family in USA"
+      },
+      {
+        name: "Maria Santos",
+        location: "Beijing",
+        quote: "The support from Hope International made my transition so smooth. They were there every step of the way.",
+        details: "Au Pair from Philippines"
+      }
+    ]
+  }
 };
