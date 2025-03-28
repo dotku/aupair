@@ -41,78 +41,125 @@ export default {
       },
       {
         title: "Travel Opportunities",
-        description: "Explore China's rich history and diverse landscapes"
+        description: "Explore China's diverse regions and neighboring countries"
+      },
+      {
+        title: "Support Network",
+        description: "Join a community of au pairs and receive guidance from local staff"
       }
     ]
   },
   listings: {
-    title: "Host Families",
-    languages: "Languages",
-    contact: "Contact Family",
+    title: "Available Host Families",
+    noResults: "No families found matching your criteria",
     loadMore: "Load More Families",
-    starting: "Compensation",
-    perMonth: "per month",
-    children: "Children",
-    childrenInfo: {
-      ages: "Children Ages",
-      singleChild: "1 child",
-      multipleChildren: "{{count}} children",
-      ageRange: "{{min}}-{{max}} years old",
-      infant: "Infant",
-      toddler: "Toddler",
-      preschooler: "Preschooler",
-      schoolAge: "School-age",
-      teenager: "Teenager"
-    },
-    locations: {
-      beijing: "Beijing",
-      shanghai: "Shanghai",
-      guangzhou: "Guangzhou",
-      shenzhen: "Shenzhen"
-    }
-  },
-  family: {
     location: "Location",
-    children: "Children",
     duration: "Duration",
     startDate: "Start Date",
-    languages: "Required Languages",
-    requirements: "Requirements",
+    languages: "Languages",
+    children: "Children",
+    salary: "Monthly Stipend",
     viewDetails: "View Details",
-    apply: "Apply Now"
-  },
-  testimonials: {
-    title: "Testimonials",
-    subtitle: "Hear from our au pairs",
-    stories: [
-      {
-        name: "Sarah's Experience",
-        location: "Beijing, China",
-        quote: "My time with the Zhang family has been unforgettable. They welcomed me like their own daughter.",
-        details: "Teaching English while learning Mandarin and Chinese culture."
-      },
-      {
-        name: "Thomas's Story",
-        location: "Shanghai, China",
-        quote: "My host family in China has been incredibly supportive of my goals. They've helped me improve my Mandarin and even encouraged me to take university courses.",
-        details: "Teaching English and Korean while learning Chinese."
-      },
-      {
-        name: "Emma's Story",
-        location: "Guangzhou, China",
-        quote: "I was nervous about living abroad, but Mary AuPair matched me with the perfect family. The children are wonderful, and I've had amazing opportunities to travel and explore. Most importantly, I found a second home.",
-        details: "Teaching English and music, passionate about Chinese culture."
-      }
-    ]
-  },
-  ready: {
-    title: "Ready to Start Your Au Pair Adventure?",
-    subtitle: "Let's begin this memorable cultural exchange journey together",
-    button: "Apply Now"
+    applyNow: "Apply Now",
+    requirements: "Requirements",
+    responsibilities: "Responsibilities",
+    aboutFamily: "About the Family",
+    aboutLocation: "About the Location",
+    contactFamily: "Contact Family",
+    saveForLater: "Save for Later",
+    shareProfile: "Share Profile",
+    reportProfile: "Report Profile",
+    childrenAges: "Children's Ages",
+    workingHours: "Working Hours",
+    accommodationType: "Accommodation",
+    mealPlan: "Meals",
+    daysOff: "Days Off",
+    benefits: "Benefits",
+    childrenInfo: "{count} {count, plural, one {child} other {children}}",
+    ageRange: "{min}-{max} years old",
+    hoursPerWeek: "{hours} hours/week",
+    startingFrom: "Starting from",
+    availableFrom: "Available from",
+    perMonth: "per month",
+    durations: {
+      shortTerm: "Short Term (1-3 months)",
+      mediumTerm: "Medium Term (3-6 months)",
+      longTerm: "Long Term (6+ months)"
+    }
   },
   cta: {
     title: "Ready to Start Your Journey?",
-    message: "We'll help you find the perfect host family in China",
-    button: "Apply Now"
+    subtitle: "Create your profile and connect with Chinese host families today",
+    button: "Sign Up as an Au Pair",
+    learnMore: "Learn More About the Process"
+  },
+  featured: {
+    title: "Featured Families",
+    subtitle: "Highlighted opportunities with great host families",
+    viewAll: "View All Families"
+  },
+  testimonials: {
+    title: "Success Stories",
+    subtitle: "Hear from au pairs who found their perfect match in China",
+    stories: [
+      {
+        name: "Emma Wilson",
+        location: "Beijing",
+        quote: "Living with my host family in Beijing has been the most rewarding experience. I've improved my Chinese significantly and made lifelong friends.",
+        details: "Teaching English to two children while exploring Chinese culture"
+      },
+      {
+        name: "Michael Chen",
+        location: "Shanghai",
+        quote: "The cultural exchange experience has been beyond my expectations.",
+        details: "Helping with homework and organizing educational activities while exploring Chinese traditions."
+      },
+      {
+        name: "Sophie Martin",
+        location: "Guangzhou",
+        quote: "My host family treats me like their own daughter. They've shown me parts of China I never would have discovered on my own.",
+        details: "Caring for a 5-year-old while learning Mandarin and Cantonese"
+      }
+    ]
+  },
+  requirements: {
+    title: "Requirements for Au Pairs",
+    list: [
+      "Age between 18-30 years",
+      "Basic Chinese language skills (or willingness to learn)",
+      "Experience with childcare",
+      "Clean background check",
+      "Valid passport and ability to obtain proper visa",
+      "Commitment to cultural exchange"
+    ]
+  },
+  process: {
+    title: "How It Works",
+    steps: [
+      {
+        title: "Create Profile",
+        description: "Sign up and complete your au pair profile with all relevant details"
+      },
+      {
+        title: "Browse Families",
+        description: "Search through available host families based on your preferences"
+      },
+      {
+        title: "Connect",
+        description: "Message potential host families and schedule video interviews"
+      },
+      {
+        title: "Confirm Match",
+        description: "Once you've found your perfect match, confirm the arrangement"
+      },
+      {
+        title: "Prepare",
+        description: "Complete necessary paperwork and prepare for your journey"
+      },
+      {
+        title: "Begin Adventure",
+        description: "Travel to China and start your au pair experience"
+      }
+    ]
   }
-}
+};

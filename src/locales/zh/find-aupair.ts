@@ -3,73 +3,84 @@ export default {
   subtitle: "与合格且富有爱心的互惠生建立联系",
   search: {
     placeholder: "按姓名、地点或技能搜索...",
-    filters: {
-      nationality: "国籍",
-      languages: "语言",
+    button: "搜索"
+  },
+  filters: {
+    title: "筛选条件",
+    nationality: "国籍",
+    languages: "语言",
+    experience: "经验",
+    availability: "可用性",
+    apply: "应用筛选",
+    reset: "重置",
+    allNationalities: "所有国籍",
+    allLanguages: "所有语言",
+    allExperience: "所有经验水平"
+  },
+  sort: {
+    label: "排序方式",
+    options: {
+      relevance: "相关性",
+      newest: "最新",
       experience: "经验"
     }
   },
-  filters: {
-    title: "筛选",
-    country: "国家",
-    language: "语言",
-    experience: "经验",
-    search: "搜索",
-    searchPlaceholder: "按姓名或地点搜索...",
-    apply: "应用筛选",
-    clear: "清除全部"
-  },
   listings: {
-    loadMore: "加载更多",
+    title: "可用互惠生",
+    noResults: "没有找到符合您条件的互惠生",
+    loadMore: "加载更多互惠生",
+    nationality: "国籍",
     languages: "语言",
     experience: "经验",
     education: "教育背景",
-    location: "所在地",
-    age: "年龄",
-    yearsOld: "岁",
-    yearsExperience: "年经验",
-    contact: "联系互惠生",
-    contactButton: "联系互惠生",
-    messageButton: "发送消息",
-    saveButton: "保存档案",
-    viewProfile: "查看完整档案",
-    noResults: "未找到符合条件的互惠生",
-    starting: "起薪",
-    perMonth: "每月",
-    availability: "可工作时间",
-    availableFrom: "可开始时间",
-    duration: "工作时长",
-    skills: "技能特长",
-    about: "个人简介",
-    countries: {
-      Spain: "西班牙",
-      China: "中国",
-      Germany: "德国",
-      Brazil: "巴西",
-      Japan: "日本",
-      Australia: "澳大利亚"
+    viewProfile: "查看档案",
+    contactAuPair: "联系互惠生",
+    saveForLater: "稍后保存",
+    shareProfile: "分享档案",
+    reportProfile: "举报档案",
+    about: "关于",
+    skills: "技能",
+    references: "推荐信",
+    availabilityLabel: "可用性",
+    availabilityOptions: {
+      immediate: "立即可用",
+      twoWeeks: "两周内",
+      oneMonth: "一个月内",
+      threeMonths: "三个月内",
+      flexible: "灵活"
     },
-    durations: {
-      shortTerm: "短期 (1-3个月)",
-      mediumTerm: "中期 (3-6个月)",
-      longTerm: "长期 (6个月以上)"
+    experienceLevels: {
+      none: "无经验",
+      beginner: "初级 (< 1 年)",
+      intermediate: "中级 (1-3 年)",
+      advanced: "高级 (3+ 年)"
     }
   },
-  cta: {
-    title: "准备开启您的互惠生之旅？",
-    subtitle: "加入我们的国际互惠生和寄宿家庭社区",
-    registerButton: "注册成为互惠生",
-    learnMoreButton: "了解申请流程",
-    createProfile: "创建个人档案",
-    benefits: {
-      title: "为什么选择我们？",
-      items: [
-        "经过验证的档案和背景调查",
-        "个性化匹配系统",
-        "全天候支持服务",
-        "丰富的文化交流机会"
-      ]
-    }
+  benefits: {
+    title: "选择互惠生的好处",
+    subtitle: "了解互惠生如何为您的家庭带来价值",
+    list: [
+      {
+        title: "文化交流",
+        description: "让您的孩子接触新的语言和文化视角"
+      },
+      {
+        title: "灵活的儿童照顾",
+        description: "根据您的时间表定制的儿童照顾解决方案"
+      },
+      {
+        title: "教育支持",
+        description: "帮助孩子完成家庭作业和学习新技能"
+      },
+      {
+        title: "国际友谊",
+        description: "建立可能持续一生的跨文化联系"
+      },
+      {
+        title: "经济实惠",
+        description: "与其他全职儿童照顾选择相比更具成本效益"
+      }
+    ]
   },
   testimonials: {
     title: "成功案例",
@@ -94,5 +105,10 @@ export default {
         details: "来自菲律宾的互惠生"
       }
     ]
+  },
+  cta: {
+    title: "没有找到合适的人选？",
+    message: "让我们帮您找到最适合您家庭的互惠生",
+    button: "联系我们"
   }
 };

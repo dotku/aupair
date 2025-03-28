@@ -118,7 +118,7 @@ const Footer = () => {
           </div>
 
           {/* Contact & Newsletter */}
-          <div id="contact">
+          <div>
             <h3 className="text-xl font-semibold mb-4 text-white">
               {t("contact.title")}
             </h3>
@@ -183,7 +183,8 @@ const Footer = () => {
             <div className="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-4">
               <p className="text-sm text-gray-400">
                 {t("copyright.text")} {currentYear}{" "}
-                {t("companyName", { ns: "common" })} {t("copyright.rights")}
+                {t("companyName", { ns: "common" })}{" "}
+                {t("copyright.rights")}
               </p>
               <a
                 href={t("icp.link")}

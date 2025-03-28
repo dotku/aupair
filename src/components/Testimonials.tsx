@@ -12,7 +12,7 @@ interface TestimonialsProps {
   namespace?: string;
 }
 
-export default function Testimonials({ namespace = "findFamily" }: TestimonialsProps) {
+export default function Testimonials({ namespace = "find-family" }: TestimonialsProps) {
   const { t } = useTranslation(namespace);
   const stories = t("testimonials.stories", { returnObjects: true }) as Story[] || [];
 
@@ -62,7 +62,7 @@ export default function Testimonials({ namespace = "findFamily" }: TestimonialsP
               <div className="flex items-end">
                 <img
                   className="h-10 w-10 rounded-full object-cover mr-4"
-                  src={avatarUrls[index]}
+                  src={avatarUrls[index % avatarUrls.length]}
                   alt={story.name}
                 />
                 <div>
