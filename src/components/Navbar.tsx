@@ -1,42 +1,42 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import LanguageSwitcher from './LanguageSwitcher';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "./LanguageSwitcher";
+import { Menu, X, ChevronDown } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
-  const { t } = useTranslation('common');
+  const { t } = useTranslation("common");
 
   const services = [
-    { name: t('nav.howItWorks'), href: '/how-it-works' },
-    { name: t('nav.findAuPair'), href: '/find-aupair' },
-    { name: t('nav.findFamily'), href: '/find-family' },
+    { name: t("nav.howItWorks"), href: "/how-it-works" },
+    { name: t("nav.findAuPair"), href: "/find-aupair" },
+    { name: t("nav.findFamily"), href: "/find-family" },
   ];
 
   return (
     <nav className="bg-white shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
-          <div className="flex">
+          <div className="flex w-full">
             <div className="flex-shrink-0 flex items-center">
               <Link to="/" className="flex-shrink-0 flex items-center">
                 <div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center">
                   <span className="text-white font-bold text-xl">H</span>
                 </div>
                 <span className="ml-3 text-xl font-bold text-primary">
-                  {t('companyShortName')}
+                  {t("companyShortName")}
                 </span>
               </Link>
             </div>
-            <div className="hidden sm:ml-6 sm:flex sm:items-center sm:space-x-8">
+            <div className="hidden sm:flex sm:flex-grow sm:items-center sm:justify-center sm:space-x-8">
               <div className="relative">
                 <Link
                   to="/services"
                   className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-900 group"
                 >
-                  <span>{t('nav.services')}</span>
+                  <span>{t("nav.services")}</span>
                   <button
                     onClick={(e) => {
                       e.preventDefault();
@@ -74,25 +74,26 @@ const Navbar = () => {
                 to="/english-education"
                 className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-900"
               >
-                {t('nav.englishEducation')}
+                {t("nav.englishEducation")}
               </Link>
               <Link
                 to="/about"
                 className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-900"
               >
-                {t('nav.about')}
+                {t("nav.about")}
               </Link>
               <Link
                 to="/contact"
                 className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-900"
               >
-                {t('nav.contact')}
+                {t("nav.contact")}
               </Link>
             </div>
+            <div className="hidden sm:ml-6 sm:flex sm:items-center">
+              <LanguageSwitcher />
+            </div>
           </div>
-          <div className="hidden sm:ml-6 sm:flex sm:items-center">
-            <LanguageSwitcher />
-          </div>
+
           <div className="-mr-2 flex items-center sm:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -117,7 +118,7 @@ const Navbar = () => {
               onClick={() => setIsServicesOpen(!isServicesOpen)}
               className="w-full text-left block pl-3 pr-4 py-2 text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50"
             >
-              {t('nav.services')}
+              {t("nav.services")}
               <ChevronDown className="inline ml-1 h-4 w-4" />
             </button>
             {isServicesOpen && (
@@ -142,21 +143,21 @@ const Navbar = () => {
               className="block pl-3 pr-4 py-2 text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50"
               onClick={() => setIsOpen(false)}
             >
-              {t('nav.englishEducation')}
+              {t("nav.englishEducation")}
             </Link>
             <Link
               to="/about"
               className="block pl-3 pr-4 py-2 text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50"
               onClick={() => setIsOpen(false)}
             >
-              {t('nav.about')}
+              {t("nav.about")}
             </Link>
             <Link
               to="/contact"
               className="block pl-3 pr-4 py-2 text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50"
               onClick={() => setIsOpen(false)}
             >
-              {t('nav.contact')}
+              {t("nav.contact")}
             </Link>
           </div>
           <div className="pt-4 pb-3 border-t border-gray-200">
