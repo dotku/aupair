@@ -1,6 +1,6 @@
 export default {
-  companyName: "霍普(深圳)国际文化交流有限公司",
-  companyShortName: "霍普国际文化交流",
+  companyName: "希望(深圳)国际文化交流有限公司",
+  companyShortName: "希望国际文化交流",
   common: {
     loading: "加载中...",
     save: "保存",
@@ -31,13 +31,13 @@ export default {
     findAuPairDesc: "为您的家庭找到合格的互惠生",
     findFamilyDesc: "为您的互惠生之旅找到温馨的寄宿家庭",
     englishEducationDesc: "通过我们的教育项目提升英语水平",
-    welcomeMessage: "欢迎来到霍普国际",
+    welcomeMessage: "欢迎来到希望国际",
     descriptionTitle: "我们提供的服务",
     findFamilyButton: "寻找寄宿家庭",
     findAuPairButton: "寻找互惠生",
     testimonialTitle: "用户反馈",
     testimonialSubtitle: "听听我们的互惠生和寄宿家庭的感受",
-    testimonialQuote: "与霍普国际合作改变了我们的生活。文化交流项目拉近了我们家庭成员之间的距离，让我们对不同的文化有了更深的理解。我们的互惠生已经像女儿一样成为了家庭的一部分。",
+    testimonialQuote: "与希望国际合作改变了我们的生活。文化交流项目拉近了我们家庭成员之间的距离，让我们对不同的文化有了更深的理解。我们的互惠生已经像女儿一样成为了家庭的一部分。",
     testimonialAuthor: "艾玛·约翰逊",
     testimonialRole: "上海的寄宿家庭家长",
     ctaTitle: "准备好开始您的旅程了吗？",
@@ -63,7 +63,7 @@ export default {
       {
         name: "玛丽亚",
         location: "北京",
-        quote: "霍普国际的支持让我的过渡非常顺利。他们一直在每一个环节为我提供帮助。",
+        quote: "希望国际的支持让我的过渡非常顺利。他们一直在每一个环节为我提供帮助。",
         details: "来自菲律宾的互惠生"
       }
     ]

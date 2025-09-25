@@ -1,8 +1,8 @@
 export default {
-  title: "霍普互惠生助手",
+  title: "希望互惠生助手",
   openChat: "打开聊天",
   closeChat: "关闭聊天",
-  welcome: "欢迎使用霍普互惠生在线助手",
+  welcome: "欢迎使用希望互惠生在线助手",
   helpTopics: "您可以询问",
   topics: {
     auPairProgram: "互惠生项目介绍",
