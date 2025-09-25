@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { Analytics } from '@vercel/analytics/react';
 import Home from "./pages/Home";
 import About from "./pages/About";
 import FindFamily from "./pages/FindFamily";
@@ -40,6 +41,7 @@ function App() {
       </main>
       <Footer />
       <Chatbot />
+      <Analytics />
     </div>
   );
 }
