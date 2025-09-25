@@ -289,7 +289,9 @@ const FindFamily = () => {
           </div>
         </div>
       </section>
+<<<<<<< HEAD
 
+<<<<<<< HEAD
       {/* Testimonials Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -297,6 +299,13 @@ const FindFamily = () => {
         </div>
       </section>
 
+=======
+      {/* Testimonials */}
+      <Testimonials />
+=======
+      <Testimonials namespace="find-family" />
+>>>>>>> parent of b1849b9 (user able to update profile)
+>>>>>>> 375a240 (Revert "user able to update profile")
       {/* CTA Section */}
       <section className="py-16 bg-blue-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

@@ -54,6 +54,7 @@ export default {
       mediumTerm: "Medium Term (3-6 months)",
       longTerm: "Long Term (6+ months)"
     }
+<<<<<<< HEAD
   },
   noResults: {
     title: "No Au Pairs Found",
@@ -63,6 +64,8 @@ export default {
   featured: {
     title: "Featured Au Pairs",
     subtitle: "Our top-rated and most experienced au pairs"
+=======
+>>>>>>> 375a240 (Revert "user able to update profile")
   },
   cta: {
     title: "Ready to Start Your Au Pair Journey?",
@@ -101,9 +104,42 @@ export default {
       {
         name: "Maria Santos",
         location: "Beijing",
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        quote:
+          "The support from Hope International made my transition so smooth. They were there every step of the way.",
+        details: "Au Pair from Philippines",
+      },
+    ],
+=======
+    contact: "Contact Au Pair",
+  },
+  noResults: {
+    title: "No Au Pairs Found",
+    message: "Try adjusting your filters or search criteria",
+    suggestion:
+      "You can also contact us for personalized assistance in finding the right au pair",
+  },
+  featured: {
+    title: "Featured Au Pairs",
+    subtitle: "Our top-rated and most experienced au pairs",
+  },
+  cta: {
+    title: "Can't Find What You're Looking For?",
+    message: "Let us help you find the perfect au pair for your family",
+    button: "Contact Us",
+>>>>>>> parent of 0f49ebb (success feed the mock data)
+  },
+=======
+>>>>>>> 375a240 (Revert "user able to update profile")
         quote: "The support from Hope International made my transition so smooth. They were there every step of the way.",
         details: "Au Pair from Philippines"
       }
     ]
   }
+<<<<<<< HEAD
+=======
+>>>>>>> parent of b1849b9 (user able to update profile)
+>>>>>>> 375a240 (Revert "user able to update profile")
 };

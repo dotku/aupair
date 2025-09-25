@@ -17,6 +17,23 @@
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true
   },
+<<<<<<< HEAD
   "include": ["src/**/*"],
+<<<<<<< HEAD
   "exclude": ["node_modules", "api"]
+=======
+  "references": [{ "path": "./tsconfig.node.json" }]
+=======
+  "files": [],
+  "exclude": ["node_modules", "api"],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
+>>>>>>> parent of 0f49ebb (success feed the mock data)
+=======
+  "include": [ "src/**/*"],
+  "references": [{ "path": "./tsconfig.node.json" }],
+>>>>>>> parent of b1849b9 (user able to update profile)
+>>>>>>> 375a240 (Revert "user able to update profile")
 }

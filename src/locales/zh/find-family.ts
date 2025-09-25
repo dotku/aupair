@@ -9,7 +9,18 @@ export default {
     languages: "语言要求",
     apply: "应用筛选",
     reset: "重置",
+<<<<<<< HEAD
     allLocations: "所有地点"
+=======
+<<<<<<< HEAD
+    allLocations: "所有地区",
+=======
+    reset: "重置"
+>>>>>>> parent of 0f49ebb (success feed the mock data)
+=======
+    allLocations: "所有地点"
+>>>>>>> parent of b1849b9 (user able to update profile)
+>>>>>>> 375a240 (Revert "user able to update profile")
   },
   search: {
     placeholder: "按地点或要求搜索",
@@ -87,15 +98,48 @@ export default {
       {
         name: "Sarah的经历",
         location: "中国北京",
+<<<<<<< HEAD
         quote: "在张家的时光令人难忘。他们像对待自己的女儿一样欢迎我。"
+=======
+        quote: "在张家的时光令人难忘。他们像对待自己的女儿一样欢迎我。",
+        details: "在教授英语的同时学习中文和中国文化。"
+>>>>>>> 375a240 (Revert "user able to update profile")
       },
       {
         name: "王先生的家庭",
         location: "中国上海",
+<<<<<<< HEAD
         quote: "我们的互惠生Maria不仅帮助照顾孩子，还教会了他们西班牙语和新的文化视角。"
       },
       {
         name: "Emma的故事",
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        quote:
+          "我在中国的寄宿家庭非常支持我的目标。他们不仅帮助我提高中文水平，还鼓励我参加大学课程。",
+        details: "教授英语和韩语，同时学习中文。",
+=======
+        quote: "我在中国的寄宿家庭非常支持我的目标。他们不仅帮助我提高中文水平，还鼓励我参加大学课程。",
+        details: "教授英语和韩语，同时学习中文。"
+>>>>>>> parent of b1849b9 (user able to update profile)
+      },
+      {
+        name: "Emma的故事",
+        location: "中国广州",
+<<<<<<< HEAD
+        quote:
+          "刚开始我很担心在国外生活，但是Mary AuPair为我匹配了一个完美的家庭。孩子们都很可爱，我有很多机会去旅行和探索。最重要的是，我找到了第二个家。",
+        details: "教授英语和音乐，热爱中国文化。",
+      },
+    ],
+=======
+        quote: "文化交流的体验超出了我的预期。",
+        details: "帮助辅导功课和组织教育活动，同时探索中国传统文化。"
+      },
+      {
+        name: "Michael的冒险",
+>>>>>>> 375a240 (Revert "user able to update profile")
         location: "中国深圳",
         quote: "这是一次改变人生的经历。我学到了很多关于中国文化的知识，并与我的寄宿家庭建立了终身的友谊。"
       }
@@ -118,6 +162,7 @@ export default {
         details: "在上海生活了10个月"
       },
       {
+<<<<<<< HEAD
         name: "Sophie Laurent",
         location: "法国巴黎",
         quote: "中国的寄宿家庭让我感到宾至如归。我们一起庆祝中国传统节日，分享彼此的文化。这段经历让我终生难忘。",
@@ -131,3 +176,34 @@ export default {
     button: "立即注册"
   }
 };
+=======
+        title: "职业发展",
+        description: "获得宝贵的教学和育儿经验",
+      },
+      {
+        title: "旅行机会",
+        description: "探索中国丰富的历史和多样的风景",
+      },
+    ],
+=======
+        quote: "刚开始我很担心在国外生活，但是Mary AuPair为我匹配了一个完美的家庭。孩子们都很可爱，我有很多机会去旅行和探索。最重要的是，我找到了第二个家。",
+        details: "教授英语和音乐，热爱中国文化。"
+      }
+    ]
+>>>>>>> parent of b1849b9 (user able to update profile)
+  },
+<<<<<<< HEAD
+  ready: {
+    title: "准备开始您的互惠生之旅了吗？",
+    subtitle: "让我们一起开启这段难忘的文化交流之旅",
+    button: "立即申请"
+  },
+=======
+>>>>>>> parent of 0f49ebb (success feed the mock data)
+  cta: {
+    title: "准备开始您的旅程？",
+    message: "我们将帮您找到理想的中国寄宿家庭",
+    button: "立即申请"
+  }
+}
+>>>>>>> 375a240 (Revert "user able to update profile")
