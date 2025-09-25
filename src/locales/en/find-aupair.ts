@@ -5,21 +5,25 @@ export default {
     placeholder: "Search by name, location, or skills...",
     filters: {
       nationality: "Nationality",
-      languages: "Languages",
+      language: "Language",
       experience: "Experience"
     }
   },
   filters: {
     title: "Filters",
     country: "Country",
+    nationality: "Nationality",
+    languages: "Languages",
     language: "Language",
     experience: "Experience",
     search: "Search",
     searchPlaceholder: "Search by name or location...",
     apply: "Apply Filters",
-    clear: "Clear All"
+    clear: "Clear All",
+    reset: "Reset Filters"
   },
   listings: {
+    title: "Available Au Pairs",
     loadMore: "Load More",
     languages: "Languages",
     experience: "Experience",
@@ -28,11 +32,12 @@ export default {
     age: "Age",
     yearsOld: "years old",
     yearsExperience: "years experience",
-    contact: "Contact Au Pair",
+    contact: "Contact",
+    contactAuPair: "Contact Au Pair",
     contactButton: "Contact Au Pair",
     messageButton: "Send Message",
     saveButton: "Save Profile",
-    viewProfile: "View Full Profile",
+    viewProfile: "View Profile",
     noResults: "No au pairs found matching your criteria",
     starting: "Starting",
     perMonth: "per month",
@@ -54,7 +59,6 @@ export default {
       mediumTerm: "Medium Term (3-6 months)",
       longTerm: "Long Term (6+ months)"
     }
-<<<<<<< HEAD
   },
   noResults: {
     title: "No Au Pairs Found",
@@ -64,8 +68,6 @@ export default {
   featured: {
     title: "Featured Au Pairs",
     subtitle: "Our top-rated and most experienced au pairs"
-=======
->>>>>>> 375a240 (Revert "user able to update profile")
   },
   cta: {
     title: "Ready to Start Your Au Pair Journey?",
@@ -104,42 +106,9 @@ export default {
       {
         name: "Maria Santos",
         location: "Beijing",
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-        quote:
-          "The support from Hope International made my transition so smooth. They were there every step of the way.",
-        details: "Au Pair from Philippines",
-      },
-    ],
-=======
-    contact: "Contact Au Pair",
-  },
-  noResults: {
-    title: "No Au Pairs Found",
-    message: "Try adjusting your filters or search criteria",
-    suggestion:
-      "You can also contact us for personalized assistance in finding the right au pair",
-  },
-  featured: {
-    title: "Featured Au Pairs",
-    subtitle: "Our top-rated and most experienced au pairs",
-  },
-  cta: {
-    title: "Can't Find What You're Looking For?",
-    message: "Let us help you find the perfect au pair for your family",
-    button: "Contact Us",
->>>>>>> parent of 0f49ebb (success feed the mock data)
-  },
-=======
->>>>>>> 375a240 (Revert "user able to update profile")
         quote: "The support from Hope International made my transition so smooth. They were there every step of the way.",
         details: "Au Pair from Philippines"
       }
     ]
   }
-<<<<<<< HEAD
-=======
->>>>>>> parent of b1849b9 (user able to update profile)
->>>>>>> 375a240 (Revert "user able to update profile")
 };

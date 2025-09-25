@@ -3,24 +3,23 @@ export default {
   subtitle: "与合格且富有爱心的互惠生建立联系",
   search: {
     placeholder: "按姓名、地点或技能搜索...",
-<<<<<<< HEAD
-    button: "搜索"
-=======
+    button: "搜索",
     filters: {
       nationality: "国籍",
+      language: "语言",
       languages: "语言",
       experience: "经验"
     }
->>>>>>> 375a240 (Revert "user able to update profile")
   },
   filters: {
     title: "筛选条件",
     nationality: "国籍",
     languages: "语言",
+    language: "语言",
     experience: "经验",
     availability: "可用性",
     apply: "应用筛选",
-<<<<<<< HEAD
+    clear: "清除全部",
     reset: "重置",
     allNationalities: "所有国籍",
     allLanguages: "所有语言",
@@ -42,14 +41,27 @@ export default {
     languages: "语言",
     experience: "经验",
     education: "教育背景",
-    viewProfile: "查看档案",
+    location: "所在地",
+    age: "年龄",
+    yearsOld: "岁",
+    yearsExperience: "年经验",
+    contact: "联系互惠生",
+    contactButton: "联系互惠生",
     contactAuPair: "联系互惠生",
+    messageButton: "发送消息",
+    saveButton: "保存档案",
+    viewProfile: "查看档案",
     saveForLater: "稍后保存",
     shareProfile: "分享档案",
     reportProfile: "举报档案",
     about: "关于",
     skills: "技能",
     references: "推荐信",
+    starting: "起薪",
+    perMonth: "每月",
+    availability: "可工作时间",
+    availableFrom: "可开始时间",
+    duration: "工作时长",
     availabilityLabel: "可用性",
     availabilityOptions: {
       immediate: "立即可用",
@@ -63,6 +75,19 @@ export default {
       beginner: "初级 (< 1 年)",
       intermediate: "中级 (1-3 年)",
       advanced: "高级 (3+ 年)"
+    },
+    countries: {
+      Spain: "西班牙",
+      China: "中国",
+      Germany: "德国",
+      Brazil: "巴西",
+      Japan: "日本",
+      Australia: "澳大利亚"
+    },
+    durations: {
+      shortTerm: "短期 (1-3个月)",
+      mediumTerm: "中期 (3-6个月)",
+      longTerm: "长期 (6个月以上)"
     }
   },
   benefits: {
@@ -90,44 +115,6 @@ export default {
         description: "与其他全职儿童照顾选择相比更具成本效益"
       }
     ]
-=======
-    clear: "清除全部"
-  },
-  listings: {
-    loadMore: "加载更多",
-    languages: "语言",
-    experience: "经验",
-    education: "教育背景",
-    location: "所在地",
-    age: "年龄",
-    yearsOld: "岁",
-    yearsExperience: "年经验",
-    contact: "联系互惠生",
-    contactButton: "联系互惠生",
-    messageButton: "发送消息",
-    saveButton: "保存档案",
-    viewProfile: "查看完整档案",
-    noResults: "未找到符合条件的互惠生",
-    starting: "起薪",
-    perMonth: "每月",
-    availability: "可工作时间",
-    availableFrom: "可开始时间",
-    duration: "工作时长",
-    skills: "技能特长",
-    about: "个人简介",
-    countries: {
-      Spain: "西班牙",
-      China: "中国",
-      Germany: "德国",
-      Brazil: "巴西",
-      Japan: "日本",
-      Australia: "澳大利亚"
-    },
-    durations: {
-      shortTerm: "短期 (1-3个月)",
-      mediumTerm: "中期 (3-6个月)",
-      longTerm: "长期 (6个月以上)"
-    }
   },
   cta: {
     title: "准备开启您的互惠生之旅？",
@@ -135,6 +122,8 @@ export default {
     registerButton: "注册成为互惠生",
     learnMoreButton: "了解申请流程",
     createProfile: "创建个人档案",
+    message: "让我们帮您找到最适合您家庭的互惠生",
+    button: "联系我们",
     benefits: {
       title: "为什么选择我们？",
       items: [
@@ -144,7 +133,6 @@ export default {
         "丰富的文化交流机会"
       ]
     }
->>>>>>> 375a240 (Revert "user able to update profile")
   },
   testimonials: {
     title: "成功案例",
@@ -165,37 +153,9 @@ export default {
       {
         name: "玛丽亚",
         location: "北京",
-<<<<<<< HEAD
-        quote: "希望国际的支持让我的过渡非常顺利。他们一直在每一个环节为我提供帮助。",
-        details: "来自菲律宾的互惠生"
-      }
-    ]
-  },
-  cta: {
-    title: "没有找到合适的人选？",
-    message: "让我们帮您找到最适合您家庭的互惠生",
-    button: "联系我们"
-  }
-=======
-<<<<<<< HEAD
-        quote:
-          "希望国际的支持让我的过渡非常顺利。他们一直在每一个环节为我提供帮助。",
-        details: "来自菲律宾的互惠生",
-      },
-    ],
-=======
-  cta: {
-    title: "没有找到合适的人选？",
-    message: "让我们帮您找到最适合您家庭的互惠生",
-    button: "联系我们",
->>>>>>> parent of 0f49ebb (success feed the mock data)
-  },
-=======
         quote: "希望国际的支持让我的过渡非常顺利。他们一直在每一个环节为我提供帮助。",
         details: "来自菲律宾的互惠生"
       }
     ]
   }
->>>>>>> parent of b1849b9 (user able to update profile)
->>>>>>> 375a240 (Revert "user able to update profile")
 };

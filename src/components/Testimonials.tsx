@@ -1,7 +1,6 @@
 import { Star } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-<<<<<<< HEAD
 interface Story {
   name: string;
   location: string;
@@ -9,28 +8,13 @@ interface Story {
   details: string;
 }
 
-=======
-<<<<<<< HEAD
-export default function Testimonials() {
-<<<<<<< HEAD
-  const { t } = useTranslation("findFamily");
-  const stories = t("testimonials.stories", { returnObjects: true }) as Story[];
-=======
->>>>>>> 375a240 (Revert "user able to update profile")
 interface TestimonialsProps {
   namespace?: string;
 }
 
-<<<<<<< HEAD
 export default function Testimonials({ namespace = "find-family" }: TestimonialsProps) {
   const { t } = useTranslation(namespace);
   const stories = t("testimonials.stories", { returnObjects: true }) as Story[] || [];
-=======
-export default function Testimonials({ namespace = "findFamily" }: TestimonialsProps) {
-  const { t } = useTranslation(namespace);
-  const stories = t("testimonials.stories", { returnObjects: true }) as Story[] || [];
->>>>>>> parent of b1849b9 (user able to update profile)
->>>>>>> 375a240 (Revert "user able to update profile")
 
   // Fixed avatar URLs
   const avatarUrls = [
@@ -39,21 +23,10 @@ export default function Testimonials({ namespace = "findFamily" }: TestimonialsP
     "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&q=80"
   ];
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> parent of 0f49ebb (success feed the mock data)
-=======
->>>>>>> 375a240 (Revert "user able to update profile")
   if (!Array.isArray(stories) || stories.length === 0) {
     return null;
   }
 
-<<<<<<< HEAD
-=======
->>>>>>> parent of b1849b9 (user able to update profile)
->>>>>>> 375a240 (Revert "user able to update profile")
   return (
     <section className="py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -72,10 +45,10 @@ export default function Testimonials({ namespace = "findFamily" }: TestimonialsP
               <div className="flex items-center mb-4">
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
-                    <Star 
-                      key={i} 
-                      className="h-5 w-5" 
-                      fill="#facc15"  
+                    <Star
+                      key={i}
+                      className="h-5 w-5"
+                      fill="#facc15"
                       stroke="#facc15"
                     />
                   ))}
@@ -83,7 +56,7 @@ export default function Testimonials({ namespace = "findFamily" }: TestimonialsP
               </div>
               <div className="flex-grow">
                 <p className="text-gray-600 italic mb-4">
-                  {story.quote}
+                  "{story.quote}"
                 </p>
               </div>
               <div className="flex items-end">

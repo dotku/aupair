@@ -9,18 +9,7 @@ export default {
     languages: "语言要求",
     apply: "应用筛选",
     reset: "重置",
-<<<<<<< HEAD
     allLocations: "所有地点"
-=======
-<<<<<<< HEAD
-    allLocations: "所有地区",
-=======
-    reset: "重置"
->>>>>>> parent of 0f49ebb (success feed the mock data)
-=======
-    allLocations: "所有地点"
->>>>>>> parent of b1849b9 (user able to update profile)
->>>>>>> 375a240 (Revert "user able to update profile")
   },
   search: {
     placeholder: "按地点或要求搜索",
@@ -64,6 +53,7 @@ export default {
     starting: "薪酬",
     perMonth: "每月",
     children: "孩子",
+    noResults: "未找到符合条件的家庭",
     childrenInfo: {
       ages: "孩子年龄",
       singleChild: "1个孩子",
@@ -90,7 +80,33 @@ export default {
     languages: "语言要求",
     requirements: "具体要求",
     viewDetails: "查看详情",
-    apply: "立即申请"
+    apply: "立即申请",
+    applyNow: "立即申请",
+    salary: "月薪",
+    responsibilities: "职责",
+    aboutFamily: "关于家庭",
+    aboutLocation: "关于地点",
+    contactFamily: "联系家庭",
+    saveForLater: "稍后保存",
+    shareProfile: "分享档案",
+    reportProfile: "举报档案",
+    childrenAges: "孩子年龄",
+    workingHours: "工作时间",
+    accommodationType: "住宿条件",
+    mealPlan: "餐食",
+    daysOff: "休息日",
+    benefits: "福利",
+    childrenInfo: "{count}个孩子",
+    ageRange: "{min}-{max}岁",
+    hoursPerWeek: "每周{hours}小时",
+    startingFrom: "起薪",
+    availableFrom: "可开始时间",
+    perMonth: "每月",
+    durations: {
+      shortTerm: "短期 (1-3个月)",
+      mediumTerm: "中期 (3-6个月)",
+      longTerm: "长期 (6个月以上)"
+    }
   },
   successStories: {
     title: "成功案例",
@@ -98,50 +114,19 @@ export default {
       {
         name: "Sarah的经历",
         location: "中国北京",
-<<<<<<< HEAD
-        quote: "在张家的时光令人难忘。他们像对待自己的女儿一样欢迎我。"
-=======
         quote: "在张家的时光令人难忘。他们像对待自己的女儿一样欢迎我。",
         details: "在教授英语的同时学习中文和中国文化。"
->>>>>>> 375a240 (Revert "user able to update profile")
       },
       {
         name: "王先生的家庭",
         location: "中国上海",
-<<<<<<< HEAD
         quote: "我们的互惠生Maria不仅帮助照顾孩子，还教会了他们西班牙语和新的文化视角。"
       },
       {
         name: "Emma的故事",
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-        quote:
-          "我在中国的寄宿家庭非常支持我的目标。他们不仅帮助我提高中文水平，还鼓励我参加大学课程。",
-        details: "教授英语和韩语，同时学习中文。",
-=======
-        quote: "我在中国的寄宿家庭非常支持我的目标。他们不仅帮助我提高中文水平，还鼓励我参加大学课程。",
-        details: "教授英语和韩语，同时学习中文。"
->>>>>>> parent of b1849b9 (user able to update profile)
-      },
-      {
-        name: "Emma的故事",
         location: "中国广州",
-<<<<<<< HEAD
-        quote:
-          "刚开始我很担心在国外生活，但是Mary AuPair为我匹配了一个完美的家庭。孩子们都很可爱，我有很多机会去旅行和探索。最重要的是，我找到了第二个家。",
-        details: "教授英语和音乐，热爱中国文化。",
-      },
-    ],
-=======
-        quote: "文化交流的体验超出了我的预期。",
-        details: "帮助辅导功课和组织教育活动，同时探索中国传统文化。"
-      },
-      {
-        name: "Michael的冒险",
->>>>>>> 375a240 (Revert "user able to update profile")
-        location: "中国深圳",
-        quote: "这是一次改变人生的经历。我学到了很多关于中国文化的知识，并与我的寄宿家庭建立了终身的友谊。"
+        quote: "刚开始我很担心在国外生活，但是Mary AuPair为我匹配了一个完美的家庭。孩子们都很可爱，我有很多机会去旅行和探索。最重要的是，我找到了第二个家。",
+        details: "教授英语和音乐，热爱中国文化。"
       }
     ]
   },
@@ -162,7 +147,6 @@ export default {
         details: "在上海生活了10个月"
       },
       {
-<<<<<<< HEAD
         name: "Sophie Laurent",
         location: "法国巴黎",
         quote: "中国的寄宿家庭让我感到宾至如归。我们一起庆祝中国传统节日，分享彼此的文化。这段经历让我终生难忘。",
@@ -172,38 +156,54 @@ export default {
   },
   cta: {
     title: "准备好开始您的中国互惠生之旅了吗？",
-    message: "创建您的个人资料，与中国家庭建立联系",
-    button: "立即注册"
-  }
-};
-=======
-        title: "职业发展",
-        description: "获得宝贵的教学和育儿经验",
+    subtitle: "创建您的个人资料，与中国家庭建立联系",
+    message: "我们将帮您找到理想的中国寄宿家庭",
+    button: "立即注册",
+    learnMore: "了解更多流程"
+  },
+  featured: {
+    title: "精选家庭",
+    subtitle: "优质寄宿家庭的突出机会",
+    viewAll: "查看所有家庭"
+  },
+  requirements: {
+    title: "互惠生要求",
+    list: [
+      "年龄在18-30岁之间",
+      "基本中文语言能力（或愿意学习）",
+      "有儿童照顾经验",
+      "清白的背景调查",
+      "有效护照和获得合适签证的能力",
+      "致力于文化交流"
+    ]
+  },
+  process: {
+    title: "如何运作",
+    steps: [
+      {
+        title: "创建档案",
+        description: "注册并完成您的互惠生档案，包含所有相关详细信息"
       },
       {
-        title: "旅行机会",
-        description: "探索中国丰富的历史和多样的风景",
+        title: "浏览家庭",
+        description: "根据您的偏好搜索可用的寄宿家庭"
       },
-    ],
-=======
-        quote: "刚开始我很担心在国外生活，但是Mary AuPair为我匹配了一个完美的家庭。孩子们都很可爱，我有很多机会去旅行和探索。最重要的是，我找到了第二个家。",
-        details: "教授英语和音乐，热爱中国文化。"
+      {
+        title: "建立联系",
+        description: "向潜在寄宿家庭发送消息并安排视频面试"
+      },
+      {
+        title: "确认匹配",
+        description: "一旦您找到了完美的匹配，确认安排"
+      },
+      {
+        title: "准备",
+        description: "完成必要的文件工作并为您的旅程做准备"
+      },
+      {
+        title: "开始冒险",
+        description: "前往中国开始您的互惠生体验"
       }
     ]
->>>>>>> parent of b1849b9 (user able to update profile)
-  },
-<<<<<<< HEAD
-  ready: {
-    title: "准备开始您的互惠生之旅了吗？",
-    subtitle: "让我们一起开启这段难忘的文化交流之旅",
-    button: "立即申请"
-  },
-=======
->>>>>>> parent of 0f49ebb (success feed the mock data)
-  cta: {
-    title: "准备开始您的旅程？",
-    message: "我们将帮您找到理想的中国寄宿家庭",
-    button: "立即申请"
   }
-}
->>>>>>> 375a240 (Revert "user able to update profile")
+};
